@@ -384,7 +384,7 @@
     "ingredienti": [
       {
         "id": "succo-di-limone",
-        "g_per_kg": 300
+        "g_per_kg": 320
       },
       {
         "id": "acqua",
@@ -392,15 +392,11 @@
       },
       {
         "id": "saccarosio",
-        "g_per_kg": 220
+        "g_per_kg": 145
       },
       {
-        "id": "destrosio-monoidrato",
-        "g_per_kg": 80
-      },
-      {
-        "id": "zucchero-invertito",
-        "g_per_kg": 40
+        "id": "glucosio-42de",
+        "g_per_kg": 180
       },
       {
         "id": "stabilizzante",
@@ -410,35 +406,30 @@
     "ingredientiModificabili": [
       {
         "nome": "Succo di limone",
-        "min": 200,
+        "min": 220,
         "max": 400
       },
       {
         "nome": "Saccarosio",
-        "min": 160,
-        "max": 280
+        "min": 100,
+        "max": 200
       },
       {
-        "nome": "Destrosio (monoidrato)",
-        "min": 40,
-        "max": 120
-      },
-      {
-        "nome": "Zucchero invertito",
-        "min": 0,
-        "max": 80
+        "nome": "Sciroppo di glucosio 42DE",
+        "min": 120,
+        "max": 240
       }
     ],
     "procedimento": [
       "Spremitura e filtratura del succo di limone; pesare le dosi.",
-      "Portare acqua e saccarosio a 80 °C mescolando per formare uno sciroppo; aggiungere destrosio e zucchero invertito, mescolare fino a dissoluzione.",
+      "Portare acqua e saccarosio a 80 °C mescolando per formare uno sciroppo; aggiungere lo sciroppo di glucosio, mescolare fino a dissoluzione.",
       "Raffreddare lo sciroppo a temperatura ambiente, poi a +4 °C.",
       "Unire il succo di limone freddo allo sciroppo; aggiungere lo stabilizzante per freddo mescolando bene.",
       "Maturare in frigorifero per 2–4 ore.",
       "Mantecare fino a estrazione a −7/−9 °C al cuore.",
       "Abbattere a −18 °C per almeno 2 ore."
     ],
-    "notaTecnica": "L'acidità del limone abbassa il pH della miscela, inibendo la crescita batterica — il succo di frutta non necessita di pastorizzazione. Lo sciroppo di base viene portato a 80 °C per la completa dissoluzione degli zuccheri. Lo zucchero invertito migliora la spatolabilità e frena la ricristallizzazione."
+    "notaTecnica": "L'acidità del limone abbassa il pH della miscela, inibendo la crescita batterica — il succo di frutta non necessita di pastorizzazione. Lo sciroppo di base viene portato a 80 °C per la completa dissoluzione degli zuccheri. SCELTA DOCUMENTATA: lo sciroppo di glucosio 42DE costituisce qui circa il 55% del totale zuccheri aggiunti, oltre la regola pratica generica (zuccheri secondi max 20-25%, gelato-reference.md §3) — necessario per portare POD e PAC dentro i range stretti del sorbetto agrumi (POD 20-23.5, PAC 27.5-37.5) mantenendo zuccheri al 28-30%. Coerente con l'indicazione dello stesso documento: va sempre verificato il risultato finale di POD/PAC, non solo la proporzione di sostituzione."
   },
   {
     "id": "lampone",
