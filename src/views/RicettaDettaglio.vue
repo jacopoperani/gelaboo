@@ -71,7 +71,7 @@ const fasceCorrette = computed(() => {
   const out = {}
   for (const mod of ingredientiModificabili.value) {
     const idx = ing.findIndex(i => i.nome === mod.nome)
-    out[mod.nome] = idx === -1 ? null : fasciaCorretta(idx, ing, cat, mod.min, mod.max)
+    out[mod.nome] = idx === -1 ? null : fasciaCorretta(idx, ing, cat, mod.min, mod.max, ricetta.value?.eccezioniSoglie ?? [])
   }
   return out
 })

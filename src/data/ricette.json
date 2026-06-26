@@ -5,17 +5,47 @@
     "categoria": "crema",
     "payoff": "La base classica delle gelaterie italiane. Latte, panna, pochissimo.",
     "ingredienti": [
-      { "id": "latte-intero", "g_per_kg": 600 },
-      { "id": "panna-35", "g_per_kg": 150 },
-      { "id": "saccarosio", "g_per_kg": 160 },
-      { "id": "latte-polvere-scremato", "g_per_kg": 50 },
-      { "id": "glucosio-42de", "g_per_kg": 30 },
-      { "id": "stabilizzante", "g_per_kg": 8 }
+      {
+        "id": "latte-intero",
+        "g_per_kg": 600
+      },
+      {
+        "id": "panna-35",
+        "g_per_kg": 150
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 160
+      },
+      {
+        "id": "latte-polvere-scremato",
+        "g_per_kg": 50
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 30
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 8
+      }
     ],
     "ingredientiModificabili": [
-      { "nome": "Panna 35%", "min": 80, "max": 250 },
-      { "nome": "Saccarosio", "min": 120, "max": 210 },
-      { "nome": "Sciroppo di glucosio 42DE", "min": 0, "max": 70 }
+      {
+        "nome": "Panna 35%",
+        "min": 80,
+        "max": 250
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 120,
+        "max": 210
+      },
+      {
+        "nome": "Sciroppo di glucosio 42DE",
+        "min": 0,
+        "max": 70
+      }
     ],
     "procedimento": [
       "Pesare tutti gli ingredienti.",
@@ -35,18 +65,51 @@
     "categoria": "crema",
     "payoff": "Cacao amaro bilanciato. Scuro ma non pesante.",
     "ingredienti": [
-      { "id": "latte-intero", "g_per_kg": 580 },
-      { "id": "panna-35", "g_per_kg": 80 },
-      { "id": "saccarosio", "g_per_kg": 155 },
-      { "id": "latte-polvere-scremato", "g_per_kg": 40 },
-      { "id": "destrosio-monoidrato", "g_per_kg": 30 },
-      { "id": "cacao-amaro-22", "g_per_kg": 100 },
-      { "id": "stabilizzante", "g_per_kg": 8 }
+      {
+        "id": "latte-intero",
+        "g_per_kg": 580
+      },
+      {
+        "id": "panna-35",
+        "g_per_kg": 80
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 155
+      },
+      {
+        "id": "latte-polvere-scremato",
+        "g_per_kg": 40
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 30
+      },
+      {
+        "id": "cacao-amaro-22",
+        "g_per_kg": 100
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 8
+      }
     ],
     "ingredientiModificabili": [
-      { "nome": "Cacao amaro 22%", "min": 60, "max": 140 },
-      { "nome": "Panna 35%", "min": 40, "max": 130 },
-      { "nome": "Saccarosio", "min": 110, "max": 200 }
+      {
+        "nome": "Cacao amaro 22%",
+        "min": 60,
+        "max": 140
+      },
+      {
+        "nome": "Panna 35%",
+        "min": 40,
+        "max": 130
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 110,
+        "max": 200
+      }
     ],
     "procedimento": [
       "Pesare tutti gli ingredienti.",
@@ -67,18 +130,51 @@
     "categoria": "crema",
     "payoff": "Pasta di pistacchio pura. Nessun colorante.",
     "ingredienti": [
-      { "id": "latte-intero", "g_per_kg": 540 },
-      { "id": "panna-35", "g_per_kg": 80 },
-      { "id": "saccarosio", "g_per_kg": 160 },
-      { "id": "latte-polvere-scremato", "g_per_kg": 40 },
-      { "id": "pasta-pistacchio-pura", "g_per_kg": 120 },
-      { "id": "glucosio-42de", "g_per_kg": 50 },
-      { "id": "stabilizzante", "g_per_kg": 5 }
+      {
+        "id": "latte-intero",
+        "g_per_kg": 540
+      },
+      {
+        "id": "panna-35",
+        "g_per_kg": 80
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 160
+      },
+      {
+        "id": "latte-polvere-scremato",
+        "g_per_kg": 40
+      },
+      {
+        "id": "pasta-pistacchio-pura",
+        "g_per_kg": 120
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 50
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
     ],
     "ingredientiModificabili": [
-      { "nome": "Pasta di pistacchio pura", "min": 80, "max": 180 },
-      { "nome": "Panna 35%", "min": 40, "max": 130 },
-      { "nome": "Saccarosio", "min": 120, "max": 210 }
+      {
+        "nome": "Pasta di pistacchio pura",
+        "min": 80,
+        "max": 180
+      },
+      {
+        "nome": "Panna 35%",
+        "min": 40,
+        "max": 130
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 120,
+        "max": 210
+      }
     ],
     "procedimento": [
       "Pesare tutti gli ingredienti.",
@@ -90,7 +186,10 @@
       "Mantecare fino a estrazione a −7/−9 °C al cuore.",
       "Abbattere e conservare a −18 °C."
     ],
-    "notaTecnica": "La pasta di pistacchio pura apporta circa il 55% di grassi vegetali: il tenore totale di grassi della miscela sale sensibilmente. La panna è ridotta rispetto a una base crema standard per mantenere l'equilibrio. La pasta si aggiunge a freddo per preservare i profumi volatili del pistacchio. Nota sul bilanciamento: i grassi vegetali del pistacchio abbassano il PAC effettivo sotto il range standard e alzano i solidi totali oltre il 44%. Questi due parametri in attenzione sono un compromesso noto e documentato per la categoria frutta secca — non un errore di bilanciamento."
+    "notaTecnica": "La pasta di pistacchio pura apporta circa il 55% di grassi vegetali: il tenore totale di grassi della miscela sale sensibilmente. La panna è ridotta rispetto a una base crema standard per mantenere l'equilibrio. La pasta si aggiunge a freddo per preservare i profumi volatili del pistacchio. Nota sul bilanciamento: i grassi vegetali del pistacchio abbassano il PAC effettivo sotto il range standard e alzano i solidi totali oltre il 44%. Questi due parametri in attenzione sono un compromesso noto e documentato per la categoria frutta secca — non un errore di bilanciamento.",
+    "eccezioniSoglie": [
+      "solidi"
+    ]
   },
   {
     "id": "nocciola",
@@ -98,18 +197,51 @@
     "categoria": "crema",
     "payoff": "Pasta di nocciola pura. Amaro tostato, nessun aggiustamento.",
     "ingredienti": [
-      { "id": "latte-intero", "g_per_kg": 540 },
-      { "id": "panna-35", "g_per_kg": 80 },
-      { "id": "saccarosio", "g_per_kg": 160 },
-      { "id": "latte-polvere-scremato", "g_per_kg": 40 },
-      { "id": "pasta-nocciola-pura", "g_per_kg": 110 },
-      { "id": "glucosio-42de", "g_per_kg": 50 },
-      { "id": "stabilizzante", "g_per_kg": 5 }
+      {
+        "id": "latte-intero",
+        "g_per_kg": 540
+      },
+      {
+        "id": "panna-35",
+        "g_per_kg": 80
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 160
+      },
+      {
+        "id": "latte-polvere-scremato",
+        "g_per_kg": 40
+      },
+      {
+        "id": "pasta-nocciola-pura",
+        "g_per_kg": 110
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 50
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
     ],
     "ingredientiModificabili": [
-      { "nome": "Pasta di nocciola pura", "min": 70, "max": 160 },
-      { "nome": "Panna 35%", "min": 40, "max": 130 },
-      { "nome": "Saccarosio", "min": 120, "max": 210 }
+      {
+        "nome": "Pasta di nocciola pura",
+        "min": 70,
+        "max": 160
+      },
+      {
+        "nome": "Panna 35%",
+        "min": 40,
+        "max": 130
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 120,
+        "max": 210
+      }
     ],
     "procedimento": [
       "Pesare tutti gli ingredienti.",
@@ -121,7 +253,10 @@
       "Mantecare fino a estrazione a −7/−9 °C al cuore.",
       "Abbattere e conservare a −18 °C."
     ],
-    "notaTecnica": "La pasta di nocciola pura apporta circa il 60% di grassi vegetali — leggermente più della pasta di pistacchio (55%). Come per tutti i gusti a frutta secca, i grassi vegetali si solidificano a temperature negative molto più del grasso del latte e non hanno potere anticongelante: questo abbassa il PAC effettivo sotto il range standard e alza i solidi totali oltre il 44%. Sono due parametri in attenzione strutturali — un compromesso noto e documentato (metodo Corvitto) per l'intera categoria frutta secca, non un errore di bilanciamento. La pasta si aggiunge a freddo dopo la pastorizzazione per preservare i profumi volatili della nocciola tostata."
+    "notaTecnica": "La pasta di nocciola pura apporta circa il 60% di grassi vegetali — leggermente più della pasta di pistacchio (55%). Come per tutti i gusti a frutta secca, i grassi vegetali si solidificano a temperature negative molto più del grasso del latte e non hanno potere anticongelante: questo abbassa il PAC effettivo sotto il range standard e alza i solidi totali oltre il 44%. Sono due parametri in attenzione strutturali — un compromesso noto e documentato (metodo Corvitto) per l'intera categoria frutta secca, non un errore di bilanciamento. La pasta si aggiunge a freddo dopo la pastorizzazione per preservare i profumi volatili della nocciola tostata.",
+    "eccezioniSoglie": [
+      "solidi"
+    ]
   },
   {
     "id": "fragola",
@@ -129,17 +264,47 @@
     "categoria": "frutta",
     "payoff": "Polpa fresca. Frutta vera, non aromi.",
     "ingredienti": [
-      { "id": "fragole-fresche", "g_per_kg": 300 },
-      { "id": "latte-intero", "g_per_kg": 500 },
-      { "id": "saccarosio", "g_per_kg": 100 },
-      { "id": "destrosio-monoidrato", "g_per_kg": 65 },
-      { "id": "glucosio-42de", "g_per_kg": 30 },
-      { "id": "stabilizzante", "g_per_kg": 5 }
+      {
+        "id": "fragole-fresche",
+        "g_per_kg": 300
+      },
+      {
+        "id": "latte-intero",
+        "g_per_kg": 500
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 100
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 65
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 30
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
     ],
     "ingredientiModificabili": [
-      { "nome": "Fragole fresche", "min": 200, "max": 400 },
-      { "nome": "Latte intero", "min": 400, "max": 600 },
-      { "nome": "Saccarosio", "min": 70, "max": 140 }
+      {
+        "nome": "Fragole fresche",
+        "min": 200,
+        "max": 400
+      },
+      {
+        "nome": "Latte intero",
+        "min": 400,
+        "max": 600
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 70,
+        "max": 140
+      }
     ],
     "procedimento": [
       "Pesare tutti gli ingredienti; usare fragole fresche mature o surgelate di qualità.",
@@ -158,17 +323,47 @@
     "categoria": "frutta",
     "payoff": "Banana matura, base latte. Cremoso e naturalmente dolce.",
     "ingredienti": [
-      { "id": "banana-fresca", "g_per_kg": 250 },
-      { "id": "latte-intero", "g_per_kg": 520 },
-      { "id": "saccarosio", "g_per_kg": 80 },
-      { "id": "destrosio-monoidrato", "g_per_kg": 50 },
-      { "id": "glucosio-42de", "g_per_kg": 20 },
-      { "id": "stabilizzante", "g_per_kg": 5 }
+      {
+        "id": "banana-fresca",
+        "g_per_kg": 250
+      },
+      {
+        "id": "latte-intero",
+        "g_per_kg": 520
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 80
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 50
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 20
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
     ],
     "ingredientiModificabili": [
-      { "nome": "Banana fresca", "min": 150, "max": 350 },
-      { "nome": "Latte intero", "min": 400, "max": 650 },
-      { "nome": "Saccarosio", "min": 50, "max": 120 }
+      {
+        "nome": "Banana fresca",
+        "min": 150,
+        "max": 350
+      },
+      {
+        "nome": "Latte intero",
+        "min": 400,
+        "max": 650
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 50,
+        "max": 120
+      }
     ],
     "procedimento": [
       "Pesare tutti gli ingredienti; usare banane mature (buccia con qualche macchia nera) per massima dolcezza e aroma.",
@@ -187,18 +382,52 @@
     "categoria": "sorbetto",
     "payoff": "Succo di limone siciliano. Pulito, acidulo, zero grassi.",
     "ingredienti": [
-      { "id": "succo-di-limone", "g_per_kg": 300 },
-      { "id": "acqua", "g_per_kg": 350 },
-      { "id": "saccarosio", "g_per_kg": 220 },
-      { "id": "destrosio-monoidrato", "g_per_kg": 80 },
-      { "id": "zucchero-invertito", "g_per_kg": 40 },
-      { "id": "stabilizzante", "g_per_kg": 5 }
+      {
+        "id": "succo-di-limone",
+        "g_per_kg": 300
+      },
+      {
+        "id": "acqua",
+        "g_per_kg": 350
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 220
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 80
+      },
+      {
+        "id": "zucchero-invertito",
+        "g_per_kg": 40
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
     ],
     "ingredientiModificabili": [
-      { "nome": "Succo di limone", "min": 200, "max": 400 },
-      { "nome": "Saccarosio", "min": 160, "max": 280 },
-      { "nome": "Destrosio (monoidrato)", "min": 40, "max": 120 },
-      { "nome": "Zucchero invertito", "min": 0, "max": 80 }
+      {
+        "nome": "Succo di limone",
+        "min": 200,
+        "max": 400
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 160,
+        "max": 280
+      },
+      {
+        "nome": "Destrosio (monoidrato)",
+        "min": 40,
+        "max": 120
+      },
+      {
+        "nome": "Zucchero invertito",
+        "min": 0,
+        "max": 80
+      }
     ],
     "procedimento": [
       "Spremitura e filtratura del succo di limone; pesare le dosi.",
@@ -217,17 +446,47 @@
     "categoria": "sorbetto",
     "payoff": "Polpa di lampone al setaccio. Acido, netto, senza latticini.",
     "ingredienti": [
-      { "id": "lamponi-polpa", "g_per_kg": 380 },
-      { "id": "acqua", "g_per_kg": 320 },
-      { "id": "saccarosio", "g_per_kg": 185 },
-      { "id": "glucosio-42de", "g_per_kg": 70 },
-      { "id": "zucchero-invertito", "g_per_kg": 20 },
-      { "id": "stabilizzante", "g_per_kg": 5 }
+      {
+        "id": "lamponi-polpa",
+        "g_per_kg": 380
+      },
+      {
+        "id": "acqua",
+        "g_per_kg": 320
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 185
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 70
+      },
+      {
+        "id": "zucchero-invertito",
+        "g_per_kg": 20
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
     ],
     "ingredientiModificabili": [
-      { "nome": "Lamponi (polpa)", "min": 250, "max": 500 },
-      { "nome": "Saccarosio", "min": 140, "max": 250 },
-      { "nome": "Zucchero invertito", "min": 0, "max": 40 }
+      {
+        "nome": "Lamponi (polpa)",
+        "min": 250,
+        "max": 500
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 140,
+        "max": 250
+      },
+      {
+        "nome": "Zucchero invertito",
+        "min": 0,
+        "max": 40
+      }
     ],
     "procedimento": [
       "Frullare i lamponi freschi o surgelati e passarli al setaccio fine per eliminare i semi.",
@@ -246,18 +505,51 @@
     "categoria": "vegano",
     "payoff": "Latte di cocco intero, nessun latticino.",
     "ingredienti": [
-      { "id": "latte-di-cocco-intero", "g_per_kg": 550 },
-      { "id": "acqua", "g_per_kg": 100 },
-      { "id": "saccarosio", "g_per_kg": 180 },
-      { "id": "destrosio-monoidrato", "g_per_kg": 60 },
-      { "id": "glucosio-42de", "g_per_kg": 80 },
-      { "id": "inulina", "g_per_kg": 25 },
-      { "id": "stabilizzante", "g_per_kg": 5 }
+      {
+        "id": "latte-di-cocco-intero",
+        "g_per_kg": 400
+      },
+      {
+        "id": "acqua",
+        "g_per_kg": 330
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 85
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 55
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 65
+      },
+      {
+        "id": "inulina",
+        "g_per_kg": 30
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
     ],
     "ingredientiModificabili": [
-      { "nome": "Latte di cocco intero", "min": 400, "max": 700 },
-      { "nome": "Saccarosio", "min": 130, "max": 230 },
-      { "nome": "Destrosio (monoidrato)", "min": 30, "max": 100 }
+      {
+        "nome": "Latte di cocco intero",
+        "min": 300,
+        "max": 550
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 50,
+        "max": 140
+      },
+      {
+        "nome": "Destrosio (monoidrato)",
+        "min": 30,
+        "max": 90
+      }
     ],
     "procedimento": [
       "Pesare tutti gli ingredienti; usare latte di cocco intero (non light).",
@@ -269,7 +561,10 @@
       "Mantecare fino a estrazione a −7/−9 °C al cuore.",
       "Abbattere e conservare a −18 °C."
     ],
-    "notaTecnica": "In assenza di proteine del latte, la struttura si affida a grassi vegetali e fibre. L'inulina sostituisce parzialmente gli SLNG: lega l'acqua libera, migliora il corpo e limita i cristalli di ghiaccio. Dose massima consigliata: 2–3% della miscela per evitare effetti lassativi."
+    "notaTecnica": "In assenza di proteine del latte, la struttura si affida a grassi vegetali e fibre. L'inulina sostituisce parzialmente gli SLNG: lega l'acqua libera, migliora il corpo e limita i cristalli di ghiaccio. Dose massima consigliata: 2-3% della miscela per evitare effetti lassativi. ECCEZIONE DOCUMENTATA: \"Altri solidi\" risulta strutturalmente sotto il range target (32-40% solidi totali raggiunto, ma altri solidi ~4.4% contro un target 7-17%) — con gli ingredienti vegani disponibili (latte di cocco, povero di fibre/proteine; inulina capata alla dose di sicurezza), non è raggiungibile senza superare la dose massima consigliata di inulina. Stesso tipo di compromesso già accettato per i gusti a frutta secca sui solidi totali — non è un errore di bilanciamento, è un limite reale della categoria con questa base.",
+    "eccezioniSoglie": [
+      "altri"
+    ]
   },
   {
     "id": "noci-vegano",
@@ -277,18 +572,51 @@
     "categoria": "vegano",
     "payoff": "Pasta di noci e latte di avena. Senza latticini.",
     "ingredienti": [
-      { "id": "latte-di-avena", "g_per_kg": 600 },
-      { "id": "pasta-di-noci", "g_per_kg": 80 },
-      { "id": "saccarosio", "g_per_kg": 110 },
-      { "id": "destrosio-monoidrato", "g_per_kg": 20 },
-      { "id": "glucosio-42de", "g_per_kg": 40 },
-      { "id": "inulina", "g_per_kg": 40 },
-      { "id": "stabilizzante", "g_per_kg": 5 }
+      {
+        "id": "latte-di-avena",
+        "g_per_kg": 600
+      },
+      {
+        "id": "pasta-di-noci",
+        "g_per_kg": 80
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 110
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 20
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 40
+      },
+      {
+        "id": "inulina",
+        "g_per_kg": 40
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
     ],
     "ingredientiModificabili": [
-      { "nome": "Pasta di noci", "min": 50, "max": 130 },
-      { "nome": "Saccarosio", "min": 80, "max": 160 },
-      { "nome": "Inulina", "min": 20, "max": 60 }
+      {
+        "nome": "Pasta di noci",
+        "min": 50,
+        "max": 130
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 80,
+        "max": 160
+      },
+      {
+        "nome": "Inulina",
+        "min": 20,
+        "max": 60
+      }
     ],
     "procedimento": [
       "Pesare tutti gli ingredienti; usare pasta di noci 100% priva di oli aggiunti.",
@@ -308,18 +636,51 @@
     "categoria": "vegano",
     "payoff": "Pasta di mandorla pura e latte di riso. Senza latticini.",
     "ingredienti": [
-      { "id": "latte-di-riso", "g_per_kg": 600 },
-      { "id": "pasta-mandorla-pura", "g_per_kg": 90 },
-      { "id": "saccarosio", "g_per_kg": 90 },
-      { "id": "destrosio-monoidrato", "g_per_kg": 15 },
-      { "id": "glucosio-42de", "g_per_kg": 35 },
-      { "id": "inulina", "g_per_kg": 40 },
-      { "id": "stabilizzante", "g_per_kg": 5 }
+      {
+        "id": "latte-di-riso",
+        "g_per_kg": 600
+      },
+      {
+        "id": "pasta-mandorla-pura",
+        "g_per_kg": 90
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 90
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 15
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 35
+      },
+      {
+        "id": "inulina",
+        "g_per_kg": 40
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
     ],
     "ingredientiModificabili": [
-      { "nome": "Pasta di mandorla pura", "min": 60, "max": 140 },
-      { "nome": "Saccarosio", "min": 60, "max": 140 },
-      { "nome": "Sciroppo di glucosio 42DE", "min": 20, "max": 60 }
+      {
+        "nome": "Pasta di mandorla pura",
+        "min": 60,
+        "max": 140
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 60,
+        "max": 140
+      },
+      {
+        "nome": "Sciroppo di glucosio 42DE",
+        "min": 20,
+        "max": 60
+      }
     ],
     "procedimento": [
       "Pesare tutti gli ingredienti; usare pasta di mandorla pura (100% mandorle, senza zuccheri aggiunti).",

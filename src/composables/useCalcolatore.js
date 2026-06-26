@@ -135,7 +135,7 @@ export function useCalcolatore(ingredienti, quantitaKg, categoria) {
  * con A = contributo degli altri ingredienti, B = coeff dell'ingrediente in esame,
  * C = somma g/kg degli altri.
  */
-export function fasciaCorretta(ingIdx, ingredienti, categoria, absMin, absMax) {
+export function fasciaCorretta(ingIdx, ingredienti, categoria, absMin, absMax, eccezioniSoglie = []) {
   const t    = THRESHOLDS[getCat(categoria)] ?? THRESHOLDS.crema
   const ingK = ingredienti[ingIdx]
   const others = ingredienti.filter((_, i) => i !== ingIdx)
@@ -155,22 +155,23 @@ export function fasciaCorretta(ingIdx, ingredienti, categoria, absMin, absMax) {
   const Bpod = (ingK.zuccheri / 100) * ingK.pod
   const Bpac = (ingK.zuccheri / 100) * ingK.pac
 
-  // [A, B, soglia THRESHOLDS, scale] — scale=100 per %, 1 per pod/pac
+  // [A, B, soglia THRESHOLDS, scale, nome] — scale=100 per %, 1 per pod/pac
   const metrics = [
-    [Az,           Bz,           t.zuccheri, 100],
-    [Ag,           Bg,           t.grassi,   100],
-    [As,           Bs,           t.slng,     100],
-    [Aa,           Ba,           t.altri ?? null, 100],
-    [Az+Ag+As+Aa,  Bz+Bg+Bs+Ba, t.solidi,   100],
-    [Apod,         Bpod,         t.pod,        1],
-    [Apac,         Bpac,         t.pac,        1],
+    [Az,           Bz,           t.zuccheri,      100, 'zuccheri'],
+    [Ag,           Bg,           t.grassi,        100, 'grassi'],
+    [As,           Bs,           t.slng,          100, 'slng'],
+    [Aa,           Ba,           t.altri ?? null, 100, 'altri'],
+    [Az+Ag+As+Aa,  Bz+Bg+Bs+Ba, t.solidi,        100, 'solidi'],
+    [Apod,         Bpod,         t.pod,             1, 'pod'],
+    [Apac,         Bpac,         t.pac,             1, 'pac'],
   ]
 
   let lo = absMin, hi = absMax
   const eps = 1e-9
 
-  for (const [A, B, thresh, scale] of metrics) {
+  for (const [A, B, thresh, scale, nome] of metrics) {
     if (thresh === null) continue
+    if (eccezioniSoglie.includes(nome)) continue
     const lv = thresh.lo_acc / scale
     const hv = thresh.hi_acc / scale
 
