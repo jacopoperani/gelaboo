@@ -447,15 +447,15 @@
       },
       {
         "id": "saccarosio",
-        "g_per_kg": 185
+        "g_per_kg": 140
       },
       {
         "id": "glucosio-42de",
-        "g_per_kg": 70
+        "g_per_kg": 85
       },
       {
         "id": "zucchero-invertito",
-        "g_per_kg": 20
+        "g_per_kg": 15
       },
       {
         "id": "stabilizzante",
@@ -470,8 +470,8 @@
       },
       {
         "nome": "Saccarosio",
-        "min": 140,
-        "max": 250
+        "min": 110,
+        "max": 220
       },
       {
         "nome": "Zucchero invertito",
@@ -488,7 +488,7 @@
       "Mantecare fino a estrazione a −7/−9 °C al cuore.",
       "Abbattere a −18 °C per almeno 2 ore."
     ],
-    "notaTecnica": "Il sorbetto di lamponi non necessita di pastorizzazione grazie all'acidità naturale della frutta. I semi vengono rimossi con setaccio fine prima della lavorazione. Lo zucchero invertito migliora la spatolabilità e frena la ricristallizzazione tipica delle puree di frutti rossi. Il POD risulta elevato rispetto al range sorbetto standard: strutturale, causato dalla combinazione di zuccheri naturali del lampone (POD alto) con il saccarosio necessario per il bilanciamento — stesso andamento del sorbetto limone."
+    "notaTecnica": "Il sorbetto di lamponi non necessita di pastorizzazione grazie all'acidità naturale della frutta. I semi vengono rimossi con setaccio fine prima della lavorazione. Lo sciroppo di glucosio e lo zucchero invertito insieme migliorano la spatolabilità e frenano la ricristallizzazione tipica delle puree di frutti rossi, mantenendo il POD nel range standard del sorbetto."
   },
   {
     "id": "cocco-vegano",
