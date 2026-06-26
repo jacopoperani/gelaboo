@@ -1,5 +1,25 @@
-# Vue 3 + Vite
+# gelaboo
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Calcolatore di ingredienti per gelato artigianale. Target: utenti prosumer con gelatiera e ingredienti professionali.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+**Funzionalità**
+- Gusti preset con calcoli bilanciati (POD/PAC/SLNG)
+- Builder per gusto custom
+- Ricette browsabili per categoria
+- Account con ricette salvate e like (login Google)
+
+## Stack
+
+- Vue 3 + Vite
+- Tailwind CSS + GSAP (animazioni)
+- Pinia (state management)
+- Firebase (Firestore + Authentication)
+- Gemini API (classificazione ingredienti — opzionale)
+
+## Comandi
+
+```bash
+npm install        # installa dipendenze
+npm run dev        # avvia dev server (localhost:5173)
+npm run build      # build produzione in dist/
+```
