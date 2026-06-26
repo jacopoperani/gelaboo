@@ -62,7 +62,7 @@ const factor = computed(() => {
 })
 
 const categoriaRicetta = computed(() => ricetta.value?.categoria)
-const { bilancio, warnings, stati } = useCalcolatore(ingredientiEffettivi, quantitaKg, categoriaRicetta)
+const { bilancio, warnings, stati } = useCalcolatore(ingredientiEffettivi, quantitaKg, categoriaRicetta, computed(() => ricetta.value?.eccezioniSoglie ?? []))
 
 // Per ogni ingrediente modificabile: fascia "ok" dentro il range assoluto
 const fasceCorrette = computed(() => {

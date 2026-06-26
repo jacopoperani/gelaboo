@@ -1,34 +1,6 @@
 import { computed } from 'vue'
 import { bilanciaRicetta, classificaValore } from '../utils/calculator.js'
 
-// Range binari per warnings (backward-compat) — gelato-reference.md §14
-const RANGES = {
-  crema: {
-    zuccheriMin: 16, zuccheriMax: 27,
-    grassiMin: 6,    grassiMax: 12,
-    slngMax: 12,
-    solidiMin: 36,   solidiMax: 44,
-  },
-  frutta: {
-    zuccheriMin: 22, zuccheriMax: 27,
-    grassiMin: null, grassiMax: 4,
-    slngMax: 8,
-    solidiMin: 30,   solidiMax: 38,
-  },
-  sorbetto: {
-    zuccheriMin: 22, zuccheriMax: 30,
-    grassiMin: null, grassiMax: 2,
-    slngMax: null,
-    solidiMin: 28,   solidiMax: 34,
-  },
-  vegano: {
-    zuccheriMin: 16, zuccheriMax: 22,
-    grassiMin: 5,    grassiMax: 12,
-    slngMax: null,
-    solidiMin: 32,   solidiMax: 40,
-  },
-}
-
 // Soglie a 3 livelli — gelato-reference.md §14 (valori ÷10, verificati vs §10 e fonte esterna)
 const THRESHOLDS = {
   crema: {
@@ -81,7 +53,7 @@ function getCat(categoria) {
  * @param {Ref<number>} quantitaKg  - kg totali della miscela (default 1)
  * @param {Ref<string>|string} [categoria] - 'crema'|'frutta'|'sorbetto'|'vegano'; fallback 'crema'
  */
-export function useCalcolatore(ingredienti, quantitaKg, categoria) {
+export function useCalcolatore(ingredienti, quantitaKg, categoria, eccezioniSoglie = []) {
   const bilancio = computed(() =>
     bilanciaRicetta(
       Array.isArray(ingredienti) ? ingredienti : ingredienti.value ?? [],
@@ -90,19 +62,26 @@ export function useCalcolatore(ingredienti, quantitaKg, categoria) {
     )
   )
 
-  // Checks fuori range per categoria — gelato-reference.md §14
+  // Warnings sballato: appare solo fuori lo_acc/hi_acc — gelato-reference.md §14
   const warnings = computed(() => {
     const b = bilancio.value
-    const cat = getCat(categoria)
-    const r = RANGES[cat] ?? RANGES.crema
+    const t = THRESHOLDS[getCat(categoria)] ?? THRESHOLDS.crema
     const w = []
-    if (b.zuccheri < r.zuccheriMin) w.push({ campo: 'zuccheri', msg: `Zuccheri sotto il minimo (${r.zuccheriMin}%)` })
-    if (b.zuccheri > r.zuccheriMax) w.push({ campo: 'zuccheri', msg: `Zuccheri sopra il massimo (${r.zuccheriMax}%)` })
-    if (r.grassiMin != null && b.grassi < r.grassiMin) w.push({ campo: 'grassi', msg: `Grassi sotto il minimo (${r.grassiMin}%)` })
-    if (r.grassiMax != null && b.grassi > r.grassiMax) w.push({ campo: 'grassi', msg: `Grassi sopra il massimo (${r.grassiMax}%)` })
-    if (r.slngMax != null && b.slng > r.slngMax) w.push({ campo: 'slng', msg: `SLNG sopra soglia sabbiosità (${r.slngMax}%)` })
-    if (b.solidiTotali < r.solidiMin) w.push({ campo: 'solidi', msg: `Solidi totali sotto il minimo (${r.solidiMin}%)` })
-    if (b.solidiTotali > r.solidiMax) w.push({ campo: 'solidi', msg: `Solidi totali sopra il massimo (${r.solidiMax}%)` })
+    const checks = [
+      ['zuccheri', b.zuccheri,      t.zuccheri, 'Zuccheri'],
+      ['grassi',   b.grassi,        t.grassi,   'Grassi'],
+      ['slng',     b.slng,          t.slng,     'SLNG'],
+      ['solidi',   b.solidiTotali,  t.solidi,   'Solidi totali'],
+      ['pod',      b.pod,           t.pod,      'POD'],
+      ['pac',      b.pac,           t.pac,      'PAC'],
+    ]
+    const exc = Array.isArray(eccezioniSoglie) ? eccezioniSoglie : eccezioniSoglie?.value ?? []
+    for (const [campo, val, thresh, label] of checks) {
+      if (thresh === null) continue
+      if (exc.includes(campo)) continue
+      if (val < thresh.lo_acc) w.push({ campo, msg: `${label} sotto il minimo (${thresh.lo_acc}%)` })
+      else if (val > thresh.hi_acc) w.push({ campo, msg: `${label} sopra il massimo (${thresh.hi_acc}%)` })
+    }
     return w
   })
 
