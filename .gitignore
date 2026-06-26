@@ -5,3 +5,6 @@ dist/
 .DS_Store
 *.log
 .vscode/
+__pycache__/
+*.pyc
+test-results/
