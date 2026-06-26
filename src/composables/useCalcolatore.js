@@ -59,6 +59,11 @@ const THRESHOLDS = {
     zuccheri: { lo_acc: 13,   lo_ott: 16,   hi_ott: 20,   hi_acc: 22 },
     grassi:   { lo_acc: 3,    lo_ott: 5,    hi_ott: 10,   hi_acc: 12 },
     slng:     null,
+    // lo_ott/hi_ott coincidono con lo_acc/hi_acc: gelato-reference.md §14 fornisce solo
+    // un range singolo (7-17%) per altri solidi nel vegano, senza sottointervallo
+    // ottimale interno — niente gradazione "attenzione" per questo parametro,
+    // è una scelta esplicita, non un valore mancante.
+    altri:    { lo_acc: 7,    lo_ott: 7,    hi_ott: 17,   hi_acc: 17 },
     solidi:   { lo_acc: 28,   lo_ott: 32,   hi_ott: 38,   hi_acc: 40 },
     pod:      { lo_acc: 11,   lo_ott: 13,   hi_ott: 17.5, hi_acc: 19.5 },
     pac:      { lo_acc: 18,   lo_ott: 22,   hi_ott: 27,   hi_acc: 30 },
@@ -155,6 +160,7 @@ export function fasciaCorretta(ingIdx, ingredienti, categoria, absMin, absMax) {
     [Az,           Bz,           t.zuccheri, 100],
     [Ag,           Bg,           t.grassi,   100],
     [As,           Bs,           t.slng,     100],
+    [Aa,           Ba,           t.altri ?? null, 100],
     [Az+Ag+As+Aa,  Bz+Bg+Bs+Ba, t.solidi,   100],
     [Apod,         Bpod,         t.pod,        1],
     [Apac,         Bpac,         t.pac,        1],

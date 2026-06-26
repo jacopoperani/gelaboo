@@ -1,3 +1,10 @@
+export function risolviIngredienti(ricetta, ingredientiDB) {
+  return ricetta.ingredienti.map(ref => ({
+    ...ingredientiDB[ref.id],
+    g_per_kg: ref.g_per_kg,
+  }))
+}
+
 export function classificaValore(val, t) {
   if (t === null) return 'ok'
   if (val < t.lo_acc || val > t.hi_acc) return 'sballato'

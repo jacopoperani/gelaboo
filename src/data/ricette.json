@@ -5,17 +5,17 @@
     "categoria": "crema",
     "payoff": "La base classica delle gelaterie italiane. Latte, panna, pochissimo.",
     "ingredienti": [
-      { "nome": "Latte intero",              "g_per_kg": 600, "zuccheri": 0,   "grassi": 3.5, "slng": 9,  "altri": 0,   "pod": 0,   "pac": 0 },
-      { "nome": "Panna 35%",                 "g_per_kg": 150, "zuccheri": 0,   "grassi": 35,  "slng": 6,  "altri": 0,   "pod": 0,   "pac": 0 },
-      { "nome": "Saccarosio",                "g_per_kg": 160, "zuccheri": 100, "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 100, "pac": 100 },
-      { "nome": "Latte polvere scremato",    "g_per_kg": 50,  "zuccheri": 0,   "grassi": 1,   "slng": 96, "altri": 0,   "pod": 0,   "pac": 0 },
-      { "nome": "Sciroppo di glucosio 42DE", "g_per_kg": 30,  "zuccheri": 80,  "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 45,  "pac": 85 },
-      { "nome": "Stabilizzante",             "g_per_kg": 8,   "zuccheri": 0,   "grassi": 0,   "slng": 0,  "altri": 100, "pod": 0,   "pac": 0 }
+      { "id": "latte-intero", "g_per_kg": 600 },
+      { "id": "panna-35", "g_per_kg": 150 },
+      { "id": "saccarosio", "g_per_kg": 160 },
+      { "id": "latte-polvere-scremato", "g_per_kg": 50 },
+      { "id": "glucosio-42de", "g_per_kg": 30 },
+      { "id": "stabilizzante", "g_per_kg": 8 }
     ],
     "ingredientiModificabili": [
-      { "nome": "Panna 35%",                 "min": 80,  "max": 250 },
-      { "nome": "Saccarosio",                "min": 120, "max": 210 },
-      { "nome": "Sciroppo di glucosio 42DE", "min": 0,   "max": 70 }
+      { "nome": "Panna 35%", "min": 80, "max": 250 },
+      { "nome": "Saccarosio", "min": 120, "max": 210 },
+      { "nome": "Sciroppo di glucosio 42DE", "min": 0, "max": 70 }
     ],
     "procedimento": [
       "Pesare tutti gli ingredienti.",
@@ -35,18 +35,18 @@
     "categoria": "crema",
     "payoff": "Cacao amaro bilanciato. Scuro ma non pesante.",
     "ingredienti": [
-      { "nome": "Latte intero",              "g_per_kg": 580, "zuccheri": 0,   "grassi": 3.5, "slng": 9,  "altri": 0,   "pod": 0,   "pac": 0 },
-      { "nome": "Panna 35%",                 "g_per_kg": 80,  "zuccheri": 0,   "grassi": 35,  "slng": 6,  "altri": 0,   "pod": 0,   "pac": 0 },
-      { "nome": "Saccarosio",                "g_per_kg": 155, "zuccheri": 100, "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 100, "pac": 100 },
-      { "nome": "Latte polvere scremato",    "g_per_kg": 40,  "zuccheri": 0,   "grassi": 1,   "slng": 96, "altri": 0,   "pod": 0,   "pac": 0 },
-      { "nome": "Destrosio",                 "g_per_kg": 30,  "zuccheri": 92,  "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 72,  "pac": 180 },
-      { "nome": "Cacao amaro 22%",           "g_per_kg": 100, "zuccheri": 0,   "grassi": 22,  "slng": 0,  "altri": 73,  "pod": 0,   "pac": 0 },
-      { "nome": "Stabilizzante",             "g_per_kg": 8,   "zuccheri": 0,   "grassi": 0,   "slng": 0,  "altri": 100, "pod": 0,   "pac": 0 }
+      { "id": "latte-intero", "g_per_kg": 580 },
+      { "id": "panna-35", "g_per_kg": 80 },
+      { "id": "saccarosio", "g_per_kg": 155 },
+      { "id": "latte-polvere-scremato", "g_per_kg": 40 },
+      { "id": "destrosio-monoidrato", "g_per_kg": 30 },
+      { "id": "cacao-amaro-22", "g_per_kg": 100 },
+      { "id": "stabilizzante", "g_per_kg": 8 }
     ],
     "ingredientiModificabili": [
-      { "nome": "Cacao amaro 22%", "min": 60,  "max": 140 },
-      { "nome": "Panna 35%",       "min": 40,  "max": 130 },
-      { "nome": "Saccarosio",      "min": 110, "max": 200 }
+      { "nome": "Cacao amaro 22%", "min": 60, "max": 140 },
+      { "nome": "Panna 35%", "min": 40, "max": 130 },
+      { "nome": "Saccarosio", "min": 110, "max": 200 }
     ],
     "procedimento": [
       "Pesare tutti gli ingredienti.",
@@ -67,18 +67,18 @@
     "categoria": "crema",
     "payoff": "Pasta di pistacchio pura. Nessun colorante.",
     "ingredienti": [
-      { "nome": "Latte intero",              "g_per_kg": 540, "zuccheri": 0,   "grassi": 3.5, "slng": 9,  "altri": 0,   "pod": 0,   "pac": 0 },
-      { "nome": "Panna 35%",                 "g_per_kg": 80,  "zuccheri": 0,   "grassi": 35,  "slng": 6,  "altri": 0,   "pod": 0,   "pac": 0 },
-      { "nome": "Saccarosio",                "g_per_kg": 160, "zuccheri": 100, "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 100, "pac": 100 },
-      { "nome": "Latte polvere scremato",    "g_per_kg": 40,  "zuccheri": 0,   "grassi": 1,   "slng": 96, "altri": 0,   "pod": 0,   "pac": 0 },
-      { "nome": "Pasta di pistacchio pura",  "g_per_kg": 120, "zuccheri": 0,   "grassi": 55,  "slng": 0,  "altri": 45,  "pod": 0,   "pac": 0 },
-      { "nome": "Sciroppo di glucosio 42DE", "g_per_kg": 50,  "zuccheri": 80,  "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 45,  "pac": 85 },
-      { "nome": "Stabilizzante",             "g_per_kg": 5,   "zuccheri": 0,   "grassi": 0,   "slng": 0,  "altri": 100, "pod": 0,   "pac": 0 }
+      { "id": "latte-intero", "g_per_kg": 540 },
+      { "id": "panna-35", "g_per_kg": 80 },
+      { "id": "saccarosio", "g_per_kg": 160 },
+      { "id": "latte-polvere-scremato", "g_per_kg": 40 },
+      { "id": "pasta-pistacchio-pura", "g_per_kg": 120 },
+      { "id": "glucosio-42de", "g_per_kg": 50 },
+      { "id": "stabilizzante", "g_per_kg": 5 }
     ],
     "ingredientiModificabili": [
-      { "nome": "Pasta di pistacchio pura",  "min": 80,  "max": 180 },
-      { "nome": "Panna 35%",                 "min": 40,  "max": 130 },
-      { "nome": "Saccarosio",                "min": 120, "max": 210 }
+      { "nome": "Pasta di pistacchio pura", "min": 80, "max": 180 },
+      { "nome": "Panna 35%", "min": 40, "max": 130 },
+      { "nome": "Saccarosio", "min": 120, "max": 210 }
     ],
     "procedimento": [
       "Pesare tutti gli ingredienti.",
@@ -98,18 +98,18 @@
     "categoria": "crema",
     "payoff": "Pasta di nocciola pura. Amaro tostato, nessun aggiustamento.",
     "ingredienti": [
-      { "nome": "Latte intero",              "g_per_kg": 540, "zuccheri": 0,   "grassi": 3.5, "slng": 9,  "altri": 0,   "pod": 0,   "pac": 0 },
-      { "nome": "Panna 35%",                 "g_per_kg": 80,  "zuccheri": 0,   "grassi": 35,  "slng": 6,  "altri": 0,   "pod": 0,   "pac": 0 },
-      { "nome": "Saccarosio",                "g_per_kg": 160, "zuccheri": 100, "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 100, "pac": 100 },
-      { "nome": "Latte polvere scremato",    "g_per_kg": 40,  "zuccheri": 0,   "grassi": 1,   "slng": 96, "altri": 0,   "pod": 0,   "pac": 0 },
-      { "nome": "Pasta di nocciola pura",    "g_per_kg": 110, "zuccheri": 0,   "grassi": 60,  "slng": 0,  "altri": 35,  "pod": 0,   "pac": 0 },
-      { "nome": "Sciroppo di glucosio 42DE", "g_per_kg": 50,  "zuccheri": 80,  "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 45,  "pac": 85 },
-      { "nome": "Stabilizzante",             "g_per_kg": 5,   "zuccheri": 0,   "grassi": 0,   "slng": 0,  "altri": 100, "pod": 0,   "pac": 0 }
+      { "id": "latte-intero", "g_per_kg": 540 },
+      { "id": "panna-35", "g_per_kg": 80 },
+      { "id": "saccarosio", "g_per_kg": 160 },
+      { "id": "latte-polvere-scremato", "g_per_kg": 40 },
+      { "id": "pasta-nocciola-pura", "g_per_kg": 110 },
+      { "id": "glucosio-42de", "g_per_kg": 50 },
+      { "id": "stabilizzante", "g_per_kg": 5 }
     ],
     "ingredientiModificabili": [
-      { "nome": "Pasta di nocciola pura",    "min": 70,  "max": 160 },
-      { "nome": "Panna 35%",                 "min": 40,  "max": 130 },
-      { "nome": "Saccarosio",                "min": 120, "max": 210 }
+      { "nome": "Pasta di nocciola pura", "min": 70, "max": 160 },
+      { "nome": "Panna 35%", "min": 40, "max": 130 },
+      { "nome": "Saccarosio", "min": 120, "max": 210 }
     ],
     "procedimento": [
       "Pesare tutti gli ingredienti.",
@@ -129,28 +129,28 @@
     "categoria": "frutta",
     "payoff": "Polpa fresca. Frutta vera, non aromi.",
     "ingredienti": [
-      { "nome": "Fragole fresche",           "g_per_kg": 300, "zuccheri": 9,   "grassi": 0,   "slng": 0,   "altri": 2,   "pod": 90,  "pac": 130 },
-      { "nome": "Latte intero UHT",          "g_per_kg": 500, "zuccheri": 5,   "grassi": 3.5, "slng": 8.7, "altri": 0,   "pod": 16,  "pac": 100 },
-      { "nome": "Saccarosio",                "g_per_kg": 100, "zuccheri": 100, "grassi": 0,   "slng": 0,   "altri": 0,   "pod": 100, "pac": 100 },
-      { "nome": "Destrosio (monoidrato)",    "g_per_kg": 65,  "zuccheri": 92,  "grassi": 0,   "slng": 0,   "altri": 0,   "pod": 72,  "pac": 180 },
-      { "nome": "Sciroppo di glucosio 42DE", "g_per_kg": 30,  "zuccheri": 80,  "grassi": 0,   "slng": 0,   "altri": 0,   "pod": 45,  "pac": 85 },
-      { "nome": "Stabilizzante (freddo)",    "g_per_kg": 5,   "zuccheri": 0,   "grassi": 0,   "slng": 0,   "altri": 100, "pod": 0,   "pac": 0 }
+      { "id": "fragole-fresche", "g_per_kg": 300 },
+      { "id": "latte-intero", "g_per_kg": 500 },
+      { "id": "saccarosio", "g_per_kg": 100 },
+      { "id": "destrosio-monoidrato", "g_per_kg": 65 },
+      { "id": "glucosio-42de", "g_per_kg": 30 },
+      { "id": "stabilizzante", "g_per_kg": 5 }
     ],
     "ingredientiModificabili": [
-      { "nome": "Fragole fresche",           "min": 200, "max": 400 },
-      { "nome": "Latte intero UHT",          "min": 400, "max": 600 },
-      { "nome": "Saccarosio",                "min": 70,  "max": 140 }
+      { "nome": "Fragole fresche", "min": 200, "max": 400 },
+      { "nome": "Latte intero", "min": 400, "max": 600 },
+      { "nome": "Saccarosio", "min": 70, "max": 140 }
     ],
     "procedimento": [
       "Pesare tutti gli ingredienti; usare fragole fresche mature o surgelate di qualità.",
       "Frullare le fragole e passarle al setaccio fine per rimuovere i semi.",
       "Sciogliere saccarosio, destrosio e sciroppo di glucosio nel latte freddo mescolando con frusta.",
       "Aggiungere la polpa di fragola e lo stabilizzante a freddo; mescolare fino a completa idratazione (15–20 min).",
-      "Non pastorizzare: il latte UHT è già sterilizzato; il processo a freddo preserva i profumi volatili della frutta.",
+      "Non pastorizzare se si usa latte UHT: il processo a freddo preserva i profumi volatili della frutta. Se si usa latte fresco pastorizzato, seguire le indicazioni del produttore.",
       "Mantecare fino a estrazione a −7/−9 °C al cuore.",
       "Abbattere e conservare a −18 °C."
     ],
-    "notaTecnica": "Gelato alla frutta con base latte (latte intero UHT): struttura a metà tra crema e sorbetto. La quota di latte apporta SLNG e grassi sufficienti a dare cremosità senza coprire il profilo aromatico della fragola. Il latte UHT permette lavorazione a freddo senza pastorizzazione. Destrosio e glucosio abbassano il PAC senza alzare eccessivamente il POD, compensando la bassa zuccherosità naturale della fragola (≈9%). Bilanciamento verificato sui thresholds PAC/POD della famiglia creme (non esistono range pubblicati specifici per 'gelato alla frutta con latte' nelle fonti professionali consultate)."
+    "notaTecnica": "Gelato alla frutta con base latte: struttura a metà tra crema e sorbetto. La quota di latte apporta SLNG e grassi sufficienti a dare cremosità senza coprire il profilo aromatico della fragola. Destrosio e glucosio abbassano il PAC senza alzare eccessivamente il POD, compensando la bassa zuccherosità naturale della fragola (≈9%). Bilanciamento verificato sui thresholds PAC/POD della famiglia creme (non esistono range pubblicati specifici per 'gelato alla frutta con latte' nelle fonti professionali consultate)."
   },
   {
     "id": "banana",
@@ -158,28 +158,28 @@
     "categoria": "frutta",
     "payoff": "Banana matura, base latte. Cremoso e naturalmente dolce.",
     "ingredienti": [
-      { "nome": "Banana fresca",             "g_per_kg": 250, "zuccheri": 19,  "grassi": 0,   "slng": 0,   "altri": 7,   "pod": 90,  "pac": 130 },
-      { "nome": "Latte intero UHT",          "g_per_kg": 520, "zuccheri": 5,   "grassi": 3.5, "slng": 8.7, "altri": 0,   "pod": 16,  "pac": 100 },
-      { "nome": "Saccarosio",                "g_per_kg": 80,  "zuccheri": 100, "grassi": 0,   "slng": 0,   "altri": 0,   "pod": 100, "pac": 100 },
-      { "nome": "Destrosio (monoidrato)",    "g_per_kg": 50,  "zuccheri": 92,  "grassi": 0,   "slng": 0,   "altri": 0,   "pod": 72,  "pac": 180 },
-      { "nome": "Sciroppo di glucosio 42DE", "g_per_kg": 20,  "zuccheri": 80,  "grassi": 0,   "slng": 0,   "altri": 0,   "pod": 45,  "pac": 85 },
-      { "nome": "Stabilizzante (freddo)",    "g_per_kg": 5,   "zuccheri": 0,   "grassi": 0,   "slng": 0,   "altri": 100, "pod": 0,   "pac": 0 }
+      { "id": "banana-fresca", "g_per_kg": 250 },
+      { "id": "latte-intero", "g_per_kg": 520 },
+      { "id": "saccarosio", "g_per_kg": 80 },
+      { "id": "destrosio-monoidrato", "g_per_kg": 50 },
+      { "id": "glucosio-42de", "g_per_kg": 20 },
+      { "id": "stabilizzante", "g_per_kg": 5 }
     ],
     "ingredientiModificabili": [
-      { "nome": "Banana fresca",             "min": 150, "max": 350 },
-      { "nome": "Latte intero UHT",          "min": 400, "max": 650 },
-      { "nome": "Saccarosio",                "min": 50,  "max": 120 }
+      { "nome": "Banana fresca", "min": 150, "max": 350 },
+      { "nome": "Latte intero", "min": 400, "max": 650 },
+      { "nome": "Saccarosio", "min": 50, "max": 120 }
     ],
     "procedimento": [
       "Pesare tutti gli ingredienti; usare banane mature (buccia con qualche macchia nera) per massima dolcezza e aroma.",
       "Sbucciare e frullare le banane con un cucchiaio di succo di limone per prevenire l'ossidazione della polpa.",
       "Sciogliere saccarosio, destrosio e sciroppo di glucosio nel latte freddo mescolando con frusta.",
       "Aggiungere la polpa di banana e lo stabilizzante a freddo; mescolare fino a completa idratazione (15–20 min).",
-      "Non pastorizzare: il latte UHT è già sterilizzato; il processo a freddo preserva i profumi volatili della frutta.",
+      "Non pastorizzare se si usa latte UHT: il processo a freddo preserva i profumi volatili della frutta.",
       "Mantecare fino a estrazione a −7/−9 °C al cuore.",
       "Abbattere e conservare a −18 °C."
     ],
-    "notaTecnica": "La banana matura ha un contenuto di zuccheri naturali elevato (circa 19%), che riduce la quantità di saccarosio aggiunto rispetto ad altri gelati alla frutta. Il succo di limone aggiunto durante la frullatura è tecnico, non gustativo: rallenta l'ossidazione enzimatica (imbrunimento della polpa) senza alterare il profilo aromatico al dosaggio usato. Il latte UHT consente lavorazione a freddo senza pastorizzazione."
+    "notaTecnica": "La banana matura ha un contenuto di zuccheri naturali elevato (circa 19%), che riduce la quantità di saccarosio aggiunto rispetto ad altri gelati alla frutta. Il succo di limone aggiunto durante la frullatura è tecnico, non gustativo: rallenta l'ossidazione enzimatica (imbrunimento della polpa) senza alterare il profilo aromatico al dosaggio usato."
   },
   {
     "id": "limone",
@@ -187,18 +187,18 @@
     "categoria": "sorbetto",
     "payoff": "Succo di limone siciliano. Pulito, acidulo, zero grassi.",
     "ingredienti": [
-      { "nome": "Succo di limone",           "g_per_kg": 300, "zuccheri": 9,   "grassi": 0,   "slng": 0,  "altri": 2,   "pod": 90,  "pac": 130 },
-      { "nome": "Acqua",                     "g_per_kg": 350, "zuccheri": 0,   "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 0,   "pac": 0 },
-      { "nome": "Saccarosio",                "g_per_kg": 220, "zuccheri": 100, "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 100, "pac": 100 },
-      { "nome": "Destrosio",                 "g_per_kg": 80,  "zuccheri": 92,  "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 72,  "pac": 180 },
-      { "nome": "Zucchero invertito",        "g_per_kg": 40,  "zuccheri": 70,  "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 130, "pac": 190 },
-      { "nome": "Stabilizzante (freddo)",    "g_per_kg": 5,   "zuccheri": 0,   "grassi": 0,   "slng": 0,  "altri": 100, "pod": 0,   "pac": 0 }
+      { "id": "succo-di-limone", "g_per_kg": 300 },
+      { "id": "acqua", "g_per_kg": 350 },
+      { "id": "saccarosio", "g_per_kg": 220 },
+      { "id": "destrosio-monoidrato", "g_per_kg": 80 },
+      { "id": "zucchero-invertito", "g_per_kg": 40 },
+      { "id": "stabilizzante", "g_per_kg": 5 }
     ],
     "ingredientiModificabili": [
-      { "nome": "Succo di limone",    "min": 200, "max": 400 },
-      { "nome": "Saccarosio",         "min": 160, "max": 280 },
-      { "nome": "Destrosio",          "min": 40,  "max": 120 },
-      { "nome": "Zucchero invertito", "min": 0,   "max": 80 }
+      { "nome": "Succo di limone", "min": 200, "max": 400 },
+      { "nome": "Saccarosio", "min": 160, "max": 280 },
+      { "nome": "Destrosio (monoidrato)", "min": 40, "max": 120 },
+      { "nome": "Zucchero invertito", "min": 0, "max": 80 }
     ],
     "procedimento": [
       "Spremitura e filtratura del succo di limone; pesare le dosi.",
@@ -217,17 +217,17 @@
     "categoria": "sorbetto",
     "payoff": "Polpa di lampone al setaccio. Acido, netto, senza latticini.",
     "ingredienti": [
-      { "nome": "Lamponi (polpa)",           "g_per_kg": 380, "zuccheri": 9,   "grassi": 0,   "slng": 0,  "altri": 2,   "pod": 90,  "pac": 130 },
-      { "nome": "Acqua",                     "g_per_kg": 320, "zuccheri": 0,   "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 0,   "pac": 0 },
-      { "nome": "Saccarosio",                "g_per_kg": 185, "zuccheri": 100, "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 100, "pac": 100 },
-      { "nome": "Sciroppo di glucosio 42DE", "g_per_kg": 70,  "zuccheri": 80,  "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 45,  "pac": 85 },
-      { "nome": "Zucchero invertito",        "g_per_kg": 20,  "zuccheri": 70,  "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 130, "pac": 190 },
-      { "nome": "Stabilizzante (freddo)",    "g_per_kg": 5,   "zuccheri": 0,   "grassi": 0,   "slng": 0,  "altri": 100, "pod": 0,   "pac": 0 }
+      { "id": "lamponi-polpa", "g_per_kg": 380 },
+      { "id": "acqua", "g_per_kg": 320 },
+      { "id": "saccarosio", "g_per_kg": 185 },
+      { "id": "glucosio-42de", "g_per_kg": 70 },
+      { "id": "zucchero-invertito", "g_per_kg": 20 },
+      { "id": "stabilizzante", "g_per_kg": 5 }
     ],
     "ingredientiModificabili": [
-      { "nome": "Lamponi (polpa)",           "min": 250, "max": 500 },
-      { "nome": "Saccarosio",                "min": 140, "max": 250 },
-      { "nome": "Zucchero invertito",        "min": 0,   "max": 40 }
+      { "nome": "Lamponi (polpa)", "min": 250, "max": 500 },
+      { "nome": "Saccarosio", "min": 140, "max": 250 },
+      { "nome": "Zucchero invertito", "min": 0, "max": 40 }
     ],
     "procedimento": [
       "Frullare i lamponi freschi o surgelati e passarli al setaccio fine per eliminare i semi.",
@@ -246,18 +246,18 @@
     "categoria": "vegano",
     "payoff": "Latte di cocco intero, nessun latticino.",
     "ingredienti": [
-      { "nome": "Latte di cocco intero",     "g_per_kg": 550, "zuccheri": 3,   "grassi": 21,  "slng": 0,  "altri": 3,   "pod": 30,  "pac": 30 },
-      { "nome": "Acqua",                     "g_per_kg": 100, "zuccheri": 0,   "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 0,   "pac": 0 },
-      { "nome": "Saccarosio",                "g_per_kg": 180, "zuccheri": 100, "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 100, "pac": 100 },
-      { "nome": "Destrosio",                 "g_per_kg": 60,  "zuccheri": 92,  "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 72,  "pac": 180 },
-      { "nome": "Sciroppo di glucosio 42DE", "g_per_kg": 80,  "zuccheri": 80,  "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 45,  "pac": 85 },
-      { "nome": "Inulina",                   "g_per_kg": 25,  "zuccheri": 10,  "grassi": 0,   "slng": 0,  "altri": 85,  "pod": 10,  "pac": 25 },
-      { "nome": "Stabilizzante (freddo)",    "g_per_kg": 5,   "zuccheri": 0,   "grassi": 0,   "slng": 0,  "altri": 100, "pod": 0,   "pac": 0 }
+      { "id": "latte-di-cocco-intero", "g_per_kg": 550 },
+      { "id": "acqua", "g_per_kg": 100 },
+      { "id": "saccarosio", "g_per_kg": 180 },
+      { "id": "destrosio-monoidrato", "g_per_kg": 60 },
+      { "id": "glucosio-42de", "g_per_kg": 80 },
+      { "id": "inulina", "g_per_kg": 25 },
+      { "id": "stabilizzante", "g_per_kg": 5 }
     ],
     "ingredientiModificabili": [
-      { "nome": "Latte di cocco intero",     "min": 400, "max": 700 },
-      { "nome": "Saccarosio",                "min": 130, "max": 230 },
-      { "nome": "Destrosio",                 "min": 30,  "max": 100 }
+      { "nome": "Latte di cocco intero", "min": 400, "max": 700 },
+      { "nome": "Saccarosio", "min": 130, "max": 230 },
+      { "nome": "Destrosio (monoidrato)", "min": 30, "max": 100 }
     ],
     "procedimento": [
       "Pesare tutti gli ingredienti; usare latte di cocco intero (non light).",
@@ -277,18 +277,18 @@
     "categoria": "vegano",
     "payoff": "Pasta di noci e latte di avena. Senza latticini.",
     "ingredienti": [
-      { "nome": "Latte di avena",            "g_per_kg": 600, "zuccheri": 5,   "grassi": 1.5, "slng": 0,  "altri": 1,   "pod": 40,  "pac": 80 },
-      { "nome": "Pasta di noci",             "g_per_kg": 80,  "zuccheri": 0,   "grassi": 65,  "slng": 0,  "altri": 30,  "pod": 0,   "pac": 0 },
-      { "nome": "Saccarosio",                "g_per_kg": 110, "zuccheri": 100, "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 100, "pac": 100 },
-      { "nome": "Destrosio",                 "g_per_kg": 20,  "zuccheri": 92,  "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 72,  "pac": 180 },
-      { "nome": "Sciroppo di glucosio 42DE", "g_per_kg": 40,  "zuccheri": 80,  "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 45,  "pac": 85 },
-      { "nome": "Inulina",                   "g_per_kg": 40,  "zuccheri": 10,  "grassi": 0,   "slng": 0,  "altri": 85,  "pod": 10,  "pac": 25 },
-      { "nome": "Stabilizzante",             "g_per_kg": 5,   "zuccheri": 0,   "grassi": 0,   "slng": 0,  "altri": 100, "pod": 0,   "pac": 0 }
+      { "id": "latte-di-avena", "g_per_kg": 600 },
+      { "id": "pasta-di-noci", "g_per_kg": 80 },
+      { "id": "saccarosio", "g_per_kg": 110 },
+      { "id": "destrosio-monoidrato", "g_per_kg": 20 },
+      { "id": "glucosio-42de", "g_per_kg": 40 },
+      { "id": "inulina", "g_per_kg": 40 },
+      { "id": "stabilizzante", "g_per_kg": 5 }
     ],
     "ingredientiModificabili": [
-      { "nome": "Pasta di noci",             "min": 50,  "max": 130 },
-      { "nome": "Saccarosio",                "min": 80,  "max": 160 },
-      { "nome": "Inulina",                   "min": 20,  "max": 60 }
+      { "nome": "Pasta di noci", "min": 50, "max": 130 },
+      { "nome": "Saccarosio", "min": 80, "max": 160 },
+      { "nome": "Inulina", "min": 20, "max": 60 }
     ],
     "procedimento": [
       "Pesare tutti gli ingredienti; usare pasta di noci 100% priva di oli aggiunti.",
@@ -308,18 +308,18 @@
     "categoria": "vegano",
     "payoff": "Pasta di mandorla pura e latte di riso. Senza latticini.",
     "ingredienti": [
-      { "nome": "Latte di riso",             "g_per_kg": 600, "zuccheri": 9,   "grassi": 1,   "slng": 0,  "altri": 0.5, "pod": 50,  "pac": 100 },
-      { "nome": "Pasta di mandorla pura",    "g_per_kg": 90,  "zuccheri": 0,   "grassi": 52,  "slng": 0,  "altri": 42,  "pod": 0,   "pac": 0 },
-      { "nome": "Saccarosio",                "g_per_kg": 90,  "zuccheri": 100, "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 100, "pac": 100 },
-      { "nome": "Destrosio",                 "g_per_kg": 15,  "zuccheri": 92,  "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 72,  "pac": 180 },
-      { "nome": "Sciroppo di glucosio 42DE", "g_per_kg": 35,  "zuccheri": 80,  "grassi": 0,   "slng": 0,  "altri": 0,   "pod": 45,  "pac": 85 },
-      { "nome": "Inulina",                   "g_per_kg": 40,  "zuccheri": 10,  "grassi": 0,   "slng": 0,  "altri": 85,  "pod": 10,  "pac": 25 },
-      { "nome": "Stabilizzante",             "g_per_kg": 5,   "zuccheri": 0,   "grassi": 0,   "slng": 0,  "altri": 100, "pod": 0,   "pac": 0 }
+      { "id": "latte-di-riso", "g_per_kg": 600 },
+      { "id": "pasta-mandorla-pura", "g_per_kg": 90 },
+      { "id": "saccarosio", "g_per_kg": 90 },
+      { "id": "destrosio-monoidrato", "g_per_kg": 15 },
+      { "id": "glucosio-42de", "g_per_kg": 35 },
+      { "id": "inulina", "g_per_kg": 40 },
+      { "id": "stabilizzante", "g_per_kg": 5 }
     ],
     "ingredientiModificabili": [
-      { "nome": "Pasta di mandorla pura",    "min": 60,  "max": 140 },
-      { "nome": "Saccarosio",                "min": 60,  "max": 140 },
-      { "nome": "Sciroppo di glucosio 42DE", "min": 20,  "max": 60 }
+      { "nome": "Pasta di mandorla pura", "min": 60, "max": 140 },
+      { "nome": "Saccarosio", "min": 60, "max": 140 },
+      { "nome": "Sciroppo di glucosio 42DE", "min": 20, "max": 60 }
     ],
     "procedimento": [
       "Pesare tutti gli ingredienti; usare pasta di mandorla pura (100% mandorle, senza zuccheri aggiunti).",

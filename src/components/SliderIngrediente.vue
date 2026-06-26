@@ -43,7 +43,7 @@ const trackStyle = computed(() => {
     <div class="flex justify-between items-baseline">
       <label class="text-ui-label text-inchiostro/60" style="font-family: Inter, sans-serif;">{{ label }}</label>
       <span style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 500; font-variant-numeric: tabular-nums; color: #3a2317;">
-        {{ modelValue }}<span style="font-size: 13px; color: rgba(58,35,23,0.5); margin-left: 2px;">g/kg</span>
+        {{ modelValue }}<span style="font-size: 13px; color: rgba(58,35,23,0.5); margin-left: 2px;">g</span>
       </span>
     </div>
     <input

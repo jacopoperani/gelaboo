@@ -4,6 +4,8 @@ import { useRoute, useRouter } from 'vue-router'
 import { useRicetteStore } from '../stores/ricette.js'
 import { useUserStore } from '../stores/user.js'
 import { useCalcolatore, fasciaCorretta } from '../composables/useCalcolatore.js'
+import { risolviIngredienti } from '../utils/calculator.js'
+import ingredientiData from '../data/ingredienti.json'
 import BadgeCategoria from '../components/BadgeCategoria.vue'
 import LikeButton from '../components/LikeButton.vue'
 import InputNumerico from '../components/InputNumerico.vue'
@@ -21,7 +23,9 @@ const quantitaKg = ref(1)
 const overrides = ref({})
 watch(() => ricetta.value?.id, () => { overrides.value = {} })
 
-const baseIngredienti = computed(() => ricetta.value?.ingredienti ?? [])
+const baseIngredienti = computed(() =>
+  ricetta.value ? risolviIngredienti(ricetta.value, ingredientiData) : []
+)
 const ingredientiModificabili = computed(() => ricetta.value?.ingredientiModificabili ?? [])
 
 // Scale non-overridden ingredients proportionally to keep total stable
@@ -45,11 +49,17 @@ const ingredientiEffettivi = computed(() => {
 })
 
 function sliderVal(nome) {
-  return overrides.value[nome] ?? (baseIngredienti.value.find(i => i.nome === nome)?.g_per_kg ?? 0)
+  const gPerKg = overrides.value[nome] ?? (baseIngredienti.value.find(i => i.nome === nome)?.g_per_kg ?? 0)
+  return Math.round(gPerKg * factor.value)
 }
 function onSlider(nome, val) {
-  overrides.value = { ...overrides.value, [nome]: val }
+  overrides.value = { ...overrides.value, [nome]: val / factor.value }
 }
+
+const factor = computed(() => {
+  const tot = ingredientiEffettivi.value.reduce((s, i) => s + i.g_per_kg, 0) || 1000
+  return (quantitaKg.value * 1000) / tot
+})
 
 const categoriaRicetta = computed(() => ricetta.value?.categoria)
 const { bilancio, warnings, stati } = useCalcolatore(ingredientiEffettivi, quantitaKg, categoriaRicetta)
@@ -162,11 +172,11 @@ const metricheRiga = computed(() => [
                 v-for="mod in ingredientiModificabili"
                 :key="mod.nome"
                 :label="mod.nome"
-                :min="mod.min"
-                :max="mod.max"
+                :min="Math.round(mod.min * factor)"
+                :max="Math.round(mod.max * factor)"
                 :model-value="sliderVal(mod.nome)"
-                :fascia-lo="fasceCorrette[mod.nome]?.lo ?? null"
-                :fascia-hi="fasceCorrette[mod.nome]?.hi ?? null"
+                :fascia-lo="fasceCorrette[mod.nome] ? Math.round(fasceCorrette[mod.nome].lo * factor) : null"
+                :fascia-hi="fasceCorrette[mod.nome] ? Math.round(fasceCorrette[mod.nome].hi * factor) : null"
                 @update:model-value="onSlider(mod.nome, $event)"
               />
             </div>
