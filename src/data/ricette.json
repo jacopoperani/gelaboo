@@ -270,15 +270,15 @@
       },
       {
         "id": "latte-intero",
-        "g_per_kg": 500
+        "g_per_kg": 480
       },
       {
         "id": "saccarosio",
-        "g_per_kg": 100
+        "g_per_kg": 110
       },
       {
         "id": "destrosio-monoidrato",
-        "g_per_kg": 65
+        "g_per_kg": 75
       },
       {
         "id": "glucosio-42de",
@@ -297,13 +297,13 @@
       },
       {
         "nome": "Latte intero",
-        "min": 400,
-        "max": 600
+        "min": 380,
+        "max": 580
       },
       {
         "nome": "Saccarosio",
-        "min": 70,
-        "max": 140
+        "min": 80,
+        "max": 150
       }
     ],
     "procedimento": [
@@ -329,15 +329,15 @@
       },
       {
         "id": "latte-intero",
-        "g_per_kg": 520
+        "g_per_kg": 500
       },
       {
         "id": "saccarosio",
-        "g_per_kg": 80
+        "g_per_kg": 90
       },
       {
         "id": "destrosio-monoidrato",
-        "g_per_kg": 50
+        "g_per_kg": 60
       },
       {
         "id": "glucosio-42de",
@@ -357,12 +357,12 @@
       {
         "nome": "Latte intero",
         "min": 400,
-        "max": 650
+        "max": 600
       },
       {
         "nome": "Saccarosio",
-        "min": 50,
-        "max": 120
+        "min": 60,
+        "max": 130
       }
     ],
     "procedimento": [
@@ -684,5 +684,441 @@
       "Abbattere e conservare a −18 °C."
     ],
     "notaTecnica": "Il latte di riso, più ricco di carboidrati naturali rispetto al latte di avena, riduce la quantità di saccarosio aggiunto e bilancia naturalmente la dolcezza della pasta di mandorla. L'inulina svolge il ruolo di agente strutturante in sostituzione degli SLNG. La mandorla è la frutta secca con il profilo grasso più delicato tra quelle usate nelle ricette vegane di questa serie: tutti i parametri di bilanciamento rientrano nei range standard."
+  },
+  {
+    "id": "caffe",
+    "nome": "Caffè",
+    "categoria": "crema",
+    "payoff": "Espresso vero, non aroma. Intenso ma non amaro.",
+    "ingredienti": [
+      {
+        "id": "latte-intero",
+        "g_per_kg": 540
+      },
+      {
+        "id": "panna-35",
+        "g_per_kg": 90
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 160
+      },
+      {
+        "id": "latte-polvere-scremato",
+        "g_per_kg": 45
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 40
+      },
+      {
+        "id": "caffe-espresso",
+        "g_per_kg": 120
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 8
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Caffè espresso (forte)",
+        "min": 80,
+        "max": 180
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 120,
+        "max": 200
+      },
+      {
+        "nome": "Panna 35%",
+        "min": 50,
+        "max": 140
+      }
+    ],
+    "procedimento": [
+      "Pesare tutti gli ingredienti; preparare un espresso forte (o caffè moka molto concentrato) e lasciarlo raffreddare completamente.",
+      "Sciogliere il latte in polvere scremato nel latte intero a temperatura ambiente.",
+      "Aggiungere panna, saccarosio e sciroppo di glucosio; disperdere lo stabilizzante in una piccola quantità di saccarosio e unire al resto.",
+      "Portare la miscela a 85 °C e mantenere per 15 secondi (pastorizzazione alta).",
+      "Raffreddare rapidamente a +4 °C, poi incorporare il caffè freddo mescolando bene.",
+      "Maturare in frigorifero per almeno 4 ore.",
+      "Mantecare fino a estrazione a −7/−9 °C al cuore.",
+      "Abbattere e conservare a −18 °C."
+    ],
+    "notaTecnica": "Il caffè si aggiunge a freddo, dopo la pastorizzazione della base, per preservare gli aromi volatili che il calore prolungato disperderebbe. Il suo contributo al bilanciamento è quasi interamente sugli \"altri solidi\" (i solidi disciolti dell'estrazione, circa 9-11% in un espresso standard) — zuccheri, potere dolcificante e anticongelante derivano quasi interamente dagli altri ingredienti della base crema."
+  },
+  {
+    "id": "stracciatella",
+    "nome": "Stracciatella",
+    "categoria": "crema",
+    "payoff": "Fior di panna con scaglie di cioccolato fondente, alla vecchia maniera.",
+    "ingredienti": [
+      {
+        "id": "latte-intero",
+        "g_per_kg": 600
+      },
+      {
+        "id": "panna-35",
+        "g_per_kg": 130
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 160
+      },
+      {
+        "id": "latte-polvere-scremato",
+        "g_per_kg": 50
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 30
+      },
+      {
+        "id": "cioccolato-fondente-copertura",
+        "g_per_kg": 60
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 8
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Cioccolato fondente di copertura (70%)",
+        "min": 40,
+        "max": 90
+      },
+      {
+        "nome": "Panna 35%",
+        "min": 90,
+        "max": 170
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 120,
+        "max": 200
+      }
+    ],
+    "procedimento": [
+      "Pesare tutti gli ingredienti.",
+      "Sciogliere il latte in polvere scremato nel latte intero a temperatura ambiente.",
+      "Aggiungere panna, saccarosio e sciroppo di glucosio; disperdere lo stabilizzante in una piccola quantità di saccarosio e unire al resto.",
+      "Portare a 85 °C e mantenere per 15 secondi (pastorizzazione alta).",
+      "Raffreddare rapidamente a +4 °C.",
+      "Maturare in frigorifero per almeno 4 ore.",
+      "Sciogliere il cioccolato fondente a bagnomaria (massimo 45 °C) e tenerlo fluido.",
+      "Mantecare la base fino quasi a fine corsa; negli ultimi 1-2 minuti versare il cioccolato fuso a filo sottile e continuo nella macchina in movimento: il contatto con la massa già fredda lo solidifica istantaneamente in scaglie sottili.",
+      "Abbattere e conservare a −18 °C."
+    ],
+    "notaTecnica": "La tecnica classica della stracciatella prevede di versare il cioccolato fuso a filo durante gli ultimi istanti della mantecazione, non di miscelarlo nella base liquida: il contrasto termico con la massa già gelata lo solidifica in scaglie sottili e irregolari, distinte dalla crema. Per il bilanciamento il cioccolato è comunque conteggiato come parte della miscela totale (60g su circa 1038g), anche se non è mai sciolto nella fase liquida della base."
+  },
+  {
+    "id": "zabaione",
+    "nome": "Zabaione",
+    "categoria": "crema",
+    "payoff": "Tuorli, marsala, zucchero. La ricetta dei nonni, vera.",
+    "ingredienti": [
+      {
+        "id": "latte-intero",
+        "g_per_kg": 500
+      },
+      {
+        "id": "panna-35",
+        "g_per_kg": 100
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 170
+      },
+      {
+        "id": "latte-polvere-scremato",
+        "g_per_kg": 40
+      },
+      {
+        "id": "tuorlo-uovo",
+        "g_per_kg": 80
+      },
+      {
+        "id": "marsala",
+        "g_per_kg": 60
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 30
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 8
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Tuorlo d'uovo (pastorizzato)",
+        "min": 50,
+        "max": 110
+      },
+      {
+        "nome": "Marsala (vino liquoroso dolce)",
+        "min": 30,
+        "max": 90
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 130,
+        "max": 210
+      }
+    ],
+    "procedimento": [
+      "Pesare tutti gli ingredienti. Usare tuorli pastorizzati (in brick) oppure pastorizzare personalmente le uova fresche: è un passaggio di sicurezza alimentare obbligatorio, non opzionale, per eliminare il rischio Salmonella.",
+      "Sciogliere il latte in polvere scremato nel latte intero a temperatura ambiente.",
+      "Sbattere i tuorli con una parte del saccarosio fino a renderli chiari e spumosi.",
+      "Unire il composto di tuorli al latte/panna insieme al resto del saccarosio e allo sciroppo di glucosio; disperdere lo stabilizzante in una piccola quantità di zucchero e unire.",
+      "Portare la miscela a 85 °C e mantenere per almeno 15 secondi — con i tuorli è particolarmente importante non superare gli 85 °C, per evitare la coagulazione (effetto \"frittata\").",
+      "Raffreddare rapidamente a +4 °C; incorporare il marsala a freddo, mescolando bene.",
+      "Maturare in frigorifero per almeno 4 ore.",
+      "Mantecare fino a estrazione a −7/−9 °C al cuore.",
+      "Abbattere e conservare a −18 °C."
+    ],
+    "notaTecnica": "Prima ricetta del catalogo con le uova: la pastorizzazione a 85 °C è qui doppiamente necessaria — non solo per la sicurezza alimentare (i tuorli crudi possono veicolare Salmonella), ma anche per la struttura, poiché i tuorli coagulano e danno corpo alla crema, come in un vero zabaione da pasticceria. Il marsala si aggiunge sempre a freddo, dopo la pastorizzazione: il calore ne disperderebbe sia l'alcol che l'aroma. Nota di modello: l'alcol (18% vol nel marsala) abbassa il punto di congelamento della miscela in un modo che il calcolo POD/PAC qui non capta esplicitamente — alle dosi indicate l'effetto è contenuto, ma non aumentare il Marsala oltre il range massimo indicato senza verificare la consistenza in mantecazione."
+  },
+  {
+    "id": "pesca",
+    "nome": "Pesca",
+    "categoria": "frutta",
+    "payoff": "Pesche mature, base latte. Estate vera.",
+    "ingredienti": [
+      {
+        "id": "pesca-fresca",
+        "g_per_kg": 320
+      },
+      {
+        "id": "latte-intero",
+        "g_per_kg": 480
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 95
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 65
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 25
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Pesca fresca",
+        "min": 220,
+        "max": 420
+      },
+      {
+        "nome": "Latte intero",
+        "min": 380,
+        "max": 580
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 65,
+        "max": 130
+      }
+    ],
+    "procedimento": [
+      "Pesare tutti gli ingredienti; usare pesche mature, sbucciate e denocciolate.",
+      "Frullare le pesche e passarle al setaccio se la buccia non è stata rimossa completamente.",
+      "Sciogliere saccarosio, destrosio e sciroppo di glucosio nel latte freddo mescolando con frusta.",
+      "Aggiungere la polpa di pesca e lo stabilizzante a freddo; mescolare fino a completa idratazione (15-20 min).",
+      "Non pastorizzare se si usa latte UHT: il processo a freddo preserva i profumi volatili della frutta.",
+      "Mantecare fino a estrazione a −7/−9 °C al cuore.",
+      "Abbattere e conservare a −18 °C."
+    ],
+    "notaTecnica": "Gelato alla frutta con base latte, stessa famiglia di Fragola e Banana. La pesca ha un contenuto zuccherino naturale medio (14%): destrosio e glucosio coprono la quota di PAC necessaria senza eccedere sul POD. Bilanciamento verificato sui thresholds della famiglia creme, come da nota in gelato-reference.md sull'assenza di range pubblicati specifici per la sottocategoria."
+  },
+  {
+    "id": "mango",
+    "nome": "Mango",
+    "categoria": "frutta",
+    "payoff": "Mango maturo, base latte. Tropicale, non stucchevole.",
+    "ingredienti": [
+      {
+        "id": "mango-fresco",
+        "g_per_kg": 300
+      },
+      {
+        "id": "latte-intero",
+        "g_per_kg": 480
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 100
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 55
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 35
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Mango fresco",
+        "min": 200,
+        "max": 400
+      },
+      {
+        "nome": "Latte intero",
+        "min": 380,
+        "max": 580
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 70,
+        "max": 140
+      }
+    ],
+    "procedimento": [
+      "Pesare tutti gli ingredienti; usare mango maturo (polpa morbida, profumo intenso), sbucciato e privato del nocciolo.",
+      "Frullare la polpa di mango fino a purea omogenea.",
+      "Sciogliere saccarosio, destrosio e sciroppo di glucosio nel latte freddo mescolando con frusta.",
+      "Aggiungere la purea di mango e lo stabilizzante a freddo; mescolare fino a completa idratazione (15-20 min).",
+      "Non pastorizzare se si usa latte UHT: il processo a freddo preserva i profumi volatili della frutta.",
+      "Mantecare fino a estrazione a −7/−9 °C al cuore.",
+      "Abbattere e conservare a −18 °C."
+    ],
+    "notaTecnica": "Il mango ha un profilo aromatico molto volatile: il processo a freddo (nessuna pastorizzazione con latte UHT) è particolarmente importante qui per non disperdere il profumo caratteristico. Stessa famiglia bilanciamento di Fragola/Banana/Pesca."
+  },
+  {
+    "id": "ananas",
+    "nome": "Ananas",
+    "categoria": "frutta",
+    "payoff": "Ananas fresco, base latte. Acidulo e succoso.",
+    "ingredienti": [
+      {
+        "id": "ananas-fresco",
+        "g_per_kg": 330
+      },
+      {
+        "id": "latte-intero",
+        "g_per_kg": 470
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 105
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 50
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 35
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Ananas fresco",
+        "min": 230,
+        "max": 430
+      },
+      {
+        "nome": "Latte intero",
+        "min": 370,
+        "max": 570
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 75,
+        "max": 145
+      }
+    ],
+    "procedimento": [
+      "Pesare tutti gli ingredienti; usare ananas fresco maturo, privato della corteccia e della parte centrale legnosa.",
+      "Frullare la polpa fino a purea omogenea.",
+      "IMPORTANTE: scaldare brevemente la purea di ananas crudo a 70-80 °C per 2-3 minuti (o usare ananas già cotto/in scatola) prima di unirla al latte — la bromelina, un enzima naturale dell'ananas fresco, scompone le proteine del latte e può causare amarore o cagliatura se la purea cruda viene mescolata direttamente a freddo nella base.",
+      "Lasciare raffreddare completamente la purea trattata.",
+      "Sciogliere saccarosio, destrosio e sciroppo di glucosio nel latte freddo mescolando con frusta.",
+      "Aggiungere la purea di ananas (ormai inattivata) e lo stabilizzante; mescolare fino a completa idratazione (15-20 min).",
+      "Maturare in frigorifero per almeno 4 ore.",
+      "Mantecare fino a estrazione a −7/−9 °C al cuore.",
+      "Abbattere e conservare a −18 °C."
+    ],
+    "notaTecnica": "Unico gusto frutta del catalogo che richiede un trattamento termico della polpa prima dell'unione alla base latte: la bromelina dell'ananas crudo è un enzima proteolitico che degrada le proteine del latte (caseina), causando potenziale amarore o consistenza cagliata se non inattivata con un breve riscaldamento. Per il resto, stesso schema di bilanciamento della famiglia frutta-con-latte."
+  },
+  {
+    "id": "frutti-di-bosco",
+    "nome": "Frutti di Bosco",
+    "categoria": "frutta",
+    "payoff": "Mirtilli, more, lamponi e ribes. Frutti rossi, non addolciti troppo.",
+    "ingredienti": [
+      {
+        "id": "frutti-di-bosco-misti",
+        "g_per_kg": 350
+      },
+      {
+        "id": "latte-intero",
+        "g_per_kg": 470
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 125
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 55
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 40
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Frutti di bosco misti (polpa)",
+        "min": 250,
+        "max": 450
+      },
+      {
+        "nome": "Latte intero",
+        "min": 370,
+        "max": 570
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 90,
+        "max": 170
+      }
+    ],
+    "procedimento": [
+      "Pesare tutti gli ingredienti; usare un mix di mirtilli, more, lamponi e ribes freschi o surgelati.",
+      "Frullare i frutti e passarli al setaccio fine per eliminare i semi (soprattutto lamponi e more).",
+      "Sciogliere saccarosio, destrosio e sciroppo di glucosio nel latte freddo mescolando con frusta.",
+      "Aggiungere la polpa di frutti di bosco e lo stabilizzante a freddo; mescolare fino a completa idratazione (15-20 min).",
+      "Non pastorizzare se si usa latte UHT: il processo a freddo preserva i profumi volatili della frutta.",
+      "Mantecare fino a estrazione a −7/−9 °C al cuore.",
+      "Abbattere e conservare a −18 °C."
+    ],
+    "notaTecnica": "Il mix di frutti di bosco ha un contenuto zuccherino naturale più basso (8% medio, contro 9-19% degli altri frutti del catalogo) e un'acidità più marcata, tipica dei frutti rossi: la quota di saccarosio aggiunto è proporzionalmente più alta per compensare. Stessa famiglia di bilanciamento (frutta con base latte) di Fragola/Banana/Pesca/Mango."
   }
 ]
