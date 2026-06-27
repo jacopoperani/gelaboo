@@ -1822,5 +1822,78 @@
       "Abbattere e conservare a −18 °C."
     ],
     "notaTecnica": "Il matcha si scioglie male a freddo se non setacciato e stemperato con cura: i grumi non si disperdono più una volta nella miscela completa. Il latte di cocco fornisce il grasso necessario (il matcha stesso ne contiene pochissimo, e solo in dose minima). ECCEZIONE DOCUMENTATA: \"Altri solidi\" sotto il range target (7-17%, qui ~4.2%) — stesso limite strutturale di Cocco Vegano e Cioccolato Vegano."
+  },
+  {
+    "id": "crema",
+    "nome": "Crema",
+    "categoria": "crema",
+    "payoff": "Vaniglia e tuorli. La base classica della pasticceria, in gelato.",
+    "ingredienti": [
+      {
+        "id": "latte-intero",
+        "g_per_kg": 510
+      },
+      {
+        "id": "panna-35",
+        "g_per_kg": 130
+      },
+      {
+        "id": "tuorlo-uovo",
+        "g_per_kg": 60
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 95
+      },
+      {
+        "id": "latte-polvere-scremato",
+        "g_per_kg": 50
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 65
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 35
+      },
+      {
+        "id": "estratto-vaniglia",
+        "g_per_kg": 8
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 8
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Tuorlo d'uovo (pastorizzato)",
+        "min": 35,
+        "max": 95
+      },
+      {
+        "nome": "Panna 35%",
+        "min": 85,
+        "max": 180
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 65,
+        "max": 135
+      }
+    ],
+    "procedimento": [
+      "Pesare tutti gli ingredienti. Usare tuorli pastorizzati (in brick) oppure pastorizzare personalmente le uova fresche: passaggio di sicurezza alimentare obbligatorio per eliminare il rischio Salmonella.",
+      "Sciogliere il latte in polvere scremato nel latte intero a temperatura ambiente.",
+      "Sbattere i tuorli con una parte del saccarosio fino a renderli chiari e spumosi.",
+      "Unire il composto di tuorli al latte insieme alla panna, al resto del saccarosio, al destrosio e allo sciroppo di glucosio; disperdere lo stabilizzante in una piccola quantità di zucchero e unire.",
+      "Portare la miscela a 85 °C e mantenere per almeno 15 secondi — con i tuorli, non superare gli 85 °C per evitare la coagulazione (effetto \"frittata\").",
+      "Raffreddare rapidamente a +4 °C; aggiungere l'estratto di vaniglia a freddo, mescolando bene.",
+      "Maturare in frigorifero per almeno 4 ore.",
+      "Mantecare fino a estrazione a −7/−9 °C al cuore.",
+      "Abbattere e conservare a −18 °C."
+    ],
+    "notaTecnica": "La \"Crema\" classica si distingue da Fior di Panna per la presenza dei tuorli (che danno corpo e colore dorato) e da Zabaione per l'assenza di Marsala/alcol — qui l'aromatizzazione è solo vaniglia. I tuorli vengono dosati a circa metà della quantità usata in Zabaione, dove sono l'ingrediente caratterizzante principale invece che un coadiuvante di struttura. Stessa attenzione alla pastorizzazione (sicurezza alimentare con le uova) già documentata per Zabaione."
   }
 ]

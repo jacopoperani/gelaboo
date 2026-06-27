@@ -23,7 +23,10 @@
       "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d['version']\\)\")",
       "Bash(pkill -f \"vite --port 5174\")",
       "Bash(node *)",
-      "Bash(python3 *)"
+      "Bash(python3 *)",
+      "Bash(git *)",
+      "Bash(kill %1)",
+      "Bash(npx vitest *)"
     ]
   }
 }

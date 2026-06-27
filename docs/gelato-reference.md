@@ -139,10 +139,12 @@ Valori medi indicativi per impostare il database del calcolatore — verificare 
 | Prugna | 15 | 5 |
 | Ribes | 8 | 5 |
 | Succo d'arancia | 10 | 2 |
-| Succo di limone | 9 | 2 |
+| Succo di limone | 2 | 2 |
 | Succo d'uva | 20 | 2 |
 
 > Questi valori variano molto per varietà/maturazione/stagione: trattarli come default modificabili dall'utente, non come costanti.
+
+> **Nota di correzione (Succo di limone):** il valore zuccheri originale (9) era un probabile errore di trascrizione introdotto durante la ricostruzione del documento — troppo alto per un succo, dove il contenuto reale di zuccheri è molto basso (il limone è soprattutto acqua e acidità). Corretto a 2 sulla base di fonti nutrizionali esterne indipendenti (INRAN/USDA: ≈1,4 g/100 g), arrotondato per coerenza con la precisione delle altre righe della tabella. Fragola e Lampone, che condividono lo stesso valore "9" della vecchia riga, sono stati verificati come corretti e indipendenti — non sono affetti dallo stesso errore.
 
 **Gelato alla frutta (con latte) vs sorbetto**
 - Gelato alla frutta: contiene anche latte (grassi e SLNG). Frutta di solito 20-30% del totale (agrumi: meno basta).
