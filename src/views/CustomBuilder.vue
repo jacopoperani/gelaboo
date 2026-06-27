@@ -1,7 +1,10 @@
 <script setup>
 import { ref } from 'vue'
+import { toast } from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css'
 import { useCalcolatore } from '../composables/useCalcolatore.js'
 import { useUserStore } from '../stores/user.js'
+import { classificaIngrediente } from '../utils/classifyIngredient.js'
 import InputNumerico from '../components/InputNumerico.vue'
 
 const userStore = useUserStore()
@@ -120,9 +123,40 @@ function addIngrediente() {
 
 function rimuovi(i) { ingredienti.value.splice(i, 1) }
 
-function onNomeChange(i, nome) {
-  const n = lookup(nome)
-  ingredienti.value[i] = { ...ingredienti.value[i], nome, ...n }
+const classificando = ref(new Set())
+
+async function onNomeChange(i, nome) {
+  const trovatoLocale = DB[nome.toLowerCase().trim()]
+  if (trovatoLocale) {
+    ingredienti.value[i] = { ...ingredienti.value[i], nome, ...trovatoLocale }
+    return
+  }
+
+  // Non trovato in DB locale → classifica via AI
+  classificando.value = new Set([...classificando.value, i])
+  ingredienti.value[i] = { ...ingredienti.value[i], nome }
+
+  const risultato = await classificaIngrediente(nome)
+
+  classificando.value = new Set([...classificando.value].filter(x => x !== i))
+
+  if (risultato.ok) {
+    const { dati } = risultato
+    ingredienti.value[i] = { ...ingredienti.value[i], ...dati }
+    if (dati.nota?.includes('fuori range')) {
+      toast.warn(`"${nome}": stima AI con valori atipici — verifica manualmente`, { autoClose: 5000 })
+    } else {
+      toast.info(`"${nome}": valori stimati dall'AI`, { autoClose: 3000 })
+    }
+  } else {
+    toast.error(`"${nome}": ${risultato.messaggio} — inserisci i valori manualmente`, { autoClose: 6000 })
+    // Lascia l'ingrediente con zeri espliciti — mai silenzioso
+    ingredienti.value[i] = {
+      ...ingredienti.value[i],
+      zuccheri: 0, grassi: 0, slng: 0, altri: 0, pod: 0, pac: 0,
+      _aiError: true,
+    }
+  }
 }
 
 function onGrammiChange(i, val) {
@@ -235,15 +269,25 @@ function onGrammiChange(i, val) {
                 class="flex items-center gap-2"
                 role="listitem"
               >
-                <input
-                  type="text"
-                  :value="ing.nome"
-                  @change="onNomeChange(i, $event.target.value)"
-                  list="ing-db"
-                  placeholder="Nome ingrediente"
-                  class="flex-1 min-w-0 border border-inchiostro/20 rounded-xl px-3 py-2.5 text-body-small text-inchiostro bg-crema focus:outline-none focus:border-inchiostro transition-colors placeholder:text-inchiostro/30"
-                  :aria-label="`Nome ingrediente ${i + 1}`"
-                />
+                <div class="flex-1 min-w-0 relative">
+                  <input
+                    type="text"
+                    :value="ing.nome"
+                    @change="onNomeChange(i, $event.target.value)"
+                    list="ing-db"
+                    placeholder="Nome ingrediente"
+                    :disabled="classificando.has(i)"
+                    class="w-full border border-inchiostro/20 rounded-xl px-3 py-2.5 text-body-small text-inchiostro bg-crema focus:outline-none focus:border-inchiostro transition-colors placeholder:text-inchiostro/30 disabled:opacity-50"
+                    :class="ing._aiError ? 'border-mandarino/60' : ''"
+                    :aria-label="`Nome ingrediente ${i + 1}`"
+                  />
+                  <span
+                    v-if="classificando.has(i)"
+                    class="absolute right-3 top-1/2 -translate-y-1/2 text-inchiostro/40"
+                    style="font-size: 10px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;"
+                    aria-live="polite"
+                  >AI…</span>
+                </div>
                 <div class="w-28 shrink-0 flex items-center border border-inchiostro/20 rounded-xl overflow-hidden focus-within:border-inchiostro transition-colors bg-crema">
                   <input
                     type="number"

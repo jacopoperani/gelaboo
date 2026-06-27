@@ -1,8 +1,17 @@
 export function risolviIngredienti(ricetta, ingredientiDB) {
-  return ricetta.ingredienti.map(ref => ({
-    ...ingredientiDB[ref.id],
-    g_per_kg: ref.g_per_kg,
-  }))
+  return ricetta.ingredienti.map(ref => {
+    const db = ingredientiDB[ref.id]
+    if (!db) {
+      console.warn(`risolviIngredienti: ingrediente "${ref.id}" non trovato nel DB`)
+      return {
+        nome: ref.id,
+        g_per_kg: ref.g_per_kg,
+        zuccheri: 0, grassi: 0, slng: 0, altri: 0, pod: 0, pac: 0,
+        _mancante: true,
+      }
+    }
+    return { ...db, g_per_kg: ref.g_per_kg }
+  })
 }
 
 export function classificaValore(val, t) {
