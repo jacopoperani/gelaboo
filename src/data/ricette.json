@@ -384,19 +384,23 @@
     "ingredienti": [
       {
         "id": "succo-di-limone",
-        "g_per_kg": 320
+        "g_per_kg": 365
       },
       {
         "id": "acqua",
-        "g_per_kg": 350
+        "g_per_kg": 290
       },
       {
         "id": "saccarosio",
-        "g_per_kg": 145
+        "g_per_kg": 140
       },
       {
         "id": "glucosio-42de",
-        "g_per_kg": 180
+        "g_per_kg": 50
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 60
       },
       {
         "id": "stabilizzante",
@@ -406,18 +410,18 @@
     "ingredientiModificabili": [
       {
         "nome": "Succo di limone",
-        "min": 220,
-        "max": 400
+        "min": 280,
+        "max": 440
       },
       {
         "nome": "Saccarosio",
         "min": 100,
-        "max": 200
+        "max": 180
       },
       {
         "nome": "Sciroppo di glucosio 42DE",
-        "min": 120,
-        "max": 240
+        "min": 25,
+        "max": 90
       }
     ],
     "procedimento": [
@@ -439,11 +443,11 @@
     "ingredienti": [
       {
         "id": "lamponi-polpa",
-        "g_per_kg": 380
+        "g_per_kg": 425
       },
       {
         "id": "acqua",
-        "g_per_kg": 320
+        "g_per_kg": 260
       },
       {
         "id": "saccarosio",
@@ -451,10 +455,10 @@
       },
       {
         "id": "glucosio-42de",
-        "g_per_kg": 85
+        "g_per_kg": 60
       },
       {
-        "id": "zucchero-invertito",
+        "id": "destrosio-monoidrato",
         "g_per_kg": 15
       },
       {
@@ -465,30 +469,30 @@
     "ingredientiModificabili": [
       {
         "nome": "Lamponi (polpa)",
-        "min": 250,
-        "max": 500
+        "min": 330,
+        "max": 520
       },
       {
         "nome": "Saccarosio",
-        "min": 110,
-        "max": 220
+        "min": 100,
+        "max": 180
       },
       {
-        "nome": "Zucchero invertito",
-        "min": 0,
-        "max": 40
+        "nome": "Destrosio (monoidrato)",
+        "min": 5,
+        "max": 35
       }
     ],
     "procedimento": [
       "Frullare i lamponi freschi o surgelati e passarli al setaccio fine per eliminare i semi.",
-      "Portare acqua e saccarosio a 80 °C mescolando per formare uno sciroppo; aggiungere lo sciroppo di glucosio e lo zucchero invertito, mescolare fino a dissoluzione.",
+      "Portare acqua e saccarosio a 80 °C mescolando per formare uno sciroppo; aggiungere lo sciroppo di glucosio e il destrosio, mescolare fino a dissoluzione.",
       "Raffreddare lo sciroppo a temperatura ambiente, poi a +4 °C.",
       "Unire la polpa di lampone fredda allo sciroppo; aggiungere lo stabilizzante per freddo mescolando bene.",
       "Maturare in frigorifero per 2–4 ore.",
       "Mantecare fino a estrazione a −7/−9 °C al cuore.",
       "Abbattere a −18 °C per almeno 2 ore."
     ],
-    "notaTecnica": "Il sorbetto di lamponi non necessita di pastorizzazione grazie all'acidità naturale della frutta. I semi vengono rimossi con setaccio fine prima della lavorazione. Lo sciroppo di glucosio e lo zucchero invertito insieme migliorano la spatolabilità e frenano la ricristallizzazione tipica delle puree di frutti rossi, mantenendo il POD nel range standard del sorbetto."
+    "notaTecnica": "Il sorbetto di lamponi non necessita di pastorizzazione grazie all'acidità naturale della frutta. I semi vengono rimossi con setaccio fine prima della lavorazione. Lo sciroppo di glucosio e il destrosio insieme migliorano la spatolabilità e frenano la ricristallizzazione tipica delle puree di frutti rossi, mantenendo zuccheri/POD/PAC nel range ottimale del sorbetto."
   },
   {
     "id": "cocco-vegano",
@@ -502,19 +506,7 @@
       },
       {
         "id": "acqua",
-        "g_per_kg": 330
-      },
-      {
-        "id": "saccarosio",
-        "g_per_kg": 85
-      },
-      {
-        "id": "destrosio-monoidrato",
-        "g_per_kg": 55
-      },
-      {
-        "id": "glucosio-42de",
-        "g_per_kg": 65
+        "g_per_kg": 320
       },
       {
         "id": "inulina",
@@ -523,6 +515,18 @@
       {
         "id": "stabilizzante",
         "g_per_kg": 5
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 60
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 85
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 30
       }
     ],
     "ingredientiModificabili": [
@@ -572,24 +576,24 @@
         "g_per_kg": 80
       },
       {
-        "id": "saccarosio",
-        "g_per_kg": 110
-      },
-      {
-        "id": "destrosio-monoidrato",
-        "g_per_kg": 20
-      },
-      {
-        "id": "glucosio-42de",
-        "g_per_kg": 40
-      },
-      {
         "id": "inulina",
         "g_per_kg": 40
       },
       {
         "id": "stabilizzante",
         "g_per_kg": 5
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 60
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 55
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 20
       }
     ],
     "ingredientiModificabili": [
@@ -600,7 +604,7 @@
       },
       {
         "nome": "Saccarosio",
-        "min": 80,
+        "min": 40,
         "max": 160
       },
       {
@@ -636,24 +640,24 @@
         "g_per_kg": 90
       },
       {
-        "id": "saccarosio",
-        "g_per_kg": 90
-      },
-      {
-        "id": "destrosio-monoidrato",
-        "g_per_kg": 15
-      },
-      {
-        "id": "glucosio-42de",
-        "g_per_kg": 35
-      },
-      {
         "id": "inulina",
         "g_per_kg": 40
       },
       {
         "id": "stabilizzante",
         "g_per_kg": 5
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 50
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 40
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 25
       }
     ],
     "ingredientiModificabili": [
@@ -664,7 +668,7 @@
       },
       {
         "nome": "Saccarosio",
-        "min": 60,
+        "min": 35,
         "max": 140
       },
       {
@@ -1129,19 +1133,23 @@
     "ingredienti": [
       {
         "id": "succo-arancia",
-        "g_per_kg": 320
+        "g_per_kg": 365
       },
       {
         "id": "acqua",
-        "g_per_kg": 350
+        "g_per_kg": 305
       },
       {
         "id": "saccarosio",
-        "g_per_kg": 130
+        "g_per_kg": 90
       },
       {
         "id": "glucosio-42de",
-        "g_per_kg": 125
+        "g_per_kg": 90
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 45
       },
       {
         "id": "stabilizzante",
@@ -1151,18 +1159,18 @@
     "ingredientiModificabili": [
       {
         "nome": "Succo d'arancia",
-        "min": 220,
-        "max": 420
+        "min": 280,
+        "max": 440
       },
       {
         "nome": "Saccarosio",
-        "min": 90,
-        "max": 170
+        "min": 65,
+        "max": 130
       },
       {
         "nome": "Sciroppo di glucosio 42DE",
-        "min": 80,
-        "max": 170
+        "min": 60,
+        "max": 130
       }
     ],
     "procedimento": [
@@ -1184,19 +1192,23 @@
     "ingredienti": [
       {
         "id": "melone-polpa",
-        "g_per_kg": 330
+        "g_per_kg": 300
       },
       {
         "id": "acqua",
-        "g_per_kg": 330
+        "g_per_kg": 375
       },
       {
         "id": "saccarosio",
-        "g_per_kg": 130
+        "g_per_kg": 140
       },
       {
         "id": "glucosio-42de",
-        "g_per_kg": 165
+        "g_per_kg": 60
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 30
       },
       {
         "id": "stabilizzante",
@@ -1207,17 +1219,17 @@
       {
         "nome": "Melone (polpa)",
         "min": 230,
-        "max": 430
+        "max": 400
       },
       {
         "nome": "Saccarosio",
-        "min": 85,
-        "max": 165
+        "min": 100,
+        "max": 180
       },
       {
         "nome": "Sciroppo di glucosio 42DE",
-        "min": 100,
-        "max": 200
+        "min": 40,
+        "max": 90
       }
     ],
     "procedimento": [
@@ -1239,19 +1251,23 @@
     "ingredienti": [
       {
         "id": "pera-polpa",
-        "g_per_kg": 330
+        "g_per_kg": 300
       },
       {
         "id": "acqua",
-        "g_per_kg": 350
+        "g_per_kg": 380
       },
       {
         "id": "saccarosio",
-        "g_per_kg": 125
+        "g_per_kg": 100
       },
       {
         "id": "glucosio-42de",
-        "g_per_kg": 150
+        "g_per_kg": 40
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 75
       },
       {
         "id": "stabilizzante",
@@ -1262,17 +1278,17 @@
       {
         "nome": "Pera (polpa)",
         "min": 230,
-        "max": 430
+        "max": 400
       },
       {
         "nome": "Saccarosio",
-        "min": 85,
-        "max": 165
+        "min": 70,
+        "max": 140
       },
       {
         "nome": "Sciroppo di glucosio 42DE",
-        "min": 100,
-        "max": 200
+        "min": 25,
+        "max": 65
       }
     ],
     "procedimento": [
@@ -1294,19 +1310,23 @@
     "ingredienti": [
       {
         "id": "kiwi-polpa",
-        "g_per_kg": 330
+        "g_per_kg": 375
       },
       {
         "id": "acqua",
-        "g_per_kg": 350
+        "g_per_kg": 305
       },
       {
         "id": "saccarosio",
-        "g_per_kg": 130
+        "g_per_kg": 120
       },
       {
         "id": "glucosio-42de",
-        "g_per_kg": 170
+        "g_per_kg": 70
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 30
       },
       {
         "id": "stabilizzante",
@@ -1316,18 +1336,18 @@
     "ingredientiModificabili": [
       {
         "nome": "Kiwi (polpa)",
-        "min": 230,
-        "max": 430
+        "min": 280,
+        "max": 450
       },
       {
         "nome": "Saccarosio",
-        "min": 90,
-        "max": 170
+        "min": 85,
+        "max": 160
       },
       {
         "nome": "Sciroppo di glucosio 42DE",
-        "min": 115,
-        "max": 220
+        "min": 50,
+        "max": 100
       }
     ],
     "procedimento": [
@@ -1349,11 +1369,11 @@
     "ingredienti": [
       {
         "id": "mandarino-fresco",
-        "g_per_kg": 390
+        "g_per_kg": 435
       },
       {
         "id": "acqua",
-        "g_per_kg": 280
+        "g_per_kg": 265
       },
       {
         "id": "saccarosio",
@@ -1361,7 +1381,11 @@
       },
       {
         "id": "glucosio-42de",
-        "g_per_kg": 120
+        "g_per_kg": 50
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 30
       },
       {
         "id": "stabilizzante",
@@ -1371,18 +1395,18 @@
     "ingredientiModificabili": [
       {
         "nome": "Mandarino (succo e polpa)",
-        "min": 280,
-        "max": 480
+        "min": 320,
+        "max": 500
       },
       {
         "nome": "Saccarosio",
         "min": 85,
-        "max": 165
+        "max": 160
       },
       {
         "nome": "Sciroppo di glucosio 42DE",
-        "min": 80,
-        "max": 170
+        "min": 35,
+        "max": 75
       }
     ],
     "procedimento": [
@@ -1404,19 +1428,23 @@
     "ingredienti": [
       {
         "id": "anguria-fresca",
-        "g_per_kg": 440
+        "g_per_kg": 485
       },
       {
         "id": "acqua",
-        "g_per_kg": 230
+        "g_per_kg": 185
       },
       {
         "id": "saccarosio",
-        "g_per_kg": 140
+        "g_per_kg": 110
       },
       {
         "id": "glucosio-42de",
-        "g_per_kg": 135
+        "g_per_kg": 90
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 30
       },
       {
         "id": "stabilizzante",
@@ -1426,18 +1454,18 @@
     "ingredientiModificabili": [
       {
         "nome": "Anguria fresca",
-        "min": 320,
-        "max": 540
+        "min": 350,
+        "max": 560
       },
       {
         "nome": "Saccarosio",
-        "min": 100,
-        "max": 190
+        "min": 80,
+        "max": 145
       },
       {
         "nome": "Sciroppo di glucosio 42DE",
-        "min": 90,
-        "max": 190
+        "min": 65,
+        "max": 130
       }
     ],
     "procedimento": [
@@ -1460,19 +1488,23 @@
     "ingredienti": [
       {
         "id": "succo-pompelmo",
-        "g_per_kg": 340
+        "g_per_kg": 370
       },
       {
         "id": "acqua",
-        "g_per_kg": 330
+        "g_per_kg": 300
       },
       {
         "id": "saccarosio",
-        "g_per_kg": 135
+        "g_per_kg": 160
       },
       {
         "id": "glucosio-42de",
-        "g_per_kg": 160
+        "g_per_kg": 50
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 15
       },
       {
         "id": "stabilizzante",
@@ -1482,18 +1514,18 @@
     "ingredientiModificabili": [
       {
         "nome": "Succo di pompelmo",
-        "min": 240,
-        "max": 440
+        "min": 260,
+        "max": 430
       },
       {
         "nome": "Saccarosio",
-        "min": 95,
-        "max": 175
+        "min": 115,
+        "max": 200
       },
       {
         "nome": "Sciroppo di glucosio 42DE",
-        "min": 110,
-        "max": 220
+        "min": 35,
+        "max": 75
       }
     ],
     "procedimento": [
@@ -1506,5 +1538,289 @@
       "Abbattere a −18 °C per almeno 2 ore."
     ],
     "notaTecnica": "Il pompelmo non è presente nella tabella zuccheri/altri solidi di gelato-reference.md §7 — valore stimato da fonti esterne convergenti (~7g zuccheri/100g, fonte USDA/Strongr Fastr/Dietabit), più basso di arancia e mandarino. La varietà rosa/rosso ha naringina in quantità minore della varietà bianca, risultando meno amara — preferibile per un sorbetto equilibrato. Stesso schema di bilanciamento di Limone/Arancia/Mandarino."
+  },
+  {
+    "id": "cioccolato-vegano",
+    "nome": "Cioccolato Vegano",
+    "categoria": "vegano",
+    "payoff": "Cioccolato fondente, base cocco. Intenso, senza latticini.",
+    "ingredienti": [
+      {
+        "id": "latte-di-cocco-intero",
+        "g_per_kg": 320
+      },
+      {
+        "id": "acqua",
+        "g_per_kg": 395
+      },
+      {
+        "id": "cioccolato-fondente-copertura",
+        "g_per_kg": 80
+      },
+      {
+        "id": "inulina",
+        "g_per_kg": 25
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 30
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 70
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 60
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Cioccolato fondente di copertura (70%)",
+        "min": 50,
+        "max": 110
+      },
+      {
+        "nome": "Latte di cocco intero",
+        "min": 250,
+        "max": 450
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 20,
+        "max": 120
+      }
+    ],
+    "eccezioniSoglie": [
+      "altri"
+    ],
+    "procedimento": [
+      "Pesare tutti gli ingredienti; usare latte di cocco intero (non light).",
+      "Sciogliere il cioccolato fondente di copertura a bagnomaria (massimo 45 °C).",
+      "Mescolare a freddo saccarosio, destrosio, sciroppo di glucosio e inulina nel latte di cocco e nell'acqua.",
+      "Disperdere lo stabilizzante in una piccola quantità di zucchero e unire alla miscela.",
+      "Portare a 80 °C mescolando continuamente; mantenere per 20 secondi.",
+      "Togliere dal fuoco e incorporare subito il cioccolato fuso, mescolando bene per evitare grumi.",
+      "Raffreddare rapidamente a +4 °C.",
+      "Maturare in frigorifero per almeno 4 ore.",
+      "Mantecare fino a estrazione a −7/−9 °C al cuore.",
+      "Abbattere e conservare a −18 °C."
+    ],
+    "notaTecnica": "Il latte di cocco intero (21% di grassi) sostituisce qui il ruolo di latte+panna delle creme tradizionali, fornendo il grasso necessario senza il quale, con basi vegetali più magre come avena o riso, i grassi resterebbero sotto il minimo del 5%. ECCEZIONE DOCUMENTATA: \"Altri solidi\" risulta sotto il range target (7-17%, qui ~4.9%) — stesso limite strutturale già documentato per Cocco Vegano: con gli ingredienti vegani disponibili e l'inulina alla dose di sicurezza, non è raggiungibile senza comprometterne la sicurezza/qualità."
+  },
+  {
+    "id": "pistacchio-vegano",
+    "nome": "Pistacchio Vegano",
+    "categoria": "vegano",
+    "payoff": "Pasta di pistacchio pura, base riso. Vegetale, non stucchevole.",
+    "ingredienti": [
+      {
+        "id": "latte-di-riso",
+        "g_per_kg": 560
+      },
+      {
+        "id": "acqua",
+        "g_per_kg": 120
+      },
+      {
+        "id": "pasta-pistacchio-pura",
+        "g_per_kg": 100
+      },
+      {
+        "id": "inulina",
+        "g_per_kg": 25
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 50
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 60
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 20
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Pasta di pistacchio pura",
+        "min": 50,
+        "max": 110
+      },
+      {
+        "nome": "Latte di riso",
+        "min": 450,
+        "max": 650
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 40,
+        "max": 110
+      }
+    ],
+    "eccezioniSoglie": [
+      "altri"
+    ],
+    "procedimento": [
+      "Pesare tutti gli ingredienti; usare pasta di pistacchio pura (100% pistacchio, senza zuccheri aggiunti).",
+      "Mescolare a freddo saccarosio, destrosio, sciroppo di glucosio e inulina nel latte di riso e nell'acqua.",
+      "Disperdere lo stabilizzante in una piccola quantità di zucchero e unire alla miscela.",
+      "Portare a 80 °C mescolando continuamente; mantenere per 20 secondi.",
+      "Raffreddare rapidamente a +4 °C; incorporare la pasta di pistacchio a freddo mescolando con frusta fino a emulsione uniforme.",
+      "Maturare a 2-4 °C per almeno 4 ore.",
+      "Mantecare fino a estrazione a −7/−9 °C al cuore.",
+      "Abbattere e conservare a −18 °C."
+    ],
+    "notaTecnica": "Il latte di riso, povero di grassi propri, lascia che il grasso della miscela derivi quasi interamente dalla pasta di pistacchio (55% di grassi vegetali) — coerente con come la versione non vegana usa la panna. ECCEZIONE DOCUMENTATA: \"Altri solidi\" leggermente sotto il range target (7-17%, qui ~6.5%) — stesso limite strutturale già documentato per Cocco Vegano."
+  },
+  {
+    "id": "nocciola-vegano",
+    "nome": "Nocciola Vegano",
+    "categoria": "vegano",
+    "payoff": "Pasta di nocciola pura, base avena. Vegetale, tostato.",
+    "ingredienti": [
+      {
+        "id": "latte-di-avena",
+        "g_per_kg": 560
+      },
+      {
+        "id": "acqua",
+        "g_per_kg": 90
+      },
+      {
+        "id": "pasta-nocciola-pura",
+        "g_per_kg": 120
+      },
+      {
+        "id": "inulina",
+        "g_per_kg": 25
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 80
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 60
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 25
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Pasta di nocciola pura",
+        "min": 80,
+        "max": 160
+      },
+      {
+        "nome": "Latte di avena",
+        "min": 450,
+        "max": 650
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 70,
+        "max": 140
+      }
+    ],
+    "procedimento": [
+      "Pesare tutti gli ingredienti; usare pasta di nocciola pura (100% nocciola, senza zuccheri aggiunti).",
+      "Mescolare a freddo saccarosio, destrosio, sciroppo di glucosio e inulina nel latte di avena e nell'acqua.",
+      "Disperdere lo stabilizzante in una piccola quantità di zucchero e unire alla miscela.",
+      "Portare a 80 °C mescolando continuamente; mantenere per 20 secondi.",
+      "Raffreddare rapidamente a +4 °C; incorporare la pasta di nocciola a freddo mescolando con frusta fino a emulsione uniforme.",
+      "Maturare a 2-4 °C per almeno 4 ore.",
+      "Mantecare fino a estrazione a −7/−9 °C al cuore.",
+      "Abbattere e conservare a −18 °C."
+    ],
+    "notaTecnica": "Unica delle 4 ricette vegane di questo gruppo a non richiedere l'eccezione su \"altri solidi\": la pasta di nocciola, più ricca in proteine vegetali della pasta di pistacchio, porta da sola il parametro dentro il range 7-17% senza bisogno di forzare l'inulina. Stesso schema di bilanciamento delle altre creme vegane a frutta secca."
+  },
+  {
+    "id": "matcha-vegano",
+    "nome": "Matcha Vegano",
+    "categoria": "vegano",
+    "payoff": "Tè matcha giapponese, base cocco. Verde, vegetale, vivace.",
+    "ingredienti": [
+      {
+        "id": "latte-di-cocco-intero",
+        "g_per_kg": 400
+      },
+      {
+        "id": "acqua",
+        "g_per_kg": 345
+      },
+      {
+        "id": "matcha-polvere",
+        "g_per_kg": 15
+      },
+      {
+        "id": "inulina",
+        "g_per_kg": 25
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 75
+      },
+      {
+        "id": "destrosio-monoidrato",
+        "g_per_kg": 85
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 20
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Tè matcha in polvere",
+        "min": 10,
+        "max": 25
+      },
+      {
+        "nome": "Latte di cocco intero",
+        "min": 270,
+        "max": 470
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 70,
+        "max": 160
+      }
+    ],
+    "eccezioniSoglie": [
+      "altri"
+    ],
+    "procedimento": [
+      "Pesare tutti gli ingredienti; setacciare il tè matcha per eliminare eventuali grumi prima dell'uso.",
+      "Mescolare a freddo saccarosio, destrosio, sciroppo di glucosio e inulina nel latte di cocco e nell'acqua.",
+      "Stemperare il matcha setacciato in una piccola quantità di liquido tiepido fino a ottenere una crema senza grumi, poi unirla al resto.",
+      "Disperdere lo stabilizzante in una piccola quantità di zucchero e unire alla miscela.",
+      "Portare a 80 °C mescolando continuamente; mantenere per 20 secondi (non superare gli 80 °C: il calore eccessivo altera il colore e l'aroma del matcha).",
+      "Raffreddare rapidamente a +4 °C.",
+      "Maturare in frigorifero per almeno 4 ore.",
+      "Mantecare fino a estrazione a −7/−9 °C al cuore.",
+      "Abbattere e conservare a −18 °C."
+    ],
+    "notaTecnica": "Il matcha si scioglie male a freddo se non setacciato e stemperato con cura: i grumi non si disperdono più una volta nella miscela completa. Il latte di cocco fornisce il grasso necessario (il matcha stesso ne contiene pochissimo, e solo in dose minima). ECCEZIONE DOCUMENTATA: \"Altri solidi\" sotto il range target (7-17%, qui ~4.2%) — stesso limite strutturale di Cocco Vegano e Cioccolato Vegano."
   }
 ]

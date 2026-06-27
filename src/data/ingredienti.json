@@ -392,5 +392,16 @@
     "pac": 130,
     "verificato": true,
     "nota": "Fonte esterna (Strongr Fastr/USDA, Dietabit): pompelmo ~7g zuccheri/100g. Non presente in gelato-reference.md §7."
+  },
+  "matcha-polvere": {
+    "nome": "Tè matcha in polvere",
+    "zuccheri": 0,
+    "grassi": 5,
+    "slng": 0,
+    "altri": 30,
+    "pod": 0,
+    "pac": 0,
+    "verificato": false,
+    "nota": "Forte variabilita tra fonti/qualita (premium/cerimoniale/culinario): grassi 0-5g, proteine 18-30g, fibra 0-35g secondo prodotto e marca. Usato in dose minima (~1.5% della miscela) -- impatto sul bilanciamento finale marginale indipendentemente dalla precisione del dato."
   }
 }
