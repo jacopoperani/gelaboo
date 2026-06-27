@@ -315,5 +315,82 @@
     "pac": 130,
     "verificato": true,
     "nota": "Media di mirtillo/mora/lampone/ribes da gelato-reference.md §7."
+  },
+  "succo-arancia": {
+    "nome": "Succo d'arancia",
+    "zuccheri": 10,
+    "grassi": 0,
+    "slng": 0,
+    "altri": 2,
+    "pod": 90,
+    "pac": 130,
+    "verificato": true,
+    "nota": "gelato-reference.md §7."
+  },
+  "melone-polpa": {
+    "nome": "Melone (polpa)",
+    "zuccheri": 7,
+    "grassi": 0,
+    "slng": 0,
+    "altri": 5,
+    "pod": 90,
+    "pac": 130,
+    "verificato": true,
+    "nota": "Corretto da 11 a 7 -- gelato-reference.md §7 sovrastimava il valore. Fonte esterna (Torrinomedica/USDA): melone ~8g carboidrati/100g, quasi tutti zuccheri semplici dopo sottrazione fibra (~0.9g) -> ~7g zuccheri reali. Corretto anche alla fonte in gelato-reference.md §7."
+  },
+  "pera-polpa": {
+    "nome": "Pera (polpa)",
+    "zuccheri": 11,
+    "grassi": 0,
+    "slng": 0,
+    "altri": 5,
+    "pod": 90,
+    "pac": 130,
+    "verificato": true,
+    "nota": "gelato-reference.md §7."
+  },
+  "kiwi-polpa": {
+    "nome": "Kiwi (polpa)",
+    "zuccheri": 9,
+    "grassi": 0,
+    "slng": 0,
+    "altri": 3,
+    "pod": 90,
+    "pac": 130,
+    "verificato": true,
+    "nota": "gelato-reference.md §7."
+  },
+  "mandarino-fresco": {
+    "nome": "Mandarino (succo e polpa)",
+    "zuccheri": 11,
+    "grassi": 0,
+    "slng": 0,
+    "altri": 3,
+    "pod": 90,
+    "pac": 130,
+    "verificato": true,
+    "nota": "Non presente in gelato-reference.md §7 -- stimato da fonti nutrizionali esterne convergenti (zuccheri 10-11g/100g, fonte prevalente)."
+  },
+  "anguria-fresca": {
+    "nome": "Anguria fresca",
+    "zuccheri": 6,
+    "grassi": 0,
+    "slng": 0,
+    "altri": 2,
+    "pod": 90,
+    "pac": 130,
+    "verificato": true,
+    "nota": "Non presente in gelato-reference.md §7 -- stimato da fonti nutrizionali esterne convergenti (zuccheri 4-6.2g/100g secondo fonte, usato il valore medio-alto per coerenza di stagione/maturazione)."
+  },
+  "succo-pompelmo": {
+    "nome": "Succo di pompelmo",
+    "zuccheri": 7,
+    "grassi": 0,
+    "slng": 0,
+    "altri": 2,
+    "pod": 90,
+    "pac": 130,
+    "verificato": true,
+    "nota": "Fonte esterna (Strongr Fastr/USDA, Dietabit): pompelmo ~7g zuccheri/100g. Non presente in gelato-reference.md §7."
   }
 }

@@ -1120,5 +1120,391 @@
       "Abbattere e conservare a −18 °C."
     ],
     "notaTecnica": "Il mix di frutti di bosco ha un contenuto zuccherino naturale più basso (8% medio, contro 9-19% degli altri frutti del catalogo) e un'acidità più marcata, tipica dei frutti rossi: la quota di saccarosio aggiunto è proporzionalmente più alta per compensare. Stessa famiglia di bilanciamento (frutta con base latte) di Fragola/Banana/Pesca/Mango."
+  },
+  {
+    "id": "arancia",
+    "nome": "Sorbetto Arancia",
+    "categoria": "sorbetto",
+    "payoff": "Succo d'arancia spremuto. Pulito, dolce, mai stucchevole.",
+    "ingredienti": [
+      {
+        "id": "succo-arancia",
+        "g_per_kg": 320
+      },
+      {
+        "id": "acqua",
+        "g_per_kg": 350
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 130
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 125
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Succo d'arancia",
+        "min": 220,
+        "max": 420
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 90,
+        "max": 170
+      },
+      {
+        "nome": "Sciroppo di glucosio 42DE",
+        "min": 80,
+        "max": 170
+      }
+    ],
+    "procedimento": [
+      "Spremitura e filtratura del succo d'arancia; pesare le dosi.",
+      "Portare acqua e saccarosio a 80 °C mescolando per formare uno sciroppo; aggiungere lo sciroppo di glucosio, mescolare fino a dissoluzione.",
+      "Raffreddare lo sciroppo a temperatura ambiente, poi a +4 °C.",
+      "Unire il succo d'arancia freddo allo sciroppo; aggiungere lo stabilizzante per freddo mescolando bene.",
+      "Maturare in frigorifero per 2-4 ore.",
+      "Mantecare fino a estrazione a −7/−9 °C al cuore.",
+      "Abbattere a −18 °C per almeno 2 ore."
+    ],
+    "notaTecnica": "L'acidità dell'arancia, pur meno marcata di quella del limone, è comunque sufficiente a non richiedere pastorizzazione. Il succo d'arancia ha un contenuto zuccherino naturale variabile per stagione e varietà (10% medio) — verificare e correggere il saccarosio se il frutto risulta più o meno dolce del previsto. Stesso schema di bilanciamento del Sorbetto Limone."
+  },
+  {
+    "id": "melone",
+    "nome": "Sorbetto Melone",
+    "categoria": "sorbetto",
+    "payoff": "Melone maturo, polpa pura. Fresco, leggero, estivo.",
+    "ingredienti": [
+      {
+        "id": "melone-polpa",
+        "g_per_kg": 330
+      },
+      {
+        "id": "acqua",
+        "g_per_kg": 330
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 130
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 165
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Melone (polpa)",
+        "min": 230,
+        "max": 430
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 85,
+        "max": 165
+      },
+      {
+        "nome": "Sciroppo di glucosio 42DE",
+        "min": 100,
+        "max": 200
+      }
+    ],
+    "procedimento": [
+      "Frullare la polpa di melone maturo (privata della scorza e dei semi) fino a purea omogenea.",
+      "Portare acqua e saccarosio a 80 °C mescolando per formare uno sciroppo; aggiungere lo sciroppo di glucosio, mescolare fino a dissoluzione.",
+      "Raffreddare lo sciroppo a temperatura ambiente, poi a +4 °C.",
+      "Unire la purea di melone fredda allo sciroppo; aggiungere lo stabilizzante per freddo mescolando bene.",
+      "Maturare in frigorifero per 2-4 ore.",
+      "Mantecare fino a estrazione a −7/−9 °C al cuore.",
+      "Abbattere a −18 °C per almeno 2 ore."
+    ],
+    "notaTecnica": "Il melone ha bassa acidità (a differenza degli agrumi): la pastorizzazione non è comunque necessaria grazie all'alto contenuto d'acqua e basso pH residuo della polpa fresca, ma la maturazione in frigorifero resta importante per l'idratazione dello stabilizzante. Stesso schema di bilanciamento di Limone/Arancia. Nota dati: il valore zuccheri del melone è stato corretto da una sovrastima iniziale (11%->7%, fonte Torrinomedica/USDA) — la ricetta è stata riequilibrata di conseguenza."
+  },
+  {
+    "id": "pera",
+    "nome": "Sorbetto Pera",
+    "categoria": "sorbetto",
+    "payoff": "Pera matura, polpa pura. Delicato, mai acidulo.",
+    "ingredienti": [
+      {
+        "id": "pera-polpa",
+        "g_per_kg": 330
+      },
+      {
+        "id": "acqua",
+        "g_per_kg": 350
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 125
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 150
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Pera (polpa)",
+        "min": 230,
+        "max": 430
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 85,
+        "max": 165
+      },
+      {
+        "nome": "Sciroppo di glucosio 42DE",
+        "min": 100,
+        "max": 200
+      }
+    ],
+    "procedimento": [
+      "Sbucciare e frullare le pere mature con un cucchiaio di succo di limone per prevenire l'ossidazione della polpa (il classico imbrunimento).",
+      "Portare acqua e saccarosio a 80 °C mescolando per formare uno sciroppo; aggiungere lo sciroppo di glucosio, mescolare fino a dissoluzione.",
+      "Raffreddare lo sciroppo a temperatura ambiente, poi a +4 °C.",
+      "Unire la purea di pera fredda allo sciroppo; aggiungere lo stabilizzante per freddo mescolando bene.",
+      "Maturare in frigorifero per 2-4 ore.",
+      "Mantecare fino a estrazione a −7/−9 °C al cuore.",
+      "Abbattere a −18 °C per almeno 2 ore."
+    ],
+    "notaTecnica": "La pera ossida molto rapidamente una volta tagliata o frullata (imbrunimento enzimatico): il succo di limone aggiunto durante la frullatura è tecnico, non gustativo, e non altera il bilanciamento al dosaggio usato (non incluso come ingrediente separato nella miscela). Stesso schema di bilanciamento di Limone/Arancia/Melone."
+  },
+  {
+    "id": "kiwi",
+    "nome": "Sorbetto Kiwi",
+    "categoria": "sorbetto",
+    "payoff": "Kiwi maturo, polpa pura. Verde, acidulo, vivace.",
+    "ingredienti": [
+      {
+        "id": "kiwi-polpa",
+        "g_per_kg": 330
+      },
+      {
+        "id": "acqua",
+        "g_per_kg": 350
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 130
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 170
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Kiwi (polpa)",
+        "min": 230,
+        "max": 430
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 90,
+        "max": 170
+      },
+      {
+        "nome": "Sciroppo di glucosio 42DE",
+        "min": 115,
+        "max": 220
+      }
+    ],
+    "procedimento": [
+      "Sbucciare e frullare i kiwi maturi; passare al setaccio fine se si vogliono eliminare i semini neri (opzionale, non incide sul bilanciamento).",
+      "Portare acqua e saccarosio a 80 °C mescolando per formare uno sciroppo; aggiungere lo sciroppo di glucosio, mescolare fino a dissoluzione.",
+      "Raffreddare lo sciroppo a temperatura ambiente, poi a +4 °C.",
+      "Unire la purea di kiwi fredda allo sciroppo; aggiungere lo stabilizzante per freddo mescolando bene.",
+      "Maturare in frigorifero per 2-4 ore.",
+      "Mantecare fino a estrazione a −7/−9 °C al cuore.",
+      "Abbattere a −18 °C per almeno 2 ore."
+    ],
+    "notaTecnica": "Il kiwi contiene actinidina, un enzima proteolitico simile alla bromelina dell'ananas — ma trattandosi di un sorbetto puro senza latte, non c'è rischio di cagliatura proteica come nell'Ananas; l'unico effetto possibile è una purea che si fa leggermente più liquida se lasciata cruda a lungo prima della mantecazione, non un problema di bilanciamento. Stesso schema di Limone/Arancia/Melone/Pera."
+  },
+  {
+    "id": "mandarino",
+    "nome": "Sorbetto Mandarino",
+    "categoria": "sorbetto",
+    "payoff": "Mandarino, succo e polpa. Più dolce e meno acidulo del limone.",
+    "ingredienti": [
+      {
+        "id": "mandarino-fresco",
+        "g_per_kg": 390
+      },
+      {
+        "id": "acqua",
+        "g_per_kg": 280
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 120
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 120
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Mandarino (succo e polpa)",
+        "min": 280,
+        "max": 480
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 85,
+        "max": 165
+      },
+      {
+        "nome": "Sciroppo di glucosio 42DE",
+        "min": 80,
+        "max": 170
+      }
+    ],
+    "procedimento": [
+      "Spremitura del succo di mandarino, eventualmente con una piccola quota di polpa passata al setaccio per il corpo; pesare le dosi.",
+      "Portare acqua e saccarosio a 80 °C mescolando per formare uno sciroppo; aggiungere lo sciroppo di glucosio, mescolare fino a dissoluzione.",
+      "Raffreddare lo sciroppo a temperatura ambiente, poi a +4 °C.",
+      "Unire il succo di mandarino freddo allo sciroppo; aggiungere lo stabilizzante per freddo mescolando bene.",
+      "Maturare in frigorifero per 2-4 ore.",
+      "Mantecare fino a estrazione a −7/−9 °C al cuore.",
+      "Abbattere a −18 °C per almeno 2 ore."
+    ],
+    "notaTecnica": "Il mandarino non è presente nella tabella zuccheri/altri solidi di gelato-reference.md §7 — valore stimato da fonti esterne convergenti (10-11g zuccheri/100g), marcato come tale in ingredienti.json. Stesso schema bilanciamento di Limone/Arancia."
+  },
+  {
+    "id": "anguria",
+    "nome": "Sorbetto Anguria",
+    "categoria": "sorbetto",
+    "payoff": "Anguria estiva. Il sorbetto più leggero e acquoso del catalogo.",
+    "ingredienti": [
+      {
+        "id": "anguria-fresca",
+        "g_per_kg": 440
+      },
+      {
+        "id": "acqua",
+        "g_per_kg": 230
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 140
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 135
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Anguria fresca",
+        "min": 320,
+        "max": 540
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 100,
+        "max": 190
+      },
+      {
+        "nome": "Sciroppo di glucosio 42DE",
+        "min": 90,
+        "max": 190
+      }
+    ],
+    "procedimento": [
+      "Pesare tutti gli ingredienti; usare anguria matura, privata dei semi.",
+      "Frullare la polpa di anguria fino a purea omogenea.",
+      "Portare acqua e saccarosio a 80 °C mescolando per formare uno sciroppo; aggiungere lo sciroppo di glucosio, mescolare fino a dissoluzione.",
+      "Raffreddare lo sciroppo a temperatura ambiente, poi a +4 °C.",
+      "Unire la purea di anguria fredda allo sciroppo; aggiungere lo stabilizzante per freddo mescolando bene.",
+      "Maturare in frigorifero per 2-4 ore.",
+      "Mantecare fino a estrazione a −7/−9 °C al cuore.",
+      "Abbattere a −18 °C per almeno 2 ore."
+    ],
+    "notaTecnica": "L'anguria è il frutto con il più basso contenuto di zuccheri naturali del catalogo (6%, contro 9-20% degli altri): la quasi totalità della struttura zuccherina viene dagli zuccheri aggiunti. Stessa cautela del melone su catena del freddo, in assenza di acidità protettiva."
+  },
+  {
+    "id": "pompelmo",
+    "nome": "Sorbetto Pompelmo",
+    "categoria": "sorbetto",
+    "payoff": "Pompelmo rosa, succo e polpa. Amarognolo, deciso, mai banale.",
+    "ingredienti": [
+      {
+        "id": "succo-pompelmo",
+        "g_per_kg": 340
+      },
+      {
+        "id": "acqua",
+        "g_per_kg": 330
+      },
+      {
+        "id": "saccarosio",
+        "g_per_kg": 135
+      },
+      {
+        "id": "glucosio-42de",
+        "g_per_kg": 160
+      },
+      {
+        "id": "stabilizzante",
+        "g_per_kg": 5
+      }
+    ],
+    "ingredientiModificabili": [
+      {
+        "nome": "Succo di pompelmo",
+        "min": 240,
+        "max": 440
+      },
+      {
+        "nome": "Saccarosio",
+        "min": 95,
+        "max": 175
+      },
+      {
+        "nome": "Sciroppo di glucosio 42DE",
+        "min": 110,
+        "max": 220
+      }
+    ],
+    "procedimento": [
+      "Spremitura e filtratura del succo di pompelmo (preferibilmente rosa/rosso, meno amaro del bianco); pesare le dosi.",
+      "Portare acqua e saccarosio a 80 °C mescolando per formare uno sciroppo; aggiungere lo sciroppo di glucosio, mescolare fino a dissoluzione.",
+      "Raffreddare lo sciroppo a temperatura ambiente, poi a +4 °C.",
+      "Unire il succo di pompelmo freddo allo sciroppo; aggiungere lo stabilizzante per freddo mescolando bene.",
+      "Maturare in frigorifero per 2-4 ore.",
+      "Mantecare fino a estrazione a −7/−9 °C al cuore.",
+      "Abbattere a −18 °C per almeno 2 ore."
+    ],
+    "notaTecnica": "Il pompelmo non è presente nella tabella zuccheri/altri solidi di gelato-reference.md §7 — valore stimato da fonti esterne convergenti (~7g zuccheri/100g, fonte USDA/Strongr Fastr/Dietabit), più basso di arancia e mandarino. La varietà rosa/rosso ha naringina in quantità minore della varietà bianca, risultando meno amara — preferibile per un sorbetto equilibrato. Stesso schema di bilanciamento di Limone/Arancia/Mandarino."
   }
 ]
