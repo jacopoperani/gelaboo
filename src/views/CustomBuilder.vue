@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { toast } from 'vue3-toastify'
 import 'vue3-toastify/dist/index.css'
 import { useCalcolatore } from '../composables/useCalcolatore.js'
@@ -106,15 +106,47 @@ function buildFromBase(key) {
   fase.value = 2
 }
 
-function detectBase(testo) {
-  const t = testo.toLowerCase()
-  if (/limone|sorbett|agrumi|arancia|lampone|mora|mirtillo/.test(t)) return 'sorbetto'
-  if (/fragola|mango|frutta|pesca|mela|ciliegia|banana|ananas/.test(t)) return 'frutta'
-  if (/vegano|cocco|avena|mandorla|soia|vegana|vegani/.test(t)) return 'vegano'
-  return 'crema'
+const generando = ref(false)
+const rispostaAI = ref(null)
+
+watch(descrizione, () => { rispostaAI.value = null })
+
+async function generaConAI() {
+  const testo = descrizione.value.trim()
+  if (!testo) {
+    toast.warn('Descrivi il gusto che vuoi creare', { autoClose: 3000 })
+    return
+  }
+
+  generando.value = true
+  rispostaAI.value = null
+
+  try {
+    const res = await fetch('/api/generate-recipe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ descrizione: testo }),
+    })
+    const json = await res.json()
+    if (!res.ok || !json.ok) {
+      toast.error(json.messaggio ?? 'Errore nella generazione della ricetta', { autoClose: 6000 })
+    } else {
+      rispostaAI.value = json
+    }
+  } catch {
+    toast.error('Errore di rete. Controlla la connessione e riprova.', { autoClose: 5000 })
+  } finally {
+    generando.value = false
+  }
 }
 
-function genera() { buildFromBase(detectBase(descrizione.value)) }
+function usaRispostaAI() {
+  if (!rispostaAI.value) return
+  ingredienti.value = rispostaAI.value.ricetta
+  categoria.value = rispostaAI.value.categoria ?? 'crema'
+  fase.value = 2
+}
+
 function iniziaDaZero() { ingredienti.value = []; categoria.value = 'crema'; fase.value = 2 }
 
 function addIngrediente() {
@@ -183,7 +215,7 @@ function onGrammiChange(i, val) {
               id="ai-prompt"
               v-model="descrizione"
               rows="3"
-              placeholder="Es. Un gelato alla fragola con note di vaniglia, non troppo dolce…"
+              placeholder="Es. gelato al Kinder Bueno, oppure: pistacchio e cioccolato bianco"
               class="w-full border border-inchiostro/20 rounded-xl px-4 py-3 text-body text-inchiostro bg-crema resize-none focus:outline-none focus:border-inchiostro transition-colors placeholder:text-inchiostro/30"
             />
             <span
@@ -191,6 +223,7 @@ function onGrammiChange(i, val) {
               style="background: rgba(127,182,158,0.12); color: #7FB69E;"
             >AI</span>
           </div>
+          <p class="text-body-small text-inchiostro/40 mb-6">L'AI sceglie gli ingredienti e propone le grammature di partenza.</p>
 
           <div class="mb-6 w-44">
             <InputNumerico
@@ -205,9 +238,10 @@ function onGrammiChange(i, val) {
 
           <div class="flex items-center gap-4 flex-wrap">
             <button
-              @click="genera"
-              class="bg-inchiostro text-crema rounded-xl px-6 py-3 text-body font-medium hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inchiostro"
-            >Genera con AI</button>
+              @click="generaConAI"
+              :disabled="generando"
+              class="bg-inchiostro text-crema rounded-xl px-6 py-3 text-body font-medium hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inchiostro disabled:opacity-50"
+            >{{ generando ? 'Generazione…' : 'Genera con AI' }}</button>
             <button
               @click="iniziaDaZero"
               class="text-body text-inchiostro/50 hover:text-inchiostro transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inchiostro rounded"
@@ -223,6 +257,17 @@ function onGrammiChange(i, val) {
                 @click="buildFromBase(key)"
                 class="px-4 py-2 border border-inchiostro/20 rounded-xl text-body-small text-inchiostro hover:border-inchiostro/50 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inchiostro"
               >{{ label }}</button>
+
+              <!-- Quinta card: risultato AI -->
+              <button
+                v-if="rispostaAI"
+                @click="usaRispostaAI"
+                class="px-4 py-2 border rounded-xl text-body-small transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                style="border-color: #7FB69E; color: #7FB69E; background: rgba(127,182,158,0.06);"
+              >
+                <span class="mr-1.5 text-ui-label" style="color: #7FB69E;">AI</span>
+                {{ rispostaAI.ricetta.slice(0, 2).map(i => i.nome).join(', ') }}{{ rispostaAI.ricetta.length > 2 ? ` +${rispostaAI.ricetta.length - 2}` : '' }}
+              </button>
             </div>
           </div>
         </div>

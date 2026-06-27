@@ -1,3 +1,5 @@
+import { validaIngredienteAI, notaValidazione } from './lib/validazione.js'
+
 const ALLOWED_ORIGINS = [
   'https://jacopoperani.github.io',
   'http://localhost:5173',
@@ -70,7 +72,12 @@ export default async function handler(req, res) {
     const testo = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? ''
     const parsed = JSON.parse(testo)
 
-    return res.status(200).json(parsed)
+    const { valido, fuoriRange } = validaIngredienteAI(parsed)
+    if (!valido) {
+      return res.status(500).json({ errore: true, messaggio: 'La risposta AI non è nel formato atteso' })
+    }
+
+    return res.status(200).json({ ...parsed, nota: notaValidazione(fuoriRange) })
   } catch (err) {
     console.error('classify error:', err)
     return res.status(500).json({ errore: true, messaggio: 'Errore durante la classificazione' })
