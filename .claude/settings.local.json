@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__claude_ai_Figma__get_metadata",
+      "mcp__claude_ai_Figma__get_design_context",
+      "Bash(npm install *)",
+      "Bash(python3 .claude/skills/ui-ux-pro-max/scripts/search.py \"animation accessibility hover focus\" --domain ux -n 8)",
+      "Bash(python3 .claude/skills/ui-ux-pro-max/scripts/search.py \"composition api pinia router form\" --stack vue)",
+      "Bash(python3 .claude/skills/ui-ux-pro-max/scripts/search.py \"chart ingredient balance radial bar\" --domain chart -n 5)",
+      "Bash(npx vite *)",
+      "mcp__figma__get_metadata",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:5173/)",
+      "Bash(npx playwright *)",
+      "Bash(curl *)",
+      "Bash(pkill -f \"vite --port 5173\")",
+      "Bash(python3 -c ' *)",
+      "Read(//Users/jacopoperani/.cache/**)",
+      "Read(//Users/jacopoperani/Library/Caches/ms-playwright/**)",
+      "Bash(npm list *)",
+      "Read(//Users/jacopoperani/.local/share/pnpm/global/**)",
+      "Bash(npm root *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d['version']\\)\")",
+      "Bash(pkill -f \"vite --port 5174\")",
+      "Bash(node *)",
+      "Bash(python3 *)",
+      "Bash(git *)",
+      "Bash(kill %1)",
+      "Bash(npx vitest *)",
+      "Bash(cp -r /Users/jacopoperani/Desktop/gelaboo/api/lib /Users/jacopoperani/Desktop/gelaboo/server-lib)",
+      "Bash(rm -rf /Users/jacopoperani/Desktop/gelaboo/api/lib)"
+    ]
+  }
+}
