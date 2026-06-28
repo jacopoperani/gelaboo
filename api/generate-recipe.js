@@ -2,6 +2,7 @@ import ingredientiDB from '../src/data/ingredienti.json' with { type: 'json' }
 import { callGemini, promptClassificazioneNutrizionale } from '../server-lib/gemini.js'
 import { validaIngredienteAI, notaValidazione } from '../server-lib/validazione.js'
 import { correggiRicetta } from '../server-lib/correggiRicetta.js'
+import { isModificabile } from '../server-lib/regoleModificabilita.js'
 
 const ALLOWED_ORIGINS = [
   'https://jacopoperani.github.io',
@@ -28,7 +29,8 @@ function promptListaIngredienti(descrizione) {
 
 Proponi una lista di 4-9 nomi di ingredienti adatti a realizzare questo gusto. Rispondi SOLO con un oggetto JSON valido, nessun preambolo, nessun markdown, nessuna spiegazione. Schema esatto:
 {
-  "ingredienti": ["<nome 1>", "<nome 2>", ...]
+  "ingredienti": ["<nome 1>", "<nome 2>", ...],
+  "caratterizzante": "<nome ESATTO di uno degli ingredienti sopra>"
 }
 
 Ingredienti già disponibili nel nostro database (preferisci questi quando sono adatti, usando il nome ESATTO com'è scritto qui):
@@ -40,7 +42,8 @@ Regole:
 - Per i gelati a base latte: includi Latte intero e/o Panna 35%.
 - Per i sorbetti: includi Acqua e nessun derivato del latte.
 - Aggiungi nomi nuovi (non nel database) SOLO se servono a catturare davvero l'essenza del gusto — componenti caratterizzanti non sostituibili (es. "wafer al cacao", "cioccolato al latte") — e scrivili in italiano.
-- Non aggiungere troppi ingredienti: 4-6 è il range ideale per un gelato artigianale ben definito.`
+- Non aggiungere troppi ingredienti: 4-6 è il range ideale per un gelato artigianale ben definito.
+- "caratterizzante": il singolo ingrediente che dà l'identità al gusto (frutta fresca, pasta di frutta secca, succo, caffè, cioccolato, tè matcha, ecc.) — non la base neutra (latte, panna, acqua, zucchero). Deve essere scritto ESATTAMENTE come appare nell'array "ingredienti" sopra, carattere per carattere.`
 }
 
 function promptProcedimento(descrizione, ingredientiConGrammature, categoria) {
@@ -111,6 +114,7 @@ export default async function handler(req, res) {
     if (!Array.isArray(nomiIngredienti) || nomiIngredienti.length === 0) {
       throw new Error('Gemini non ha proposto ingredienti validi')
     }
+    const caratterizzante = typeof proposta.caratterizzante === 'string' ? proposta.caratterizzante.trim() : ''
 
     // 2. Risolvi nutrizione: DB locale oppure AI
     const risolti = []
@@ -154,28 +158,30 @@ export default async function handler(req, res) {
     const somma = voci.reduce((s, i) => s + (i.g_per_kg ?? 0), 0)
     const scala = somma > 0 ? 1000 / somma : 1
 
-    // 5. Componi risposta finale unendo nutrizione + grammature normalizzate
-    const ricetta = voci.map((voce, idx) => {
-      const nutriz = risolti[idx] ?? risolti.find(r => r.nome.toLowerCase() === voce.nome?.toLowerCase()) ?? risolti[idx] ?? {}
-      return {
-        nome:       voce.nome ?? nutriz.nome,
-        g_per_kg:   Math.round((voce.g_per_kg ?? 0) * scala),
-        zuccheri:   nutriz.zuccheri  ?? 0,
-        grassi:     nutriz.grassi    ?? 0,
-        slng:       nutriz.slng      ?? 0,
-        altri:      nutriz.altri     ?? 0,
-        pod:        nutriz.pod       ?? 0,
-        pac:        nutriz.pac       ?? 0,
-        verificato: nutriz.verificato ?? false,
-        nota:       nutriz.nota      ?? null,
-      }
-    })
-
     const categoria = ['crema', 'frutta', 'sorbetto', 'vegano'].includes(grammature.categoria)
       ? grammature.categoria
       : 'crema'
 
-    // 6. Correzione deterministica Gauss-Seidel
+    // 5. Componi risposta finale unendo nutrizione + grammature normalizzate + modificabile
+    const ricetta = voci.map((voce, idx) => {
+      const nutriz = risolti[idx] ?? risolti.find(r => r.nome.toLowerCase() === voce.nome?.toLowerCase()) ?? {}
+      const nome = voce.nome ?? nutriz.nome
+      return {
+        nome,
+        g_per_kg:     Math.round((voce.g_per_kg ?? 0) * scala),
+        zuccheri:     nutriz.zuccheri  ?? 0,
+        grassi:       nutriz.grassi    ?? 0,
+        slng:         nutriz.slng      ?? 0,
+        altri:        nutriz.altri     ?? 0,
+        pod:          nutriz.pod       ?? 0,
+        pac:          nutriz.pac       ?? 0,
+        verificato:   nutriz.verificato ?? false,
+        nota:         nutriz.nota      ?? null,
+        modificabile: isModificabile(nome, categoria, caratterizzante),
+      }
+    })
+
+    // 6. Correzione deterministica Gauss-Seidel (usa ingrediente.modificabile già calcolato)
     const correzione = correggiRicetta(ricetta, categoria)
     const ricettaCorretta = correzione.ingredienti
     const bilanciamentoCorretto = correzione.bilanciamentoCorretto

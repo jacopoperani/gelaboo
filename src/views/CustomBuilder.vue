@@ -20,10 +20,8 @@ const notaTecnica   = ref(null)
 const nomeGenerato  = ref('')   // descrizione snapshot al momento della generazione
 const generando     = ref(false)
 
-// Ingredienti fissi (no slider): Stabilizzante e Inulina
-function isIngredienteFisso(nome) {
-  const n = nome.toLowerCase().trim()
-  return n === 'stabilizzante' || n === 'inulina'
+function isModificabile(ing) {
+  return ing.modificabile === true  // default false se campo assente (retrocompatibilità)
 }
 
 // Slider overrides: { [nomeIngrediente]: g_per_kg }
@@ -79,11 +77,10 @@ const fasceCorrette = computed(() => {
   const cat = categoria.value
   const out = {}
   for (const i of ing) {
-    if (isIngredienteFisso(i.nome)) continue
+    if (!isModificabile(i)) continue
     const idx = ing.findIndex(x => x.nome === i.nome)
-    const absMin = 0
-    const absMax = i.g_per_kg * 3 // range ragionevole: 3× il valore corrente
-    out[i.nome] = fasciaCorretta(idx, ing, cat, absMin, absMax)
+    const absMax = i.g_per_kg * 3
+    out[i.nome] = fasciaCorretta(idx, ing, cat, 0, absMax)
   }
   return out
 })
@@ -211,7 +208,7 @@ async function generaConAI() {
               <p class="text-ui-label text-inchiostro/40">REGOLA PROPORZIONI</p>
               <template v-for="ing in ingredienti" :key="ing.nome">
                 <SliderIngrediente
-                  v-if="!isIngredienteFisso(ing.nome)"
+                  v-if="isModificabile(ing)"
                   :label="ing.nome"
                   :min="0"
                   :max="Math.round(ing.g_per_kg * 3 * factor)"

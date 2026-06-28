@@ -63,11 +63,6 @@ function fasciaCorretta(ingIdx, ingredienti, categoria, absMin, absMax, eccezion
   return lo > hi + eps ? null : { lo, hi }
 }
 
-function isFisso(nome) {
-  const n = nome.toLowerCase().trim()
-  return n === 'stabilizzante' || n === 'inulina'
-}
-
 function tuttiDentroRange(ingredienti, categoria) {
   const b = bilanciaRicetta(ingredienti, 1, categoria)
   const t = THRESHOLDS[getCat(categoria)] ?? THRESHOLDS.crema
@@ -91,8 +86,9 @@ function tuttiDentroRange(ingredienti, categoria) {
 export function correggiRicetta(ingredienti, categoria) {
   // Deep copy per non mutare l'array originale
   const ing = ingredienti.map(i => ({ ...i }))
-  const modificabili = ing.map((i, idx) => ({ idx, fisso: isFisso(i.nome) }))
-    .filter(x => !x.fisso)
+  const modificabili = ing
+    .map((i, idx) => ({ idx, mod: i.modificabile === true }))
+    .filter(x => x.mod)
     .map(x => x.idx)
 
   const MAX_CICLI   = 25
