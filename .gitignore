@@ -11,3 +11,4 @@ test-results/
 .vercel
 .env*
 !.env.production
+.claude/settings.local.json
