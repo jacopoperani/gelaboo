@@ -80,7 +80,7 @@ export async function classificaIngrediente(nome) {
 
   // 2. Chiamata proxy
   try {
-    const res = await fetch('/api/classify', {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL || ''}/api/classify`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ nome }),

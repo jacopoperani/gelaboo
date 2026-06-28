@@ -10,3 +10,4 @@ __pycache__/
 test-results/
 .vercel
 .env*
+!.env.production

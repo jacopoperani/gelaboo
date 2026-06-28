@@ -111,7 +111,7 @@ async function generaConAI() {
   generando.value = true
 
   try {
-    const res  = await fetch('/api/generate-recipe', {
+    const res  = await fetch(`${import.meta.env.VITE_API_BASE_URL || ''}/api/generate-recipe`, {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify({ descrizione: testo }),
