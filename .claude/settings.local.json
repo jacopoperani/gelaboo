@@ -26,7 +26,9 @@
       "Bash(python3 *)",
       "Bash(git *)",
       "Bash(kill %1)",
-      "Bash(npx vitest *)"
+      "Bash(npx vitest *)",
+      "Bash(cp -r /Users/jacopoperani/Desktop/gelaboo/api/lib /Users/jacopoperani/Desktop/gelaboo/server-lib)",
+      "Bash(rm -rf /Users/jacopoperani/Desktop/gelaboo/api/lib)"
     ]
   }
 }

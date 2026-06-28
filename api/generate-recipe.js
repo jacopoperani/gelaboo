@@ -1,6 +1,6 @@
 import ingredientiDB from '../src/data/ingredienti.json' assert { type: 'json' }
-import { callGemini, promptClassificazioneNutrizionale } from './lib/gemini.js'
-import { validaIngredienteAI, notaValidazione } from './lib/validazione.js'
+import { callGemini, promptClassificazioneNutrizionale } from '../server-lib/gemini.js'
+import { validaIngredienteAI, notaValidazione } from '../server-lib/validazione.js'
 
 const ALLOWED_ORIGINS = [
   'https://jacopoperani.github.io',

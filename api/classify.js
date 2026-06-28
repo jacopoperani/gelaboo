@@ -1,4 +1,4 @@
-import { validaIngredienteAI, notaValidazione } from './lib/validazione.js'
+import { validaIngredienteAI, notaValidazione } from '../server-lib/validazione.js'
 
 const ALLOWED_ORIGINS = [
   'https://jacopoperani.github.io',
