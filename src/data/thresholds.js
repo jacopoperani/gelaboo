@@ -1,0 +1,35 @@
+export const THRESHOLDS = {
+  crema: {
+    zuccheri: { lo_acc: 13,   lo_ott: 16,   hi_ott: 22,   hi_acc: 27 },
+    grassi:   { lo_acc: 4,    lo_ott: 6,    hi_ott: 10,   hi_acc: 12 },
+    slng:     { lo_acc: 6,    lo_ott: 8,    hi_ott: 11,   hi_acc: 12 },
+    solidi:   { lo_acc: 33,   lo_ott: 36,   hi_ott: 42,   hi_acc: 44 },
+    pod:      { lo_acc: 11,   lo_ott: 13,   hi_ott: 17.5, hi_acc: 19.5 },
+    pac:      { lo_acc: 18,   lo_ott: 22,   hi_ott: 27,   hi_acc: 30 },
+  },
+  frutta: {
+    zuccheri: { lo_acc: 19,   lo_ott: 22,   hi_ott: 26,   hi_acc: 27 },
+    grassi:   { lo_acc: 0,    lo_ott: 0,    hi_ott: 3,    hi_acc: 5 },
+    slng:     { lo_acc: 2,    lo_ott: 4,    hi_ott: 7,    hi_acc: 8 },
+    solidi:   { lo_acc: 27,   lo_ott: 30,   hi_ott: 36,   hi_acc: 38 },
+    pod:      { lo_acc: 11,   lo_ott: 13,   hi_ott: 17.5, hi_acc: 19.5 },
+    pac:      { lo_acc: 18,   lo_ott: 22,   hi_ott: 27,   hi_acc: 30 },
+  },
+  sorbetto: {
+    zuccheri: { lo_acc: 19,   lo_ott: 22,   hi_ott: 28,   hi_acc: 30 },
+    grassi:   { lo_acc: 0,    lo_ott: 0,    hi_ott: 0.5,  hi_acc: 2 },
+    slng:     null,
+    solidi:   { lo_acc: 25,   lo_ott: 28,   hi_ott: 32,   hi_acc: 34 },
+    pod:      { lo_acc: 18,   lo_ott: 20,   hi_ott: 23.5, hi_acc: 26 },
+    pac:      { lo_acc: 25,   lo_ott: 27.5, hi_ott: 34,   hi_acc: 37.5 },
+  },
+  vegano: {
+    zuccheri: { lo_acc: 13,   lo_ott: 16,   hi_ott: 20,   hi_acc: 22 },
+    grassi:   { lo_acc: 3,    lo_ott: 5,    hi_ott: 10,   hi_acc: 12 },
+    slng:     null,
+    altri:    { lo_acc: 7,    lo_ott: 7,    hi_ott: 17,   hi_acc: 17 },
+    solidi:   { lo_acc: 28,   lo_ott: 32,   hi_ott: 38,   hi_acc: 40 },
+    pod:      { lo_acc: 11,   lo_ott: 13,   hi_ott: 17.5, hi_acc: 19.5 },
+    pac:      { lo_acc: 18,   lo_ott: 22,   hi_ott: 27,   hi_acc: 30 },
+  },
+}

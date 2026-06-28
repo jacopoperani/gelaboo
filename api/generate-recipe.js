@@ -1,6 +1,7 @@
 import ingredientiDB from '../src/data/ingredienti.json' with { type: 'json' }
 import { callGemini, promptClassificazioneNutrizionale } from '../server-lib/gemini.js'
 import { validaIngredienteAI, notaValidazione } from '../server-lib/validazione.js'
+import { correggiRicetta } from '../server-lib/correggiRicetta.js'
 
 const ALLOWED_ORIGINS = [
   'https://jacopoperani.github.io',
@@ -174,11 +175,17 @@ export default async function handler(req, res) {
       ? grammature.categoria
       : 'crema'
 
-    // 6. Genera procedimento (fallback silenzioso se Gemini fallisce)
+    // 6. Correzione deterministica Gauss-Seidel
+    const correzione = correggiRicetta(ricetta, categoria)
+    const ricettaCorretta = correzione.ingredienti
+    const bilanciamentoCorretto = correzione.bilanciamentoCorretto
+    console.log(`correggiRicetta: ${correzione.cicliUsati} cicli, corretto=${bilanciamentoCorretto}`)
+
+    // 7. Genera procedimento (fallback silenzioso se Gemini fallisce)
     let procedimento = []
     let notaTecnica
     try {
-      const proc = await callGemini(promptProcedimento(descrizione.trim(), ricetta, categoria))
+      const proc = await callGemini(promptProcedimento(descrizione.trim(), ricettaCorretta, categoria))
       if (Array.isArray(proc.procedimento) && proc.procedimento.length > 0) {
         procedimento = proc.procedimento
       }
@@ -189,7 +196,7 @@ export default async function handler(req, res) {
       console.error('generate-recipe procedimento error (non-fatal):', procErr)
     }
 
-    return res.status(200).json({ ok: true, ricetta, categoria, procedimento, ...(notaTecnica ? { notaTecnica } : {}) })
+    return res.status(200).json({ ok: true, ricetta: ricettaCorretta, categoria, procedimento, bilanciamentoCorretto, ...(notaTecnica ? { notaTecnica } : {}) })
   } catch (err) {
     console.error('generate-recipe error:', err)
     return res.status(500).json({ ok: false, messaggio: 'Errore durante la generazione della ricetta' })
