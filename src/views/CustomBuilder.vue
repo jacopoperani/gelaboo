@@ -79,8 +79,9 @@ const fasceCorrette = computed(() => {
   for (const i of ing) {
     if (!isModificabile(i)) continue
     const idx = ing.findIndex(x => x.nome === i.nome)
-    const absMax = i.g_per_kg * 3
-    out[i.nome] = fasciaCorretta(idx, ing, cat, 0, absMax)
+    const absMin = Math.max(0, Math.round(i.g_per_kg * 0.5))
+    const absMax = Math.round(i.g_per_kg * 1.5)
+    out[i.nome] = fasciaCorretta(idx, ing, cat, absMin, absMax)
   }
   return out
 })
@@ -210,8 +211,8 @@ async function generaConAI() {
                 <SliderIngrediente
                   v-if="isModificabile(ing)"
                   :label="ing.nome"
-                  :min="0"
-                  :max="Math.round(ing.g_per_kg * 3 * factor)"
+                  :min="Math.round(Math.max(0, ing.g_per_kg * 0.5) * factor)"
+                  :max="Math.round(ing.g_per_kg * 1.5 * factor)"
                   :model-value="sliderVal(ing.nome)"
                   :fascia-lo="fasceCorrette[ing.nome] ? Math.round(fasceCorrette[ing.nome].lo * factor) : null"
                   :fascia-hi="fasceCorrette[ing.nome] ? Math.round(fasceCorrette[ing.nome].hi * factor) : null"

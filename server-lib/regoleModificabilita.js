@@ -17,3 +17,8 @@ export function isModificabile(nome, categoria, nomeCaratterizzante) {
 
   return false
 }
+
+export function isCorreggibile(nome) {
+  const n = nome.toLowerCase().trim()
+  return n !== 'stabilizzante' && n !== 'inulina'
+}

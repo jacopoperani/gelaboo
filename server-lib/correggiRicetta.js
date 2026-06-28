@@ -1,5 +1,6 @@
 import { bilanciaRicetta, classificaValore } from '../src/utils/calculator.js'
 import { THRESHOLDS } from '../src/data/thresholds.js'
+import { isCorreggibile } from './regoleModificabilita.js'
 
 function getCat(categoria) {
   return (typeof categoria === 'string' ? categoria : 'crema')
@@ -87,8 +88,8 @@ export function correggiRicetta(ingredienti, categoria) {
   // Deep copy per non mutare l'array originale
   const ing = ingredienti.map(i => ({ ...i }))
   const modificabili = ing
-    .map((i, idx) => ({ idx, mod: i.modificabile === true }))
-    .filter(x => x.mod)
+    .map((i, idx) => ({ idx, correggibile: isCorreggibile(i.nome) }))
+    .filter(x => x.correggibile)
     .map(x => x.idx)
 
   const MAX_CICLI   = 25
