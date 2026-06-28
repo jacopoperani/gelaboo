@@ -1,4 +1,4 @@
-import ingredientiDB from '../src/data/ingredienti.json' assert { type: 'json' }
+import ingredientiDB from '../src/data/ingredienti.json' with { type: 'json' }
 import { callGemini, promptClassificazioneNutrizionale } from '../server-lib/gemini.js'
 import { validaIngredienteAI, notaValidazione } from '../server-lib/validazione.js'
 
