@@ -42,6 +42,28 @@ Regole:
 - Non aggiungere troppi ingredienti: 4-6 è il range ideale per un gelato artigianale ben definito.`
 }
 
+function promptProcedimento(descrizione, ingredientiConGrammature, categoria) {
+  const lista = ingredientiConGrammature
+    .map(i => `- ${i.nome}: ${i.g_per_kg} g/kg`)
+    .join('\n')
+
+  return `Sei un esperto di gelateria artigianale italiana. Scrivi il procedimento di preparazione per un gelato artigianale "${descrizione}" (categoria: ${categoria}) con questi ingredienti e grammature:
+
+${lista}
+
+Rispondi SOLO con un oggetto JSON valido, nessun preambolo, nessun markdown, nessuna spiegazione. Schema esatto:
+{
+  "procedimento": ["<step 1>", "<step 2>", ...],
+  "notaTecnica": "<stringa breve opzionale>"
+}
+
+Regole:
+- Da 4 a 8 passaggi, frasi brevi e dirette (es. "Pesare tutti gli ingredienti.", "Pastorizzare a 85 °C per 15 secondi.").
+- Solo passaggi pratici fisici di preparazione: pesatura, miscelazione, pastorizzazione, maturazione, mantecazione, abbattimento. Nessun calcolo, nessun riferimento a percentuali, POD o PAC.
+- notaTecnica: una frase breve su una caratteristica tecnica rilevante dell'ingrediente caratterizzante o del processo (es. "La pasta di pistacchio pura garantisce un colore naturale e un aroma intenso senza coloranti."). Ometti il campo (non includerlo nel JSON) se non hai nulla di utile da dire — non forzare una nota generica.
+- Italiano professionale ma diretto, stile manuale di gelateria.`
+}
+
 function promptGrammature(ingredientiConNutrizione) {
   const lista = ingredientiConNutrizione
     .map(i => `- ${i.nome} (zuccheri ${i.zuccheri}%, grassi ${i.grassi}%, slng ${i.slng}%, altri ${i.altri}%)`)
@@ -152,7 +174,22 @@ export default async function handler(req, res) {
       ? grammature.categoria
       : 'crema'
 
-    return res.status(200).json({ ok: true, ricetta, categoria })
+    // 6. Genera procedimento (fallback silenzioso se Gemini fallisce)
+    let procedimento = []
+    let notaTecnica
+    try {
+      const proc = await callGemini(promptProcedimento(descrizione.trim(), ricetta, categoria))
+      if (Array.isArray(proc.procedimento) && proc.procedimento.length > 0) {
+        procedimento = proc.procedimento
+      }
+      if (typeof proc.notaTecnica === 'string' && proc.notaTecnica.trim().length > 0) {
+        notaTecnica = proc.notaTecnica.trim()
+      }
+    } catch (procErr) {
+      console.error('generate-recipe procedimento error (non-fatal):', procErr)
+    }
+
+    return res.status(200).json({ ok: true, ricetta, categoria, procedimento, ...(notaTecnica ? { notaTecnica } : {}) })
   } catch (err) {
     console.error('generate-recipe error:', err)
     return res.status(500).json({ ok: false, messaggio: 'Errore durante la generazione della ricetta' })

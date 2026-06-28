@@ -10,6 +10,8 @@ import BadgeCategoria from '../components/BadgeCategoria.vue'
 import LikeButton from '../components/LikeButton.vue'
 import InputNumerico from '../components/InputNumerico.vue'
 import SliderIngrediente from '../components/SliderIngrediente.vue'
+import PannelloBilanciamento from '../components/PannelloBilanciamento.vue'
+import Procedimento from '../components/Procedimento.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -75,13 +77,6 @@ const fasceCorrette = computed(() => {
   }
   return out
 })
-
-// Status dot color class
-function statoColor(stato) {
-  if (stato === 'sballato')   return '#c84b4b'  // ciliegia
-  if (stato === 'attenzione') return '#e8954a'  // mandarino
-  return '#5f7a4e'                               // pistacchio
-}
 
 // Metrics for the 2×2 grid
 const metricheGrid = computed(() => [
@@ -184,96 +179,18 @@ const metricheRiga = computed(() => [
         </div>
 
         <!-- Bilanciamento -->
-        <div class="border border-inchiostro/15 rounded-2xl p-6">
-          <h2 class="text-h2 text-inchiostro mb-5">Bilanciamento</h2>
-
-          <!-- Warnings -->
-          <div v-if="warnings.length" class="mb-5 space-y-2">
-            <div
-              v-for="w in warnings"
-              :key="w.campo"
-              class="flex items-start gap-2 text-body-small text-inchiostro/80 bg-mandarino/15 rounded-xl px-3 py-2.5"
-              role="alert"
-            >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="mt-0.5 shrink-0" aria-hidden="true">
-                <path d="M7 1.5L12.5 11H1.5L7 1.5Z" stroke="#E8954A" stroke-width="1.4" stroke-linejoin="round"/>
-                <path d="M7 5.5v2.5" stroke="#E8954A" stroke-width="1.4" stroke-linecap="round"/>
-                <circle cx="7" cy="9.5" r="0.65" fill="#E8954A"/>
-              </svg>
-              {{ w.msg }}
-            </div>
-          </div>
-
-          <!-- 2×2 grid metrics con stato -->
-          <div class="grid grid-cols-2 gap-4 mb-5">
-            <div v-for="m in metricheGrid" :key="m.label" class="relative">
-              <div class="flex items-center gap-1.5 mb-1">
-                <span
-                  v-if="m.stato"
-                  class="inline-block w-2 h-2 rounded-full shrink-0"
-                  :style="{ background: statoColor(m.stato) }"
-                  :aria-label="m.stato"
-                ></span>
-                <p class="text-ui-label text-inchiostro/50">{{ m.label }}</p>
-              </div>
-              <p class="text-data-large text-inchiostro" style="font-variant-numeric: tabular-nums;">
-                {{ m.value }}<span class="text-h3 text-inchiostro/50">{{ m.unita }}</span>
-              </p>
-            </div>
-          </div>
-
-          <!-- Summary row -->
-          <div class="border-t border-inchiostro/10 pt-4 space-y-3">
-            <div
-              v-for="m in metricheRiga"
-              :key="m.label"
-              class="flex justify-between items-center"
-            >
-              <div class="flex items-center gap-1.5">
-                <span
-                  v-if="m.stato"
-                  class="inline-block w-2 h-2 rounded-full shrink-0"
-                  :style="{ background: statoColor(m.stato) }"
-                  :aria-label="m.stato"
-                ></span>
-                <span class="text-ui-label text-inchiostro/50">{{ m.label }}</span>
-              </div>
-              <span class="text-data text-inchiostro font-semibold" style="font-variant-numeric: tabular-nums;">
-                {{ m.value }}{{ m.unita }}
-              </span>
-            </div>
-          </div>
-        </div>
+        <PannelloBilanciamento
+          :warnings="warnings"
+          :metriche-grid="metricheGrid"
+          :metriche-riga="metricheRiga"
+        />
       </div>
 
       <!-- Procedimento + nota tecnica -->
-      <div class="border border-inchiostro/15 rounded-2xl p-6 lg:p-8">
-
-        <!-- Nota tecnica -->
-        <p
-          v-if="ricetta.notaTecnica"
-          class="text-body-small text-inchiostro/55 italic mb-6 leading-relaxed"
-          style="font-family: Inter, sans-serif;"
-        >
-          {{ ricetta.notaTecnica }}
-        </p>
-
-        <h2 class="text-h2 text-inchiostro mb-5">Procedimento</h2>
-
-        <ol class="space-y-4" v-if="ricetta.procedimento?.length">
-          <li
-            v-for="(step, i) in ricetta.procedimento"
-            :key="i"
-            class="flex gap-4"
-          >
-            <span
-              class="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-crema text-ui-label"
-              style="background: #3a2317; font-size: 11px; font-weight: 600; margin-top: 1px;"
-            >{{ i + 1 }}</span>
-            <p class="text-body text-inchiostro/80 leading-relaxed">{{ step }}</p>
-          </li>
-        </ol>
-      </div>
+      <Procedimento
+        :procedimento="ricetta.procedimento"
+        :nota-tecnica="ricetta.notaTecnica"
+      />
 
     </div>
 
