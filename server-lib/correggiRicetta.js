@@ -107,9 +107,11 @@ export function correggiRicetta(ingredienti, categoria) {
 
       const corrente = ing[idx].g_per_kg
       let nuovo = corrente
-      if (corrente < fascia.lo) nuovo = fascia.lo
-      else if (corrente > fascia.hi) nuovo = fascia.hi
+      const margine = (fascia.hi - fascia.lo) * 0.05
+      if (corrente < fascia.lo) nuovo = fascia.lo + margine
+      else if (corrente > fascia.hi) nuovo = fascia.hi - margine
 
+      // Valori decimali durante i cicli — Math.round solo alla fine
       ing[idx] = { ...ing[idx], g_per_kg: nuovo }
       maxDelta = Math.max(maxDelta, Math.abs(nuovo - corrente))
     }
@@ -117,7 +119,7 @@ export function correggiRicetta(ingredienti, categoria) {
     if (maxDelta < CONVERGENZA) break
   }
 
-  // Riscala proporzionalmente a 1000 (non altera le percentuali di bilancio)
+  // Riscala proporzionalmente a 1000, poi arrotonda una sola volta
   const somma = ing.reduce((s, i) => s + i.g_per_kg, 0)
   if (somma > 0) {
     const scala = 1000 / somma
