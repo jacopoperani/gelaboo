@@ -91,7 +91,7 @@ const metricheGrid = computed(() => [
   { label: 'ZUCCHERI',     value: bilancio.value.zuccheri,    unita: '%', stato: stati.value.zuccheri },
   { label: 'GRASSI',       value: bilancio.value.grassi,      unita: '%', stato: stati.value.grassi },
   { label: 'SLNG',         value: bilancio.value.slng,        unita: '%', stato: stati.value.slng },
-  { label: 'ALTRI SOLIDI', value: bilancio.value.altriSolidi, unita: '%', stato: null },
+  { label: 'ALTRI SOLIDI', value: bilancio.value.altriSolidi, unita: '%', stato: stati.value.altriSolidi },
 ])
 const metricheRiga = computed(() => [
   { label: 'SOLIDI TOTALI', value: bilancio.value.solidiTotali, unita: '%', stato: stati.value.solidiTotali },
@@ -136,24 +136,24 @@ async function generaConAI() {
 </script>
 
 <template>
-  <section class="min-h-screen bg-crema px-6 pt-24 pb-16" style="font-family: Inter, sans-serif;">
+  <section class="min-h-screen bg-perla px-6 pt-24 pb-16">
     <div class="max-w-5xl mx-auto">
 
       <!-- Header + form -->
-      <h1 class="text-h1 text-inchiostro mb-2">Crea il tuo gusto</h1>
-      <p class="text-body text-inchiostro/60 mb-10">
+      <h1 class="text-h1 text-notte mb-2">Crea il tuo gusto</h1>
+      <p class="text-body text-notte/60 mb-10">
         Descrivi il gusto che vuoi creare — genera una base di partenza da modificare.
       </p>
 
       <div class="max-w-xl mb-10">
-        <label for="ai-prompt" class="text-ui-label text-inchiostro/50 mb-2 block">DESCRIVI IL GUSTO</label>
+        <label for="ai-prompt" class="text-ui-label text-notte/50 mb-2 block">DESCRIVI IL GUSTO</label>
         <div class="relative mb-4">
           <textarea
             id="ai-prompt"
             v-model="descrizione"
             rows="3"
             placeholder="es. gelato al Kinder Bueno, oppure: pistacchio e cioccolato bianco"
-            class="w-full border border-inchiostro/20 rounded-xl px-4 py-3 text-body text-inchiostro bg-crema resize-none focus:outline-none focus:border-inchiostro transition-colors placeholder:text-inchiostro/30"
+            class="w-full border border-notte/20 rounded-xl px-4 py-3 text-body text-notte bg-perla resize-none focus:outline-none focus:border-notte transition-colors placeholder:text-notte/30"
           />
           <span
             class="absolute top-3 right-3 text-ui-label px-2 py-0.5 rounded-full select-none"
@@ -175,38 +175,38 @@ async function generaConAI() {
         <button
           @click="generaConAI"
           :disabled="generando"
-          class="bg-inchiostro text-crema rounded-xl px-6 py-3 text-body font-medium hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inchiostro disabled:opacity-50"
+          class="bg-notte text-perla rounded-xl px-6 py-3 text-body font-medium hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte disabled:opacity-50"
         >{{ generando ? 'Generazione…' : 'Genera con AI' }}</button>
       </div>
 
       <!-- Editor: appare solo dopo generazione riuscita -->
       <div v-if="mostraEditor">
 
-        <h2 class="text-h1 text-inchiostro mb-8">{{ titolo }}</h2>
+        <h2 class="text-h1 text-notte mb-8">{{ titolo }}</h2>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
 
           <!-- Ingredienti -->
-          <div class="border border-inchiostro/15 rounded-2xl p-6">
-            <h2 class="text-h2 text-inchiostro mb-5">Ingredienti</h2>
+          <div class="border border-notte/15 rounded-2xl p-6">
+            <h2 class="text-h2 text-notte mb-5">Ingredienti</h2>
 
             <!-- Lista con grammi scalati per quantitaKg -->
-            <div class="divide-y divide-inchiostro/8 mb-6">
+            <div class="divide-y divide-notte/8 mb-6">
               <div
                 v-for="ing in bilancio.ingredientiScalati"
                 :key="ing.nome"
                 class="flex items-baseline justify-between py-3"
               >
-                <span class="text-body text-inchiostro">{{ ing.nome }}</span>
-                <span class="text-data text-inchiostro tabular-nums shrink-0 ml-4" style="font-variant-numeric: tabular-nums;">
-                  {{ ing.g_assoluti }}<span class="text-body-small text-inchiostro/50 ml-0.5">g</span>
+                <span class="text-body text-notte">{{ ing.nome }}</span>
+                <span class="text-data text-notte tabular-nums shrink-0 ml-4" style="font-variant-numeric: tabular-nums;">
+                  {{ ing.g_assoluti }}<span class="text-body-small text-notte/50 ml-0.5">g</span>
                 </span>
               </div>
             </div>
 
             <!-- Slider per ingredienti modificabili -->
-            <div class="border-t border-inchiostro/10 pt-5 space-y-5">
-              <p class="text-ui-label text-inchiostro/40">REGOLA PROPORZIONI</p>
+            <div class="border-t border-notte/10 pt-5 space-y-5">
+              <p class="text-ui-label text-notte/40">REGOLA PROPORZIONI</p>
               <template v-for="ing in ingredienti" :key="ing.nome">
                 <SliderIngrediente
                   v-if="isModificabile(ing)"
@@ -240,10 +240,10 @@ async function generaConAI() {
         <div class="flex items-center gap-4 mt-6">
           <button
             @click="userStore.isLoggedIn ? undefined : userStore.openAuthModal()"
-            class="bg-inchiostro text-crema rounded-xl px-6 py-3 text-body font-medium hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inchiostro"
+            class="bg-notte text-perla rounded-xl px-6 py-3 text-body font-medium hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte"
             :aria-label="userStore.isLoggedIn ? 'Salva ricetta' : 'Accedi per salvare la ricetta'"
           >Salva ricetta</button>
-          <span v-if="!userStore.isLoggedIn" class="text-body-small text-inchiostro/40">
+          <span v-if="!userStore.isLoggedIn" class="text-body-small text-notte/40">
             Richiede accesso
           </span>
         </div>

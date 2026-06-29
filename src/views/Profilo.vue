@@ -15,7 +15,7 @@ const ricetteLiked = computed(() =>
 </script>
 
 <template>
-  <section class="min-h-screen bg-crema px-6 pt-24 pb-16" style="font-family: Inter, sans-serif;">
+  <section class="min-h-screen bg-perla px-6 pt-24 pb-16">
     <div class="max-w-4xl mx-auto">
 
       <!-- Non loggato -->
@@ -23,13 +23,13 @@ const ricetteLiked = computed(() =>
         v-if="!userStore.isLoggedIn"
         class="flex flex-col items-center justify-center min-h-[60vh] gap-6 text-center"
       >
-        <h1 class="text-h1 text-inchiostro">Il tuo profilo</h1>
-        <p class="text-body text-inchiostro/60 max-w-xs">
+        <h1 class="text-h1 text-notte">Il tuo profilo</h1>
+        <p class="text-body text-notte/60 max-w-xs">
           Accedi per salvare ricette personalizzate e tenere traccia dei tuoi gusti preferiti.
         </p>
         <button
           @click="userStore.openAuthModal()"
-          class="bg-inchiostro text-crema rounded-xl px-6 py-3 text-body font-medium hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inchiostro"
+          class="bg-notte text-perla rounded-xl px-6 py-3 text-body font-medium hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte"
         >Accedi con Google</button>
       </div>
 
@@ -37,29 +37,29 @@ const ricetteLiked = computed(() =>
       <template v-else>
         <div class="flex items-center gap-4 mb-10">
           <div
-            class="w-12 h-12 rounded-full bg-inchiostro text-crema flex items-center justify-center text-h3 font-semibold select-none shrink-0"
+            class="w-12 h-12 rounded-full bg-notte text-perla flex items-center justify-center text-h3 font-semibold select-none shrink-0"
             aria-hidden="true"
           >{{ userStore.user.displayName?.charAt(0)?.toUpperCase() ?? 'U' }}</div>
           <div class="flex-1 min-w-0">
-            <h1 class="text-h2 text-inchiostro truncate">{{ userStore.user.displayName }}</h1>
-            <p class="text-body-small text-inchiostro/50 truncate">{{ userStore.user.email }}</p>
+            <h1 class="text-h2 text-notte truncate">{{ userStore.user.displayName }}</h1>
+            <p class="text-body-small text-notte/50 truncate">{{ userStore.user.email }}</p>
           </div>
           <button
             @click="userStore.logout()"
-            class="text-body-small text-inchiostro/50 hover:text-inchiostro transition-colors shrink-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inchiostro rounded"
+            class="text-body-small text-notte/50 hover:text-notte transition-colors shrink-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte rounded"
           >Esci</button>
         </div>
 
         <!-- Tab bar -->
-        <div class="flex border-b border-inchiostro/10 mb-8" role="tablist">
+        <div class="flex border-b border-notte/10 mb-8" role="tablist">
           <button
             role="tab"
             :aria-selected="tabAttiva === 'preferiti'"
             @click="tabAttiva = 'preferiti'"
             class="px-4 py-2.5 text-ui-label transition-colors border-b-2 -mb-px"
             :class="tabAttiva === 'preferiti'
-              ? 'border-inchiostro text-inchiostro'
-              : 'border-transparent text-inchiostro/40 hover:text-inchiostro/70'"
+              ? 'border-notte text-notte'
+              : 'border-transparent text-notte/40 hover:text-notte/70'"
           >Preferiti ({{ userStore.likes.length }})</button>
           <button
             role="tab"
@@ -67,8 +67,8 @@ const ricetteLiked = computed(() =>
             @click="tabAttiva = 'salvate'"
             class="px-4 py-2.5 text-ui-label transition-colors border-b-2 -mb-px"
             :class="tabAttiva === 'salvate'
-              ? 'border-inchiostro text-inchiostro'
-              : 'border-transparent text-inchiostro/40 hover:text-inchiostro/70'"
+              ? 'border-notte text-notte'
+              : 'border-transparent text-notte/40 hover:text-notte/70'"
           >Ricette salvate</button>
         </div>
 
@@ -76,12 +76,12 @@ const ricetteLiked = computed(() =>
         <div v-if="tabAttiva === 'preferiti'" role="tabpanel">
           <p
             v-if="ricetteLiked.length === 0"
-            class="text-body text-inchiostro/50 py-8 text-center"
+            class="text-body text-notte/50 py-8 text-center"
           >
             Nessun preferito ancora.<br>
             <RouterLink
               to="/ricette"
-              class="text-inchiostro underline hover:opacity-70 transition-opacity"
+              class="text-notte underline hover:opacity-70 transition-opacity"
             >Esplora i gusti</RouterLink> e aggiungi i tuoi.
           </p>
           <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -95,11 +95,11 @@ const ricetteLiked = computed(() =>
 
         <!-- Tab: Salvate -->
         <div v-else role="tabpanel">
-          <p class="text-body text-inchiostro/50 py-8 text-center">
+          <p class="text-body text-notte/50 py-8 text-center">
             Nessuna ricetta salvata.<br>
             <RouterLink
               to="/crea"
-              class="text-inchiostro underline hover:opacity-70 transition-opacity"
+              class="text-notte underline hover:opacity-70 transition-opacity"
             >Crea il tuo gusto</RouterLink> e salvalo qui.
           </p>
         </div>

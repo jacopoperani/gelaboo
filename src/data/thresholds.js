@@ -3,6 +3,7 @@ export const THRESHOLDS = {
     zuccheri: { lo_acc: 13,   lo_ott: 16,   hi_ott: 22,   hi_acc: 27 },
     grassi:   { lo_acc: 4,    lo_ott: 6,    hi_ott: 10,   hi_acc: 12 },
     slng:     { lo_acc: 6,    lo_ott: 8,    hi_ott: 11,   hi_acc: 12 },
+    altri:    { lo_acc: 0,    lo_ott: 0,    hi_ott: 5,    hi_acc: 5  },
     solidi:   { lo_acc: 33,   lo_ott: 36,   hi_ott: 42,   hi_acc: 44 },
     pod:      { lo_acc: 11,   lo_ott: 13,   hi_ott: 17.5, hi_acc: 19.5 },
     pac:      { lo_acc: 18,   lo_ott: 22,   hi_ott: 27,   hi_acc: 30 },

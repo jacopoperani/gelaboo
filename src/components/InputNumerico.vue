@@ -18,8 +18,8 @@ function onChange(e) {
 
 <template>
   <div class="flex flex-col gap-1">
-    <label v-if="label" class="text-ui-label text-inchiostro/60" style="font-family: Inter, sans-serif;">{{ label }}</label>
-    <div class="flex items-center border border-inchiostro/20 rounded-xl overflow-hidden focus-within:border-inchiostro transition-colors bg-crema">
+    <label v-if="label" class="text-ui-label text-notte/60">{{ label }}</label>
+    <div class="flex items-center border border-notte/20 rounded-xl overflow-hidden focus-within:border-notte transition-colors bg-perla">
       <input
         type="number"
         :value="modelValue"
@@ -27,11 +27,11 @@ function onChange(e) {
         :max="max"
         :step="step"
         @change="onChange"
-        class="flex-1 bg-transparent px-3 py-2.5 text-inchiostro outline-none text-data"
-        style="font-family: Inter, sans-serif; font-variant-numeric: tabular-nums;"
+        class="flex-1 bg-transparent px-3 py-2.5 text-notte outline-none text-data"
+        style="font-variant-numeric: tabular-nums;"
         :aria-label="label || unita"
       />
-      <span v-if="unita" class="px-3 text-inchiostro/50 text-ui-label border-l border-inchiostro/10 select-none" style="font-family: Inter, sans-serif;">{{ unita }}</span>
+      <span v-if="unita" class="px-3 text-notte/50 text-ui-label border-l border-notte/10 select-none">{{ unita }}</span>
     </div>
   </div>
 </template>

@@ -53,6 +53,7 @@ export function useCalcolatore(ingredienti, quantitaKg, categoria, eccezioniSogl
       zuccheri:     classificaValore(b.zuccheri, t.zuccheri),
       grassi:       classificaValore(b.grassi, t.grassi),
       slng:         classificaValore(b.slng, t.slng),
+      altriSolidi:  t.altri ? classificaValore(b.altriSolidi, t.altri) : null,
       solidiTotali: classificaValore(b.solidiTotali, t.solidi),
       pod:          classificaValore(b.pod, t.pod),
       pac:          classificaValore(b.pac, t.pac),

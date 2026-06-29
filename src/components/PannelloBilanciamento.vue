@@ -1,27 +1,24 @@
 <script setup>
-defineProps({
-  warnings:     { type: Array,  default: () => [] },
-  metricheGrid: { type: Array,  required: true },
-  metricheRiga: { type: Array,  required: true },
-})
+import BoxMetrica from './BoxMetrica.vue'
 
-function statoColor(stato) {
-  if (stato === 'sballato')   return '#c84b4b'
-  if (stato === 'attenzione') return '#e8954a'
-  return '#5f7a4e'
-}
+defineProps({
+  warnings:     { type: Array, default: () => [] },
+  metricheGrid: { type: Array, required: true },
+  metricheRiga: { type: Array, required: true },
+})
 </script>
 
 <template>
-  <div class="border border-inchiostro/15 rounded-2xl p-6">
-    <h2 class="text-h2 text-inchiostro mb-5">Bilanciamento</h2>
+  <div class="border border-notte/15 rounded-2xl p-6">
+    <h2 class="text-h2 text-notte mb-5">Bilanciamento</h2>
 
     <!-- Warnings -->
     <div v-if="warnings.length" class="mb-5 space-y-2">
       <div
         v-for="w in warnings"
         :key="w.campo"
-        class="flex items-start gap-2 text-body-small text-inchiostro/80 bg-mandarino/15 rounded-xl px-3 py-2.5"
+        class="flex items-start gap-2 text-body-small text-notte/80 rounded-xl px-3 py-2.5"
+        style="background: rgba(232,148,74,0.15);"
         role="alert"
       >
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="mt-0.5 shrink-0" aria-hidden="true">
@@ -33,44 +30,30 @@ function statoColor(stato) {
       </div>
     </div>
 
-    <!-- 2×2 grid metrics -->
-    <div class="grid grid-cols-2 gap-4 mb-5">
-      <div v-for="m in metricheGrid" :key="m.label" class="relative">
-        <div class="flex items-center gap-1.5 mb-1">
-          <span
-            v-if="m.stato"
-            class="inline-block w-2 h-2 rounded-full shrink-0"
-            :style="{ background: statoColor(m.stato) }"
-            :aria-label="m.stato"
-          ></span>
-          <p class="text-ui-label text-inchiostro/50">{{ m.label }}</p>
-        </div>
-        <p class="text-data-large text-inchiostro" style="font-variant-numeric: tabular-nums;">
-          {{ m.value }}<span class="text-h3 text-inchiostro/50">{{ m.unita }}</span>
-        </p>
-      </div>
+    <!-- Composizione -->
+    <p class="text-ui-label text-notte/50 mb-3">Composizione</p>
+    <div class="grid grid-cols-2 gap-3">
+      <BoxMetrica
+        v-for="m in metricheGrid"
+        :key="m.label"
+        :label="m.label"
+        :valore="m.value"
+        :unita="m.unita"
+        :stato="m.stato"
+      />
     </div>
 
-    <!-- Summary row -->
-    <div class="border-t border-inchiostro/10 pt-4 space-y-3">
-      <div
+    <!-- Indici -->
+    <p class="text-ui-label text-notte/50 mb-3 mt-6">Indici</p>
+    <div class="grid grid-cols-2 gap-3">
+      <BoxMetrica
         v-for="m in metricheRiga"
         :key="m.label"
-        class="flex justify-between items-center"
-      >
-        <div class="flex items-center gap-1.5">
-          <span
-            v-if="m.stato"
-            class="inline-block w-2 h-2 rounded-full shrink-0"
-            :style="{ background: statoColor(m.stato) }"
-            :aria-label="m.stato"
-          ></span>
-          <span class="text-ui-label text-inchiostro/50">{{ m.label }}</span>
-        </div>
-        <span class="text-data text-inchiostro font-semibold" style="font-variant-numeric: tabular-nums;">
-          {{ m.value }}{{ m.unita }}
-        </span>
-      </div>
+        :label="m.label"
+        :valore="m.value"
+        :unita="m.unita"
+        :stato="m.stato"
+      />
     </div>
   </div>
 </template>

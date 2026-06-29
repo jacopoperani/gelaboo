@@ -83,7 +83,7 @@ const metricheGrid = computed(() => [
   { label: 'ZUCCHERI',     value: bilancio.value.zuccheri,    unita: '%', stato: stati.value.zuccheri },
   { label: 'GRASSI',       value: bilancio.value.grassi,      unita: '%', stato: stati.value.grassi },
   { label: 'SLNG',         value: bilancio.value.slng,        unita: '%', stato: stati.value.slng },
-  { label: 'ALTRI SOLIDI', value: bilancio.value.altriSolidi, unita: '%', stato: null },
+  { label: 'ALTRI SOLIDI', value: bilancio.value.altriSolidi, unita: '%', stato: stati.value.altriSolidi },
 ])
 
 // Metrics for the summary row
@@ -95,14 +95,14 @@ const metricheRiga = computed(() => [
 </script>
 
 <template>
-  <section class="min-h-screen bg-crema px-6 pt-24 pb-16" style="font-family: Inter, sans-serif;">
+  <section class="min-h-screen bg-perla px-6 pt-24 pb-16">
 
     <div v-if="ricetta" class="max-w-4xl mx-auto">
 
       <!-- Back -->
       <button
         @click="router.back()"
-        class="inline-flex items-center gap-2 text-inchiostro/50 hover:text-inchiostro transition-colors mb-8 text-body-small focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inchiostro rounded"
+        class="inline-flex items-center gap-2 text-notte/50 hover:text-notte transition-colors mb-8 text-body-small focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte rounded"
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -114,14 +114,14 @@ const metricheRiga = computed(() => [
       <div class="flex items-start gap-4 mb-8">
         <div class="flex-1">
           <BadgeCategoria :categoria="ricetta.categoria" class="mb-3" />
-          <h1 class="text-h1 text-inchiostro mb-2">{{ ricetta.nome }}</h1>
-          <p class="text-body text-inchiostro/60">{{ ricetta.payoff }}</p>
+          <h1 class="text-h1 text-notte mb-2">{{ ricetta.nome }}</h1>
+          <p class="text-body text-notte/60">{{ ricetta.payoff }}</p>
         </div>
         <LikeButton :ricetta-id="ricetta.id" @require-login="userStore.openAuthModal()" />
       </div>
 
       <!-- Quantità -->
-      <div class="border border-inchiostro/15 rounded-2xl p-6 mb-6">
+      <div class="border border-notte/15 rounded-2xl p-6 mb-6">
         <div class="flex items-end gap-6 flex-wrap">
           <div class="w-44">
             <InputNumerico
@@ -133,7 +133,7 @@ const metricheRiga = computed(() => [
               :step="0.1"
             />
           </div>
-          <p class="text-body-small text-inchiostro/50 pb-2.5">
+          <p class="text-body-small text-notte/50 pb-2.5">
             Ricalcola le quantità per la tua produzione.
           </p>
         </div>
@@ -143,26 +143,26 @@ const metricheRiga = computed(() => [
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
 
         <!-- Ingredienti -->
-        <div class="border border-inchiostro/15 rounded-2xl p-6">
-          <h2 class="text-h2 text-inchiostro mb-5">Ingredienti</h2>
+        <div class="border border-notte/15 rounded-2xl p-6">
+          <h2 class="text-h2 text-notte mb-5">Ingredienti</h2>
 
-          <div class="divide-y divide-inchiostro/8 mb-6">
+          <div class="divide-y divide-notte/8 mb-6">
             <div
               v-for="ing in bilancio.ingredientiScalati"
               :key="ing.nome"
               class="flex items-baseline justify-between py-3"
             >
-              <span class="text-body text-inchiostro">{{ ing.nome }}</span>
-              <span class="text-data text-inchiostro tabular-nums shrink-0 ml-4" style="font-variant-numeric: tabular-nums;">
-                {{ ing.g_assoluti }}<span class="text-body-small text-inchiostro/50 ml-0.5">g</span>
+              <span class="text-body text-notte">{{ ing.nome }}</span>
+              <span class="text-data text-notte tabular-nums shrink-0 ml-4" style="font-variant-numeric: tabular-nums;">
+                {{ ing.g_assoluti }}<span class="text-body-small text-notte/50 ml-0.5">g</span>
               </span>
             </div>
           </div>
 
           <!-- Sliders per ingredienti modificabili -->
           <template v-if="ingredientiModificabili.length">
-            <div class="border-t border-inchiostro/10 pt-5 space-y-5">
-              <p class="text-ui-label text-inchiostro/40">REGOLA PROPORZIONI</p>
+            <div class="border-t border-notte/10 pt-5 space-y-5">
+              <p class="text-ui-label text-notte/40">REGOLA PROPORZIONI</p>
               <SliderIngrediente
                 v-for="mod in ingredientiModificabili"
                 :key="mod.nome"
@@ -195,7 +195,7 @@ const metricheRiga = computed(() => [
     </div>
 
     <div v-else class="flex items-center justify-center min-h-[60vh]">
-      <p class="text-body text-inchiostro/50">Gusto non trovato.</p>
+      <p class="text-body text-notte/50">Gusto non trovato.</p>
     </div>
   </section>
 </template>

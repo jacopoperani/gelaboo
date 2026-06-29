@@ -1,62 +1,68 @@
 @import "tailwindcss";
 
 @theme {
-  /* Palette da Figma — 1:1 */
-  --color-crema: #fbf3e7;
-  --color-inchiostro: #3a2317;
-  --color-bianco: #ffffff;
-  --color-menta: #7fb69e;
-  --color-ciliegia: #c84b4b;
-  --color-mandarino: #e8954a;
-  --color-pistacchio: #5f7a4e;
+  /* Palette brand */
+  --color-perla:    #f5f1fa;
+  --color-notte:    #161b33;
+  --color-bianco:   #ffffff;
+  --color-indaco:   #4b3f8a;
+  --color-fucsia:   #d6418c;
+  --color-turchese: #2bc4c9;
+  --color-bruciato: #e0703a;
+
+  /* Stato semantico calcolatore — separati dalla palette brand */
+  --color-stato-ok:         #5f7a4e;
+  --color-stato-attenzione: #e8954a;
+  --color-stato-sballato:   #c84b4b;
 
   /* Font */
-  --font-display: 'Fraunces', serif;
-  --font-body: 'Inter', sans-serif;
+  --font-display: 'Instrument Serif', serif;
+  --font-body: 'Unbounded', sans-serif;
+  --font-data: 'Unbounded', sans-serif;
 }
 
 /* Base */
 body {
-  background-color: #fbf3e7;
-  color: #3a2317;
-  font-family: 'Inter', sans-serif;
+  background-color: #f5f1fa;
+  color: #161b33;
+  font-family: 'Unbounded', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Fraunces headings — WONK:1 come da Figma */
+/* Instrument Serif headings */
 h1, h2, h3, h4, .font-display {
-  font-family: 'Fraunces', serif;
-  font-variation-settings: 'WONK' 1;
+  font-family: 'Instrument Serif', serif;
 }
 
-/* Scala tipografica da Figma */
+/* Scala tipografica */
 .text-display {
-  font-family: 'Fraunces', serif;
-  font-variation-settings: 'WONK' 1;
+  font-family: 'Instrument Serif', serif;
   font-size: 56px;
   font-weight: 600;
   line-height: 1.1;
 }
 .text-h1 {
-  font-family: 'Fraunces', serif;
-  font-variation-settings: 'WONK' 1;
+  font-family: 'Instrument Serif', serif;
   font-size: 36px;
   font-weight: 600;
   line-height: 1.15;
 }
 .text-h2 {
-  font-family: 'Fraunces', serif;
-  font-variation-settings: 'WONK' 1;
+  font-family: 'Instrument Serif', serif;
   font-size: 28px;
   font-weight: 600;
   line-height: 1.2;
 }
 .text-h3 {
-  font-family: 'Fraunces', serif;
-  font-variation-settings: 'WONK' 1;
+  font-family: 'Instrument Serif', serif;
   font-size: 20px;
   font-weight: 600;
   line-height: 1.25;
+}
+.text-lead {
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.35;
 }
 .text-body {
   font-size: 16px;
@@ -65,7 +71,7 @@ h1, h2, h3, h4, .font-display {
 }
 .text-body-small {
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.45;
 }
 .text-ui-label {
@@ -76,16 +82,22 @@ h1, h2, h3, h4, .font-display {
   text-transform: uppercase;
 }
 .text-data-large {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-data);
   font-size: 32px;
   font-weight: 600;
   line-height: 1.1;
   font-variant-numeric: tabular-nums;
 }
 .text-data {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-data);
   font-size: 18px;
   font-weight: 500;
   line-height: 1.2;
   font-variant-numeric: tabular-nums;
 }
+
+/* BoxMetrica stati */
+.box-ok         { border-color: var(--color-stato-ok);         background: rgba(95,122,78,0.12); }
+.box-attenzione { border-color: var(--color-stato-attenzione); background: rgba(232,148,74,0.12); }
+.box-sballato   { border-color: var(--color-stato-sballato);   background: rgba(200,75,75,0.12); }
+.box-neutro     { border-color: rgba(22,27,51,0.35);           background: rgba(22,27,51,0.04); }

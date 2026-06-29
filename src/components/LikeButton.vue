@@ -23,8 +23,8 @@ function toggle() {
     :aria-pressed="liked"
     class="flex items-center justify-center w-10 h-10 rounded-full border transition-colors"
     :class="liked
-      ? 'bg-ciliegia border-ciliegia text-bianco'
-      : 'bg-transparent border-inchiostro/20 text-inchiostro/50 hover:border-ciliegia hover:text-ciliegia'"
+      ? 'bg-fucsia border-fucsia text-bianco'
+      : 'bg-transparent border-notte/20 text-notte/50 hover:border-fucsia hover:text-fucsia'"
   >
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
       <path
