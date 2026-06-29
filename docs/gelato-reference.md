@@ -244,6 +244,7 @@ GELATO ALLA FRUTTA (con base latte)
   Zuccheri:      22 - 27 %
   Grassi:         0 - 4  %
   SLNG:           4 - 8  %
+  Altri solidi:   0 - 4  %      (banda ottimale 1 - 2.5%; vedi nota sotto)
   Solidi totali: 30 - 38 %
   POD:          13 - 19.5       (identico a CREME — vedi nota sotto)
   PAC:          22 - 30         (identico a CREME — vedi nota sotto)
@@ -252,6 +253,7 @@ GELATO ALLA FRUTTA (con base latte)
 SORBETTO
   Zuccheri:      22 - 30 %      (agrumi/limone: 28-30%)
   Grassi:         0 %
+  Altri solidi:   0 - 4  %      (banda ottimale 1 - 2.5%; vedi nota sotto)
   Solidi totali: 28 - 34 %
   POD:          20 - 23.5       (formula: Σ(g_puro_i × POD_i) / tot_miscela)
   PAC:          27.5 - 37.5     (formula: Σ(g_puro_i × PAC_i) / tot_miscela)
@@ -274,6 +276,8 @@ REGOLE TRASVERSALI
 ```
 
 > **Nota PAC/POD gelato alla frutta con latte:** nessuna fonte professionale consultata (BilanciaLi, Gelato Per Passione, TuttoGelato, manuali Preti/Terrile) pubblica range PAC/POD dedicati per questa sottocategoria. Il software BilanciaLi distingue solo 4 profili (gelato, sorbetto, granita, vegano) e tratta il gelato alla frutta con latte come profilo "gelato" standard. Di conseguenza nel calcolatore gelaboo i threshold PAC/POD per la categoria "frutta" sono allineati a quelli delle creme (PAC 22–30, POD 13–19.5). I parametri strutturali (Zuccheri, Grassi, SLNG, Solidi) restano ai valori propri della categoria frutta.
+
+> **Nota Altri solidi frutta/sorbetto:** i range "Altri solidi" per frutta (0–4%, banda ottimale 1–2.5%) e sorbetto (0–4%, banda ottimale 1–2.5%) sono derivati dai valori reali delle ricette del catalogo gelaboo (range osservato 1.1–2.4% frutta, 1.4–2.2% sorbetto), non da fonte Corvitto diretta — da verificare se disponibile un riferimento più autorevole.
 
 > **Nota di correzione (POD/PAC):** i valori POD/PAC originali di questa sezione (130–195, 220–300, 200–260, 275–375) erano espressi con un fattore di scala errato (×10) rispetto alla formula definita in §3, probabilmente introdotto durante la ricostruzione del documento da una chat precedente. I valori qui sopra sono stati corretti dividendo per 10 e verificati a mano con l'esempio di §10 (fior di panna: PAC ≈ 18, POD ≈ 17) e con una fonte esterna indipendente (Gelato Per Passione: PAC relativo 25.95%, POD 16.97% per fior di latte, ricetta analoga). La formula corretta è Σ(g_puro_i × indice_i) / peso_totale_miscela, dove g_puro_i = g_per_kg × (zuccheri_i / 100).
 
