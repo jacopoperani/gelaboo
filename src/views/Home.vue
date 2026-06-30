@@ -11,7 +11,7 @@ const { heroLogoAnchor } = useLogoAnchors()
     <GelatiFloating />
 
     <section
-      class="min-h-screen flex flex-col items-center justify-center px-6 pt-16"
+      class="min-h-screen flex flex-col items-center justify-center px-6 lg:px-10 xl:px-16 pt-16"
     >
       <div class="relative z-10 max-w-2xl w-full text-center">
         <!-- Ancora invisibile: tiene lo spazio del logo grande nella Hero.
@@ -27,10 +27,10 @@ const { heroLogoAnchor } = useLogoAnchors()
 
     <!-- Spacer: dà respiro durante il morph del logo, così il contenuto
          non arriva sotto l'header mentre il logo sta ancora animando. -->
-    <div class="h-[35vh]" aria-hidden="true" />
+    <div class="h-[22vh]" aria-hidden="true" />
 
-    <section class="py-24">
-      <div class="relative z-10 max-w-3xl mx-auto px-6 text-left">
+    <section class="py-16">
+      <div class="relative z-10 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 lg:px-10 xl:px-16 text-left">
         <h2 class="text-h1">Uno strumento per creare il gelato perfetto</h2>
         <p class="text-body text-notte/70 mt-4">
           Bilancia ogni ricetta in pochi secondi, senza calcoli a mano.
@@ -38,8 +38,8 @@ const { heroLogoAnchor } = useLogoAnchors()
       </div>
     </section>
 
-    <section class="py-24">
-      <div class="relative z-10 max-w-3xl mx-auto px-6 text-left">
+    <section class="py-16">
+      <div class="relative z-10 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 lg:px-10 xl:px-16 text-left">
         <h2 class="text-h1">Tante ricette di base, sempre in aggiornamento</h2>
         <p class="text-body text-notte/70 mt-4">
           Parti da una ricetta verificata o modificala come vuoi.
@@ -47,9 +47,9 @@ const { heroLogoAnchor } = useLogoAnchors()
       </div>
     </section>
 
-    <section class="pt-24 pb-12">
-      <div class="relative z-10 max-w-3xl mx-auto px-6 text-left">
-        <h2 class="text-h1">Hai pensato a qualche gusto particolare? Crealo con<br>Gelaboo</h2>
+    <section class="pt-16 pb-12">
+      <div class="relative z-10 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 lg:px-10 xl:px-16 text-left">
+        <h2 class="text-h1">Hai pensato a qualche gusto particolare? Crealo con Gelaboo</h2>
         <p class="text-body text-notte/70 mt-4">
           Descrivi il sapore che hai in mente: l'intelligenza artificiale
           suggerisce gli ingredienti, Gelaboo bilancia tutto il resto.
@@ -57,8 +57,8 @@ const { heroLogoAnchor } = useLogoAnchors()
       </div>
     </section>
 
-    <section class="pt-20 pb-24 text-center">
-      <div class="relative z-10 flex flex-col sm:flex-row gap-3 justify-center items-center px-6">
+    <section class="pt-20 pb-32 text-center">
+      <div class="relative z-10 flex flex-col sm:flex-row gap-3 justify-center items-center px-6 lg:px-10 xl:px-16">
         <RouterLink
           to="/ricette"
           data-gelato-obstacle
