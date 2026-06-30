@@ -137,7 +137,11 @@ function addButtons() {
     const w = r.width * factor
     const h = r.height * factor
     const cx = r.left - boundsRect.left + r.width / 2
+    // Box gonfiato (factor > 1): la metà inferiore d'eccesso (0.1×h per 1.2)
+    // farebbe sforare il bordo basso del logo. Alzo il centro di metà
+    // dell'eccesso verticale, così il box resta allineato al bordo visivo.
     const cy = r.top - boundsRect.top + r.height / 2
+                 - (r.height * (factor - 1)) / 2
     const body = Bodies.rectangle(cx, cy, w, h, wallOpts)
     buttonBodies.push(body)
   }
