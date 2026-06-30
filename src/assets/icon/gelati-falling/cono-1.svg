@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Livello_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 124 248">
+  <!-- Generator: Adobe Illustrator 30.5.1, SVG Export Plug-In . SVG Version: 2.1.4 Build 3)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #c75f2e;
+      }
+
+      .st1 {
+        fill: #4b3f8a;
+      }
+
+      .st2 {
+        fill: #3a3070;
+      }
+
+      .st3 {
+        opacity: .5;
+      }
+
+      .st4 {
+        fill: #5a4da0;
+        isolation: isolate;
+        opacity: .6;
+      }
+
+      .st5 {
+        fill: #e0703a;
+      }
+    </style>
+  </defs>
+  <path class="st5" d="M92,94l-4.2,24.4-21.8,125.6c-2.7,5.3-5.3,5.3-8,0l-5.7-32.7-.7-4.2-4.4-25.3-.6-3.6-4.5-26.2-.6-3.6-5.2-30-4.2-24.4h60Z"/>
+  <path class="st0" d="M62,94h30l-26,150c-2.7,5.3-5.3,5.3-8,0l4-150Z"/>
+  <g class="st3">
+    <rect class="st0" x="58.5" y="103.7" width="3" height="56.6" transform="translate(-75.8 81.1) rotate(-45)"/>
+    <polygon class="st0" points="81.1 113.1 42.1 152.1 41.4 148.4 78.9 110.9 81.1 113.1"/>
+    <rect class="st0" x="58.5" y="145.8" width="3" height="42.4" transform="translate(-100.5 91.3) rotate(-45)"/>
+    <polygon class="st0" points="76.1 153.1 47.2 181.9 46.6 178.3 57.9 167 60 164.9 60.1 164.8 73.9 150.9 76.1 153.1"/>
+    <rect class="st0" x="58.5" y="180.8" width="3" height="34.4" transform="translate(-103.9 71.8) rotate(-35.5)"/>
+    <polygon class="st0" points="71.2 184.9 61.8 198 60 200.6 59.1 201.8 52.3 211.3 51.6 207.2 58.2 198 59.3 196.5 60 195.4 68.8 183.1 71.2 184.9"/>
+  </g>
+  <circle class="st1" cx="62" cy="62" r="62"/>
+  <path class="st2" d="M62,0c34.2,0,62,27.8,62,62s-27.8,62-62,62S0,96.2,0,62,27.8,0,62,0h0Z"/>
+  <circle class="st4" cx="40" cy="39" r="14"/>
+</svg>

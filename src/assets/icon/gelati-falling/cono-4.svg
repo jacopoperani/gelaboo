@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Livello_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 112 274">
+  <!-- Generator: Adobe Illustrator 30.5.1, SVG Export Plug-In . SVG Version: 2.1.4 Build 3)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #c75f2e;
+      }
+
+      .st1 {
+        fill: #4b3f8a;
+      }
+
+      .st2 {
+        fill: #eba058;
+      }
+
+      .st3 {
+        fill: #3a3070;
+      }
+
+      .st4 {
+        opacity: .5;
+      }
+
+      .st5 {
+        fill: #e0703a;
+      }
+
+      .st6 {
+        fill: #6356a6;
+        isolation: isolate;
+        opacity: .6;
+      }
+    </style>
+  </defs>
+  <path class="st5" d="M88,148l-3.8,16.4-24.2,105.6c-2.7,5.3-5.3,5.3-8,0l-4.2-18.2-.8-3.6-2-8.7-1.4-6-1.3-5.8-.8-3.4-4.4-19.1-.8-3.6-1.1-4.9-.4-1.7-7-30.7-3.8-16.4h64Z"/>
+  <path class="st0" d="M56,148h32l-28,122c-2.7,5.3-5.3,5.3-8,0l4-122Z"/>
+  <g class="st4">
+    <rect class="st0" x="49.5" y="154.1" width="3" height="53.7" transform="translate(-113 89.1) rotate(-45)"/>
+    <polygon class="st0" points="35.2 196.8 36.3 197.9 48.9 185.2 51 183.1 53.1 181 55 179.1 59.1 175 62.5 171.6 71.1 163.1 68.9 160.9 59 170.8 57.9 172 55.1 174.8 51 178.9 48.9 181 46.8 183.1 34.8 195.1 35.2 196.8"/>
+    <polygon class="st0" points="67.1 230.9 64.9 233.1 37.1 205.3 36.3 201.7 37.1 200.9 67.1 230.9"/>
+    <polygon class="st0" points="67.1 203.1 42.3 227.8 41.5 224.4 64.9 200.9 67.1 203.1"/>
+    <polygon class="st0" points="63.1 255 60.9 257 52.7 248 52 247.2 50 245 45 239.5 43.6 233.6 52 242.8 52.9 243.7 54 245 63.1 255"/>
+    <polygon class="st0" points="63.1 235 54 245 52.8 246.4 52 247.2 47.8 251.8 47 248.3 50 245 52 242.8 52.9 241.8 60.9 233 63.1 235"/>
+  </g>
+  <path class="st2" d="M44,158c-1.3,18.7,1.3,28,8,28s8.7-8,6-24c-4.7,6.7-9.3,5.3-14-4h0Z"/>
+  <circle class="st2" cx="56" cy="116" r="56"/>
+  <circle class="st1" cx="56" cy="54" r="54"/>
+  <path class="st3" d="M56,0c29.8,0,54,24.2,54,54s-24.2,54-54,54S2,83.8,2,54,26.2,0,56,0h0Z"/>
+  <circle class="st6" cx="36" cy="34" r="13"/>
+</svg>

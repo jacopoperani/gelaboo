@@ -18,7 +18,30 @@ const floatAmp = { value: 1 }
 function setFloatAmplitude(a) {
   floatAmp.value = Math.max(0, Math.min(1, a))
 }
-defineExpose({ setFloatAmplitude })
+
+// Bounding box delle 7 lettere in unità viewBox (667.85 × 280.28). getBBox
+// ignora i transform CSS/GSAP (scale, floating, fixed): geometria statica,
+// stabile a prescindere da scale/scroll. Usato da GelatiFloating per i box
+// di collisione per-lettera.
+function getLetterBBoxes() {
+  const groups = logoRef.value?.querySelectorAll('g[id^="lettera_"]') ?? []
+  return Array.from(groups).map((g) => {
+    const b = g.getBBox()
+    return { id: g.id, x: b.x, y: b.y, width: b.width, height: b.height }
+  })
+}
+// Offset y corrente di ogni lettera (unità viewBox), letto live dal tween di
+// floating. Il valore di gsap.getProperty è già il renderizzato post-modifier
+// → include l'attenuazione floatAmp (vedi setFloatAmplitude). Ordine DOM
+// stabile, accoppiabile per indice con getLetterBBoxes().
+function getLetterOffsets() {
+  const groups = logoRef.value?.querySelectorAll('g[id^="lettera_"]') ?? []
+  return Array.from(groups).map((g) => ({
+    id: g.id,
+    y: parseFloat(gsap.getProperty(g, 'y')) || 0,
+  }))
+}
+defineExpose({ setFloatAmplitude, getLetterBBoxes, getLetterOffsets })
 
 // Floating continuo per-lettera: oscillazione verticale leggera, infinita,
 // con delay scaglionato (non sincrono). Il modifier scala la y corrente per

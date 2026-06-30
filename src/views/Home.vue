@@ -19,7 +19,6 @@ const { heroLogoAnchor } = useLogoAnchors()
              viewBox 667.85 × 280.28. -->
         <div
           ref="heroLogoAnchor"
-          data-gelato-obstacle="1.2"
           class="mb-3 w-[95%] sm:w-[92%] md:w-[88%] lg:w-[85%] max-w-7xl aspect-[667.85/280.28] mx-auto"
           aria-hidden="true"
         />

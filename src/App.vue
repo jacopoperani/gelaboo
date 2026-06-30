@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted, nextTick, provide } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useRoute } from 'vue-router'
@@ -21,6 +21,10 @@ const route = useRoute()
 const { logoTarget, heroLogoAnchor, scrollProgress } = useLogoAnchors()
 const logoFixed = ref(null)
 const logoMorphRef = ref(null)
+// Reso disponibile ai discendenti (GelatiFloating in Home) per leggere le
+// bbox delle lettere via getLetterBBoxes(). LogoMorph è montato qui fixed,
+// non in Home, quindi provide/inject invece di un prop diretto.
+provide('logoMorph', logoMorphRef)
 const appVisible = computed(() => introCompleted.value && authReady.value)
 
 let logoST = null

@@ -1,6 +1,29 @@
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref, inject } from 'vue'
 import Matter from 'matter-js'
+import { useLogoAnchors } from '../composables/useLogoAnchors.js'
+
+// Illustrazioni gelati: SVG sorgente importati raw (stringa). Nessun override
+// di colore/fill/stroke — iniettati esattamente come da file.
+import cono1 from '../assets/icon/gelati-falling/cono-1.svg?raw'
+import cono2 from '../assets/icon/gelati-falling/cono-2.svg?raw'
+import cono3 from '../assets/icon/gelati-falling/cono-3.svg?raw'
+import cono4 from '../assets/icon/gelati-falling/cono-4.svg?raw'
+import coppetta1 from '../assets/icon/gelati-falling/coppetta-1.svg?raw'
+import coppetta2 from '../assets/icon/gelati-falling/coppetta-2.svg?raw'
+import coppetta3 from '../assets/icon/gelati-falling/coppetta-3.svg?raw'
+import coppetta4 from '../assets/icon/gelati-falling/coppetta-4.svg?raw'
+import { inlineSvgColors } from '../utils/inlineSvgColors.js'
+
+// LogoMorph (montato fixed in App.vue) per leggere le bbox delle lettere, e
+// l'ancora di layout del logo Hero (in-flow, sistema di coordinate stabile).
+const logoMorph = inject('logoMorph', null)
+const { heroLogoAnchor } = useLogoAnchors()
+
+// Dimensioni del viewBox del logo (LogoMorph.vue), per mappare le bbox
+// lettera in coordinate pixel dell'ancora.
+const VB_W = 667.85
+const VB_H = 280.28
 
 const { Engine, World, Bodies, Body, Common } = Matter
 
@@ -10,67 +33,17 @@ const MOUSE_RADIUS = 140
 const MOUSE_FORCE = 0.06
 const GRAVITY = 0.3
 
-// ---------- ILLUSTRAZIONI GELATI (flat, disegnate a mano in SVG) ----------
-// Ogni funzione restituisce un markup SVG completo, viewBox 64x64.
-// Palette ufficiale "gelateria anni '50" — UNICI colori ammessi:
-// Perla #F5F1FA, Notte #161B33, Indaco #4B3F8A, Fucsia #D6418C, Turchese #2BC4C9, Bruciato #E0703A
+// ---------- ILLUSTRAZIONI GELATI ----------
+// Array di funzioni che ritornano la stringa SVG (stesso contratto di prima).
 const SHAPES = [
-
-  // 1. cono singola pallina — Fucsia
-  () => `<svg viewBox="0 0 64 64" width="100%" height="100%">
-    <path d="M22 30 L42 30 L33 58 Z" fill="#E0703A"/>
-    <line x1="25" y1="35" x2="40" y2="41" stroke="#161B33" stroke-width="1" opacity="0.25"/>
-    <line x1="24" y1="41" x2="39" y2="47" stroke="#161B33" stroke-width="1" opacity="0.25"/>
-    <line x1="26" y1="47" x2="36" y2="52" stroke="#161B33" stroke-width="1" opacity="0.25"/>
-    <circle cx="32" cy="20" r="16" fill="#D6418C"/>
-    <circle cx="26" cy="15" r="3" fill="#F5F1FA" opacity="0.55"/>
-  </svg>`,
-
-  // 2. cono doppia pallina — Indaco + Turchese
-  () => `<svg viewBox="0 0 64 64" width="100%" height="100%">
-    <path d="M23 34 L41 34 L32 58 Z" fill="#E0703A"/>
-    <line x1="26" y1="38" x2="38" y2="44" stroke="#161B33" stroke-width="1" opacity="0.25"/>
-    <line x1="25" y1="44" x2="37" y2="50" stroke="#161B33" stroke-width="1" opacity="0.25"/>
-    <circle cx="32" cy="30" r="13" fill="#4B3F8A"/>
-    <circle cx="32" cy="14" r="13" fill="#2BC4C9"/>
-    <circle cx="27" cy="9" r="3" fill="#F5F1FA" opacity="0.55"/>
-  </svg>`,
-
-  // 3. cono soft-swirl — Perla con punta Fucsia
-  () => `<svg viewBox="0 0 64 64" width="100%" height="100%">
-    <path d="M24 32 L40 32 L32 58 Z" fill="#E0703A"/>
-    <line x1="27" y1="36" x2="37" y2="41" stroke="#161B33" stroke-width="1" opacity="0.25"/>
-    <line x1="26" y1="42" x2="36" y2="47" stroke="#161B33" stroke-width="1" opacity="0.25"/>
-    <path d="M20 30 C20 18 28 8 32 14 C36 8 44 18 44 30 C44 24 38 22 32 26 C26 22 20 24 20 30 Z" fill="#F5F1FA"/>
-    <path d="M20 30 C20 18 28 8 32 14 C36 8 44 18 44 30 C44 24 38 22 32 26 C26 22 20 24 20 30 Z" fill="none" stroke="#161B33" stroke-width="1" opacity="0.15"/>
-    <circle cx="32" cy="10" r="2.5" fill="#D6418C"/>
-  </svg>`,
-
-  // 4. coppetta con due palline — Bruciato + Turchese
-  () => `<svg viewBox="0 0 64 64" width="100%" height="100%">
-    <path d="M16 34 L48 34 L43 54 a8 8 0 0 1 -8 7 L29 61 a8 8 0 0 1 -8 -7 Z" fill="#F5F1FA"/>
-    <ellipse cx="32" cy="34" rx="16" ry="4" fill="#161B33" opacity="0.08"/>
-    <circle cx="24" cy="24" r="11" fill="#E0703A"/>
-    <circle cx="38" cy="22" r="12" fill="#2BC4C9"/>
-    <circle cx="34" cy="16" r="2.5" fill="#F5F1FA" opacity="0.55"/>
-  </svg>`,
-
-  // 5. coppetta singola pallina grande — Indaco
-  () => `<svg viewBox="0 0 64 64" width="100%" height="100%">
-    <path d="M16 32 L48 32 L42 53 a10 10 0 0 1 -20 0 Z" fill="#F5F1FA"/>
-    <ellipse cx="32" cy="32" rx="16" ry="4" fill="#161B33" opacity="0.08"/>
-    <circle cx="32" cy="20" r="15" fill="#4B3F8A"/>
-    <circle cx="25" cy="13" r="3" fill="#F5F1FA" opacity="0.45"/>
-  </svg>`,
-
-  // 6. coppetta tre palline — Fucsia, Bruciato, Turchese
-  () => `<svg viewBox="0 0 64 64" width="100%" height="100%">
-    <path d="M14 36 L50 36 L43 56 a10 10 0 0 1 -22 0 Z" fill="#F5F1FA"/>
-    <ellipse cx="32" cy="36" rx="18" ry="4" fill="#161B33" opacity="0.08"/>
-    <circle cx="22" cy="28" r="9" fill="#D6418C"/>
-    <circle cx="32" cy="22" r="10" fill="#E0703A"/>
-    <circle cx="42" cy="28" r="9" fill="#2BC4C9"/>
-  </svg>`,
+  { svg: inlineSvgColors(cono1, 's0'), ratio: 124 / 248, extraScale: 1.7 },
+  { svg: inlineSvgColors(cono2, 's1'), ratio: 116 / 274, extraScale: 1.7 },
+  { svg: inlineSvgColors(cono3, 's2'), ratio: 104 / 298, extraScale: 1.7 },
+  { svg: inlineSvgColors(cono4, 's3'), ratio: 112 / 274, extraScale: 1.7 },
+  { svg: inlineSvgColors(coppetta1, 's4'), ratio: 124 / 164, extraScale: 1 },
+  { svg: inlineSvgColors(coppetta2, 's5'), ratio: 146.3 / 160, extraScale: 1 },
+  { svg: inlineSvgColors(coppetta3, 's6'), ratio: 161 / 186.4, extraScale: 1 },
+  { svg: inlineSvgColors(coppetta4, 's7'), ratio: 166.4 / 179.3, extraScale: 1 },
 ]
 
 const layerEl = ref(null)
@@ -87,6 +60,11 @@ let rightWall = null
 // Ostacoli statici = bottoni CTA della Home. Gli oggetti ci rimbalzano
 // sopra invece di attraversarli. Ricalcolati on resize come i muri.
 let buttonBodies = []
+// Box di collisione per-lettera del logo: { body, baseX, baseY } per ognuno,
+// più sH (scala verticale viewBox→pixel) salvato per il sync floating in
+// render(). Separati dai CTA perché si muovono ogni frame col floating.
+let letterBodies = []
+let letterScaleH = 0
 // Init differita: il container può montare nascosto (v-show in App.vue
 // false durante l'intro) → clientWidth 0 → spawn collassa a sinistra.
 // Aspettiamo width reale prima di inizializzare.
@@ -145,18 +123,64 @@ function addButtons() {
     const body = Bodies.rectangle(cx, cy, w, h, wallOpts)
     buttonBodies.push(body)
   }
+
+  addLetterBodies(boundsRect)
+
   if (buttonBodies.length) World.add(world, buttonBodies)
+}
+
+// 7 box di collisione, uno per lettera di "gelaboo", così i gelati si
+// infilano negli spazi tra le lettere invece di fermarsi al rettangolo pieno.
+// Le bbox arrivano in unità viewBox da LogoMorph.getLetterBBoxes() (statiche,
+// immuni a scale/scroll). L'ancora heroLogoAnchor è in-flow → rect stabile
+// nel sistema di boundsEl. Riapplico lo stesso scaling 1.2 centrato del logo
+// (coerente con heroX/heroY in App.vue) all'ancora prima di mappare, così il
+// fattore è già incorporato: nessun ×1.2 per-lettera.
+function addLetterBodies(boundsRect) {
+  const anchor = heroLogoAnchor.value
+  const bboxes = logoMorph?.value?.getLetterBBoxes?.()
+  if (!anchor || !bboxes?.length) return
+
+  const a = anchor.getBoundingClientRect()
+  if (a.width === 0 || a.height === 0) return
+
+  // Ancora scalata 1.2 attorno al proprio centro.
+  const sLeft = a.left - 0.1 * a.width
+  const sTop = a.top - 0.1 * a.height
+  const sW = a.width * 1.2
+  const sH = a.height * 1.2
+  letterScaleH = sH
+
+  const bodies = []
+  for (const bb of bboxes) {
+    const w = (bb.width / VB_W) * sW
+    const h = (bb.height / VB_H) * sH
+    const cx = (sLeft - boundsRect.left) + (bb.x / VB_W) * sW + w / 2
+    const cy = (sTop - boundsRect.top) + (bb.y / VB_H) * sH + h / 2
+    const body = Bodies.rectangle(cx, cy, w, h, wallOpts)
+    // baseX/baseY: posizione di riposo. render() ci somma l'offset floating.
+    letterBodies.push({ body, baseX: cx, baseY: cy })
+    bodies.push(body)
+  }
+  if (bodies.length) World.add(world, bodies)
 }
 
 // ---------- SPAWN UNA TANTUM AL CARICAMENTO ----------
 function spawnAll() {
   for (let i = 0; i < NUM_OBJECTS; i++) {
-    const size = Common.random(42, 72)
+    const size = Common.random(63, 108)
     const radius = size / 2
     const x = Common.random(radius, W - radius)
     const y = -size - Common.random(0, 900) // partono sopra lo schermo, a cascata
 
-    const body = Bodies.circle(x, y, radius * 0.85, {
+    const shape = SHAPES[Math.floor(Common.random(0, SHAPES.length))]
+    // I coni (extraScale > 1) vengono ingranditi rispetto alla base comune,
+    // le coppette restano a 1. Tutto il pezzo deriva da effectiveSize.
+    const effectiveSize = size * shape.extraScale
+    const width = effectiveSize * shape.ratio
+    // Corpo rettangolare = dimensioni reali del div, ridotte del margine 0.85
+    // (stesso respiro di prima) così le silhouette non si compenetrano.
+    const body = Bodies.rectangle(x, y, width * 0.85, effectiveSize * 0.85, {
       restitution: 0.4,
       friction: 0.2,
       frictionAir: 0.014,
@@ -166,16 +190,14 @@ function spawnAll() {
     Body.setAngularVelocity(body, Common.random(-0.04, 0.04))
     World.add(world, body)
 
-    const shapeFn = SHAPES[Math.floor(Common.random(0, SHAPES.length))]
-
     const el = document.createElement('div')
     el.className = 'piece'
-    el.style.width = size + 'px'
-    el.style.height = size + 'px'
-    el.innerHTML = shapeFn()
+    el.style.width = width + 'px'
+    el.style.height = effectiveSize + 'px'
+    el.innerHTML = shape.svg
     layerEl.value.appendChild(el)
 
-    items.push({ body, el, radius })
+    items.push({ body, el, radius: effectiveSize / 2, halfWidth: width / 2 })
   }
 }
 
@@ -209,13 +231,33 @@ function applyMouseForce() {
   }
 }
 
+// Sincronizza i box lettera col floating del logo: ogni frame somma alla base
+// l'offset y corrente (unità viewBox → pixel via letterScaleH/VB_H). Body
+// statici: setPosition basta per la collisione posizionale. Accoppiamento per
+// indice (stesso ordine DOM di getLetterBBoxes/getLetterOffsets).
+function syncLetterBodies() {
+  if (!letterBodies.length) return
+  const offsets = logoMorph?.value?.getLetterOffsets?.()
+  if (!offsets?.length) return
+  for (let i = 0; i < letterBodies.length; i++) {
+    const off = offsets[i]
+    if (!off) continue
+    const e = letterBodies[i]
+    Body.setPosition(e.body, {
+      x: e.baseX,
+      y: e.baseY + (off.y / VB_H) * letterScaleH,
+    })
+  }
+}
+
 // ---------- LOOP ----------
 function render() {
   applyMouseForce()
+  syncLetterBodies()
   Engine.update(engine, 1000 / 60)
 
-  for (const { body, el, radius } of items) {
-    const x = body.position.x - radius
+  for (const { body, el, radius, halfWidth } of items) {
+    const x = body.position.x - halfWidth
     const y = body.position.y - radius
     el.style.transform = `translate(${x}px, ${y}px) rotate(${body.angle}rad)`
   }
@@ -234,6 +276,11 @@ function onResize() {
   if (buttonBodies.length) {
     World.remove(world, buttonBodies)
     buttonBodies = []
+  }
+  // Stesso rebuild per i box lettera (posizione/scala cambiano in responsive).
+  if (letterBodies.length) {
+    World.remove(world, letterBodies.map((e) => e.body))
+    letterBodies = []
   }
   addButtons()
 }
@@ -289,6 +336,9 @@ onUnmounted(() => {
   window.removeEventListener('resize', onResize)
   for (const { el } of items) el.remove()
   items.length = 0
+  // World.clear rimuove tutti i body; azzero anche i riferimenti locali.
+  buttonBodies = []
+  letterBodies = []
   if (world) World.clear(world, false)
   if (engine) Engine.clear(engine)
   engine = null
@@ -313,5 +363,10 @@ onUnmounted(() => {
   left: 0;
   will-change: transform;
   transform-origin: center center;
+}
+.gelati-layer :deep(.piece svg) {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 </style>

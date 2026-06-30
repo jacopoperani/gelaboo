@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Livello_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 166.4 179.3">
+  <!-- Generator: Adobe Illustrator 30.5.1, SVG Export Plug-In . SVG Version: 2.1.4 Build 3)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #4b3f8a;
+      }
+
+      .st1 {
+        fill: #eba058;
+      }
+
+      .st2 {
+        opacity: .4;
+      }
+
+      .st2, .st3 {
+        fill: #d2873e;
+      }
+
+      .st2, .st4, .st5 {
+        isolation: isolate;
+      }
+
+      .st6 {
+        fill: #3a3070;
+      }
+
+      .st7 {
+        fill: #f5f1fa;
+      }
+
+      .st4 {
+        fill: #f1b97d;
+      }
+
+      .st4, .st5 {
+        opacity: .6;
+      }
+
+      .st8 {
+        fill: #dce3f0;
+      }
+
+      .st5 {
+        fill: #6356a6;
+      }
+    </style>
+  </defs>
+  <rect class="st1" x="10.4" y="-.7" width="14" height="76" rx="4" ry="4" transform="translate(-10.7 7.2) rotate(-18)"/>
+  <rect class="st2" x="10.4" y="-.7" width="14" height="76" rx="4" ry="4" transform="translate(-10.7 7.2) rotate(-18)"/>
+  <circle class="st1" cx="66.4" cy="71.3" r="54"/>
+  <path class="st3" d="M66.4,17.3c29.8,0,54,24.2,54,54s-24.2,54-54,54S12.4,101.1,12.4,71.3s24.2-54,54-54"/>
+  <circle class="st4" cx="48.4" cy="53.3" r="12"/>
+  <path class="st6" d="M116.4,17.3c27.6,0,50,22.4,50,50s-22.4,50-50,50-50-22.4-50-50,22.4-50,50-50"/>
+  <circle class="st5" cx="103" cy="57.3" r="10"/>
+  <path class="st7" d="M21.4,114.3h130l-15,55c-1.3,6.7-5.3,10-12,10H48.4c-6.7,0-10.7-3.3-12-10,0,0-15-55-15-55Z"/>
+  <path class="st0" d="M21.4,114.3h130l-5,23H26.4l-5-23Z"/>
+  <path class="st7" d="M26.4,137.3h120l-6,22H32.4s-6-22-6-22Z"/>
+  <path class="st0" d="M32.4,159.3h108l-4,10c-1.3,6.7-5.3,10-12,10H48.4c-6.7,0-10.7-3.3-12-10l-4-10Z"/>
+  <path class="st8" d="M26.4,106.3h120c3.9,0,7,3.1,7,7h0c0,3.9-3.1,7-7,7H26.4c-3.9,0-7-3.1-7-7h0c0-3.9,3.1-7,7-7Z"/>
+</svg>
