@@ -7,7 +7,7 @@ const colori = {
   crema:    { bg: 'bg-turchese',  text: 'text-bianco' },
   frutta:   { bg: 'bg-fucsia',    text: 'text-bianco' },
   sorbetto: { bg: 'bg-indaco',    text: 'text-bianco' },
-  vegano:   { bg: 'bg-bruciato',  text: 'text-notte'  },
+  vegano:   { bg: 'bg-bruciato',  text: 'text-bianco' },
 }
 </script>
 
