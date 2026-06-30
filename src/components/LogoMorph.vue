@@ -1,13 +1,26 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 import { gsap } from 'gsap'
 // ScrollTrigger è registrato globalmente in main.js. Importato qui solo
 // come riferimento per la logica scroll-linked che aggiungeremo allo step
 // successivo — nessuna logica di scroll in questo step.
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+// visible: pilotato da App.vue (appVisible = introCompleted && authReady).
+// Il bounce-in non parte al mount fisico (avviene mentre il logo è
+// display:none in attesa di Firebase auth), ma solo quando diventa true.
+const props = defineProps({
+  visible: { type: Boolean, default: false },
+})
+
 const logoRef = ref(null)
 let bounceTween = null
+// Lettere e modalità ridotta, risolte al mount e riusate dal watch.
+let letterGroups = []
+let prefersReducedMotion = false
+// Garantisce che il bounce-in scatti una sola volta, anche se props.visible
+// torna true più volte (es. cambio route).
+let hasAnimated = false
 let floatTweens = []
 
 // Moltiplicatore d'ampiezza del floating (0..1), letto live dai modifiers
@@ -62,12 +75,28 @@ function startFloating(letterGroups) {
   )
 }
 
+// Bounce-in vero: scatta una sola volta, al primo passaggio di visible
+// a true. Setup iniziale (opacity:0/y:20) già fatto in onMounted.
+function playBounceIn() {
+  if (hasAnimated || prefersReducedMotion) return
+  hasAnimated = true
+
+  bounceTween = gsap.to(letterGroups, {
+    y: 0,
+    opacity: 1,
+    duration: 0.9,
+    ease: 'bounce.out',
+    stagger: 0.05,
+    onComplete: () => startFloating(letterGroups),
+  })
+}
+
 onMounted(() => {
-  const prefersReducedMotion = window.matchMedia(
+  prefersReducedMotion = window.matchMedia(
     '(prefers-reduced-motion: reduce)'
   ).matches
 
-  const letterGroups = Array.from(
+  letterGroups = Array.from(
     logoRef.value.querySelectorAll('g[id^="lettera_"]')
   )
 
@@ -78,18 +107,22 @@ onMounted(() => {
     return
   }
 
+  // Solo setup dello stato iniziale (non visibile finché display:none):
+  // il bounce vero parte dal watch su props.visible.
   gsap.set(logoRef.value, { opacity: 1 })
   gsap.set(letterGroups, { opacity: 0, y: 20 })
 
-  bounceTween = gsap.to(letterGroups, {
-    y: 0,
-    opacity: 1,
-    duration: 0.9,
-    ease: 'bounce.out',
-    stagger: 0.05,
-    onComplete: () => startFloating(letterGroups),
-  })
+  // Se già visibile al mount, parte subito; altrimenti attende il watch.
+  if (props.visible) playBounceIn()
 })
+
+// Primo passaggio visible false→true → bounce-in (una volta sola).
+watch(
+  () => props.visible,
+  (v) => {
+    if (v) playBounceIn()
+  }
+)
 
 onUnmounted(() => {
   bounceTween?.kill()

@@ -194,7 +194,7 @@ async function handleLogin() {
       aria-hidden="true"
     />
     <div ref="logoFixed" class="fixed top-0 left-0 z-[60] pointer-events-none">
-      <LogoMorph ref="logoMorphRef" />
+      <LogoMorph ref="logoMorphRef" :visible="appVisible" />
     </div>
     <ScrollHint />
   </div>
