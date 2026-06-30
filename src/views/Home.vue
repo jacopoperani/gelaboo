@@ -19,7 +19,8 @@ const { heroLogoAnchor } = useLogoAnchors()
              viewBox 667.85 × 280.28. -->
         <div
           ref="heroLogoAnchor"
-          class="mb-3 w-[95%] sm:w-[90%] md:w-[82%] lg:w-[72%] max-w-5xl aspect-[667.85/280.28] mx-auto"
+          data-gelato-obstacle
+          class="mb-3 w-[95%] sm:w-[92%] md:w-[88%] lg:w-[85%] max-w-7xl aspect-[667.85/280.28] mx-auto"
           aria-hidden="true"
         />
       </div>
@@ -30,7 +31,7 @@ const { heroLogoAnchor } = useLogoAnchors()
     <div class="h-[35vh]" aria-hidden="true" />
 
     <section class="py-24">
-      <div class="relative z-10 max-w-2xl mx-auto px-6 text-left">
+      <div class="relative z-10 max-w-3xl mx-auto px-6 text-left">
         <h2 class="text-h1">Uno strumento per creare il gelato perfetto</h2>
         <p class="text-body text-notte/70 mt-4">
           Bilancia ogni ricetta in pochi secondi, senza calcoli a mano.
@@ -39,7 +40,7 @@ const { heroLogoAnchor } = useLogoAnchors()
     </section>
 
     <section class="py-24">
-      <div class="relative z-10 max-w-2xl mx-auto px-6 text-left">
+      <div class="relative z-10 max-w-3xl mx-auto px-6 text-left">
         <h2 class="text-h1">Tante ricette di base, sempre in aggiornamento</h2>
         <p class="text-body text-notte/70 mt-4">
           Parti da una ricetta verificata o modificala come vuoi.
@@ -48,7 +49,7 @@ const { heroLogoAnchor } = useLogoAnchors()
     </section>
 
     <section class="pt-24 pb-12">
-      <div class="relative z-10 max-w-2xl mx-auto px-6 text-left">
+      <div class="relative z-10 max-w-3xl mx-auto px-6 text-left">
         <h2 class="text-h1">Hai pensato a qualche gusto particolare? Crealo con<br>Gelaboo</h2>
         <p class="text-body text-notte/70 mt-4">
           Descrivi il sapore che hai in mente: l'intelligenza artificiale

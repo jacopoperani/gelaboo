@@ -81,7 +81,7 @@ onUnmounted(() => {
     viewBox="0 0 667.85 280.28"
     fill="currentColor"
     style="overflow: visible"
-    class="opacity-0 mb-3 w-[95%] sm:w-[90%] md:w-[82%] lg:w-[72%] max-w-5xl h-auto mx-auto text-notte"
+    class="opacity-0 mb-3 w-[95%] sm:w-[92%] md:w-[88%] lg:w-[85%] max-w-7xl h-auto mx-auto text-notte"
     aria-label="gelaboo"
     role="img"
   >

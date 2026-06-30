@@ -8,7 +8,7 @@ const { Engine, World, Bodies, Body, Common } = Matter
 const NUM_OBJECTS = 45
 const MOUSE_RADIUS = 140
 const MOUSE_FORCE = 0.06
-const GRAVITY = 0.6
+const GRAVITY = 0.3
 
 // ---------- ILLUSTRAZIONI GELATI (flat, disegnate a mano in SVG) ----------
 // Ogni funzione restituisce un markup SVG completo, viewBox 64x64.
@@ -87,6 +87,11 @@ let rightWall = null
 // Ostacoli statici = bottoni CTA della Home. Gli oggetti ci rimbalzano
 // sopra invece di attraversarli. Ricalcolati on resize come i muri.
 let buttonBodies = []
+// Init differita: il container può montare nascosto (v-show in App.vue
+// false durante l'intro) → clientWidth 0 → spawn collassa a sinistra.
+// Aspettiamo width reale prima di inizializzare.
+let started = false
+let resizeObserver = null
 let W = 0
 let H = 0
 
@@ -113,9 +118,11 @@ function addWalls() {
   World.add(world, [ground, leftWall, rightWall])
 }
 
-// I bottoni CTA stanno in una sezione più in basso: le coordinate
-// vanno rese relative a boundsEl (container scrollabile), stesso sistema
-// di riferimento di ground/leftWall/rightWall.
+// Ostacoli statici [data-gelato-obstacle]: bottoni CTA + ancora logo Hero.
+// Le coordinate vanno rese relative a boundsEl (container scrollabile),
+// stesso sistema di riferimento di ground/leftWall/rightWall. L'ancora
+// logo resta nel flusso (non è il LogoMorph fixed), quindi il suo rect è
+// costante rispetto a boundsEl anche durante il morph/scroll.
 function addButtons() {
   const boundsRect = boundsEl.getBoundingClientRect()
   const els = boundsEl.querySelectorAll('[data-gelato-obstacle]')
@@ -220,14 +227,12 @@ function onResize() {
   addButtons()
 }
 
-onMounted(() => {
-  boundsEl = layerEl.value.parentElement
-
-  engine = Engine.create()
-  engine.gravity.y = GRAVITY
-  world = engine.world
-
+// Init valido solo quando il container ha dimensioni reali (> 0).
+// Ritorna true se ha inizializzato, false se ancora a dimensione 0.
+function init() {
+  if (started) return true
   const b = getBounds()
+  if (b.W === 0 || b.H === 0) return false
   W = b.W
   H = b.H
 
@@ -235,13 +240,39 @@ onMounted(() => {
   addButtons()
   spawnAll() // una sola volta, niente interval
 
-  window.addEventListener('mousemove', onMouseMove)
   window.addEventListener('resize', onResize)
-
   rafId = requestAnimationFrame(render)
+  started = true
+  return true
+}
+
+onMounted(() => {
+  boundsEl = layerEl.value.parentElement
+
+  engine = Engine.create()
+  engine.gravity.y = GRAVITY
+  world = engine.world
+
+  window.addEventListener('mousemove', onMouseMove)
+
+  // Se il container è già visibile, init subito; altrimenti aspetta che
+  // ResizeObserver veda dimensioni > 0 (fine intro), poi disconnette.
+  if (!init()) {
+    resizeObserver = new ResizeObserver(() => {
+      if (init()) {
+        resizeObserver.disconnect()
+        resizeObserver = null
+      }
+    })
+    resizeObserver.observe(boundsEl)
+  }
 })
 
 onUnmounted(() => {
+  if (resizeObserver) {
+    resizeObserver.disconnect()
+    resizeObserver = null
+  }
   if (rafId) cancelAnimationFrame(rafId)
   window.removeEventListener('mousemove', onMouseMove)
   window.removeEventListener('resize', onResize)
