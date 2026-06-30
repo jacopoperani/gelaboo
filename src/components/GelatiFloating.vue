@@ -129,9 +129,16 @@ function addButtons() {
   for (const el of els) {
     const r = el.getBoundingClientRect()
     if (r.width === 0 || r.height === 0) continue
+    // Fattore di scala del box fisico (default 1). L'ancora logo Hero usa
+    // 1.2 per allinearsi al LogoMorph reale ingrandito via GSAP, restando
+    // di dimensione "base" come elemento di layout. Centro invariato → il
+    // box cresce simmetrico attorno allo stesso punto.
+    const factor = parseFloat(el.dataset.gelatoObstacle) || 1
+    const w = r.width * factor
+    const h = r.height * factor
     const cx = r.left - boundsRect.left + r.width / 2
     const cy = r.top - boundsRect.top + r.height / 2
-    const body = Bodies.rectangle(cx, cy, r.width, r.height, wallOpts)
+    const body = Bodies.rectangle(cx, cy, w, h, wallOpts)
     buttonBodies.push(body)
   }
   if (buttonBodies.length) World.add(world, buttonBodies)

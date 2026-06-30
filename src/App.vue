@@ -62,12 +62,25 @@ function buildHomeMorph() {
   const target = logoTarget.value.getBoundingClientRect()
   const scaleSmall = target.width / hero.width
 
-  // Baseline allo stato Hero.
+  // Compensazione del decentramento da baseline scale 1.2 + transformOrigin
+  // 0 0: il logo cresce di 0.2 verso destra/basso dall'angolo top-left.
+  // Sottraggo metà dell'eccesso (0.1) dalle coordinate di partenza hero per
+  // ricentrarlo sull'ancora mx-auto. Applicato SOLO al riposo hero: il
+  // fromTo interpola x/y verso target.left/target.top, quindi l'offset
+  // svanisce gradualmente a 0 con lo scroll (nessuno scatto, docked invariato).
+  const heroX = hero.left - 0.1 * hero.width
+  const heroY = hero.top - 0.1 * hero.height
+
+  // Baseline allo stato Hero. scale 1.2 = logo hero +20% rispetto all'ancora
+  // heroLogoAnchor. Lo stato docked resta invariato: scaleSmall è il valore
+  // assoluto d'arrivo (target.width/hero.width), indipendente da questa
+  // baseline. transformOrigin 0 0: il +20% cresce verso destra/basso da
+  // hero.left/hero.top (vedi nota overflow).
   gsap.set(logoFixed.value, {
-    x: hero.left,
-    y: hero.top,
+    x: heroX,
+    y: heroY,
     width: hero.width,
-    scale: 1,
+    scale: 1.2,
     transformOrigin: '0 0',
   })
 
@@ -82,7 +95,7 @@ function buildHomeMorph() {
     scrub: 0.3,
     animation: gsap.fromTo(
       logoFixed.value,
-      { x: hero.left, y: hero.top, scale: 1 },
+      { x: heroX, y: heroY, scale: 1.2 },
       { x: target.left, y: target.top, scale: scaleSmall, ease: 'none' }
     ),
     // Ampiezza floating = 1 - progress: piena in Hero, a zero in header.
