@@ -47,7 +47,7 @@ const { heroLogoAnchor } = useLogoAnchors()
       </div>
     </section>
 
-    <section class="py-24">
+    <section class="pt-24 pb-12">
       <div class="relative z-10 max-w-2xl mx-auto px-6 text-left">
         <h2 class="text-h1">Hai pensato a qualche gusto particolare? Crealo con<br>Gelaboo</h2>
         <p class="text-body text-notte/70 mt-4">
@@ -57,14 +57,16 @@ const { heroLogoAnchor } = useLogoAnchors()
       </div>
     </section>
 
-    <section class="py-24 text-center">
+    <section class="pt-20 pb-24 text-center">
       <div class="relative z-10 flex flex-col sm:flex-row gap-3 justify-center items-center px-6">
         <RouterLink
           to="/ricette"
+          data-gelato-obstacle
           class="inline-flex items-center justify-center bg-notte text-perla rounded-xl px-7 py-3.5 text-body font-medium no-underline hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte"
         >Sfoglia i gusti</RouterLink>
         <RouterLink
           to="/crea"
+          data-gelato-obstacle
           class="inline-flex items-center justify-center border border-notte/20 text-notte rounded-xl px-7 py-3.5 text-body font-medium no-underline hover:border-notte/60 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte"
         >Crea il tuo gusto</RouterLink>
       </div>

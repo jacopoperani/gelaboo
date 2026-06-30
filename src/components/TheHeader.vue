@@ -162,6 +162,14 @@ function onLeave(el, done) {
           class="absolute top-0 right-0 h-full w-[min(20rem,100%)] bg-perla border-l border-notte/10 px-6 pt-16 pb-2 overflow-y-auto"
           aria-label="Navigazione principale"
         >
+        <!-- Chiusura: stessa posizione dell'hamburger (header h-16, px-6). -->
+        <button
+          @click="closeMenu"
+          aria-label="Chiudi menu"
+          class="absolute top-0 right-0 h-16 px-6 flex items-center text-notte hover:opacity-60 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte"
+        >
+          <X :size="24" aria-hidden="true" />
+        </button>
         <button
           data-menu-item
           @click="nav('/ricette')"
@@ -179,7 +187,7 @@ function onLeave(el, done) {
           @click="nav('/guida')"
           class="w-full text-right py-4 hover:opacity-60 transition-opacity focus-visible:outline-none"
           style="font-family: 'Instrument Serif', serif; font-size: 20px; font-weight: 600; line-height: 1.25; color: #161b33;"
-        >Guida</button>
+        >Guida ai parametri</button>
       </nav>
       </div>
     </Transition>

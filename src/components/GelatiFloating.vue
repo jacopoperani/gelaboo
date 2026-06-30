@@ -84,6 +84,9 @@ const items = []
 let ground = null
 let leftWall = null
 let rightWall = null
+// Ostacoli statici = bottoni CTA della Home. Gli oggetti ci rimbalzano
+// sopra invece di attraversarli. Ricalcolati on resize come i muri.
+let buttonBodies = []
 let W = 0
 let H = 0
 
@@ -108,6 +111,23 @@ function addWalls() {
   leftWall = Bodies.rectangle(-20, H / 2, 40, H * 2, wallOpts)
   rightWall = Bodies.rectangle(W + 20, H / 2, 40, H * 2, wallOpts)
   World.add(world, [ground, leftWall, rightWall])
+}
+
+// I bottoni CTA stanno in una sezione più in basso: le coordinate
+// vanno rese relative a boundsEl (container scrollabile), stesso sistema
+// di riferimento di ground/leftWall/rightWall.
+function addButtons() {
+  const boundsRect = boundsEl.getBoundingClientRect()
+  const els = boundsEl.querySelectorAll('[data-gelato-obstacle]')
+  for (const el of els) {
+    const r = el.getBoundingClientRect()
+    if (r.width === 0 || r.height === 0) continue
+    const cx = r.left - boundsRect.left + r.width / 2
+    const cy = r.top - boundsRect.top + r.height / 2
+    const body = Bodies.rectangle(cx, cy, r.width, r.height, wallOpts)
+    buttonBodies.push(body)
+  }
+  if (buttonBodies.length) World.add(world, buttonBodies)
 }
 
 // ---------- SPAWN UNA TANTUM AL CARICAMENTO ----------
@@ -192,6 +212,12 @@ function onResize() {
   H = b.H
   World.remove(world, [ground, leftWall, rightWall])
   addWalls()
+  // Ricalcola gli ostacoli bottone: posizione/dimensione cambiano in responsive.
+  if (buttonBodies.length) {
+    World.remove(world, buttonBodies)
+    buttonBodies = []
+  }
+  addButtons()
 }
 
 onMounted(() => {
@@ -206,6 +232,7 @@ onMounted(() => {
   H = b.H
 
   addWalls()
+  addButtons()
   spawnAll() // una sola volta, niente interval
 
   window.addEventListener('mousemove', onMouseMove)

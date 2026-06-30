@@ -105,11 +105,11 @@ const statoColore = {
 </script>
 
 <template>
-  <main class="bg-perla text-notte min-h-screen pt-16">
+  <main class="bg-perla text-notte min-h-screen pt-[40px]">
     <div class="max-w-[800px] mx-auto px-6 py-16">
       <!-- 1. Header -->
       <header class="mb-12">
-        <h1 class="text-display text-notte">Guida ai parametri</h1>
+        <h1 class="text-h1 text-notte">Guida ai parametri</h1>
         <p class="text-lead text-notte/70 mt-3">
           Cosa significano i valori del bilanciamento, cosa succede se escono dal
           range e come correggerli

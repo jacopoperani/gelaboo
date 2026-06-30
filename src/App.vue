@@ -173,7 +173,7 @@ async function handleLogin() {
          Colore di partenza = --color-perla per fondersi col fondo pagina. -->
     <div
       class="fixed left-0 right-0 z-40 pointer-events-none"
-      style="top: 64px; height: 100px; background: linear-gradient(to bottom, var(--color-perla) 0%, var(--color-perla) 35%, transparent 75%, transparent 100%);"
+      style="top: 64px; height: 32px; background: linear-gradient(to bottom, var(--color-perla) 0%, var(--color-perla) 35%, transparent 75%, transparent 100%);"
       aria-hidden="true"
     />
     <div ref="logoFixed" class="fixed top-0 left-0 z-[60] pointer-events-none">

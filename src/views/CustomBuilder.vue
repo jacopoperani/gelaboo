@@ -136,7 +136,7 @@ async function generaConAI() {
 </script>
 
 <template>
-  <section class="min-h-screen bg-perla px-6 pt-24 pb-16">
+  <section class="min-h-screen bg-perla px-6 pt-[104px] pb-16">
     <div class="max-w-5xl mx-auto">
 
       <!-- Header + form -->
