@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, onUnmounted, ref, inject } from 'vue'
+import { onMounted, onUnmounted, ref, inject, watch } from 'vue'
 import Matter from 'matter-js'
 import { useLogoAnchors } from '../composables/useLogoAnchors.js'
 
@@ -18,14 +18,14 @@ import { inlineSvgColors } from '../utils/inlineSvgColors.js'
 // LogoMorph (montato fixed in App.vue) per leggere le bbox delle lettere, e
 // l'ancora di layout del logo Hero (in-flow, sistema di coordinate stabile).
 const logoMorph = inject('logoMorph', null)
-const { heroLogoAnchor } = useLogoAnchors()
+const { heroLogoAnchor, scrollProgress } = useLogoAnchors()
 
 // Dimensioni del viewBox del logo (LogoMorph.vue), per mappare le bbox
 // lettera in coordinate pixel dell'ancora.
 const VB_W = 667.85
 const VB_H = 280.28
 
-const { Engine, World, Bodies, Body, Common } = Matter
+const { Engine, World, Bodies, Body, Common, Events } = Matter
 
 // ---------- CONFIG ----------
 const NUM_OBJECTS = 45
@@ -65,6 +65,110 @@ let buttonBodies = []
 // render(). Separati dai CTA perché si muovono ogni frame col floating.
 let letterBodies = []
 let letterScaleH = 0
+// --- Fade gelati appoggiati al logo ---
+// Lookup body→item (popolato in spawnAll) per risalire dall'evento di
+// collisione Matter al div DOM da sfadeare. Set dei body lettera per test O(1).
+const bodyToItem = new Map()
+let letterBodySet = new Set()
+// Soglia velocità per considerare un gelato "a riposo" sul logo: 0.5 px/step.
+// Sopra → sta rimbalzando/cadendo, lo ignoriamo (evita falsi positivi quando
+// un gelato attraversa l'area in volo). Valore regolabile a vista.
+const RESTING_SPEED = 0.5
+// Quanti px sopra il top reale dei letterBodies estendere la zona di
+// rilevamento "a riposo sul logo" (solo check virtuale, NON tocca il body
+// fisico). Serve a catturare gelati impilati più in alto del bordo lettere.
+const RESTING_DETECTION_EXTRA_HEIGHT = 40
+// Grafo di adiacenza gelato↔gelato per frame: coppie di item entrambi a
+// riposo e in contatto. Serve a propagare lo stato "a riposo sul logo" su
+// pile di altezza arbitraria (un gelato su un gelato su un gelato sul logo).
+// Map<item, item[]>. Azzerato ogni frame in render() prima di Engine.update.
+let restingAdjacency = new Map()
+// Item snapshot al primo scroll (fade out); rimessi a opacity 1 al ritorno.
+let frozenOnLogoItems = []
+// Edge-detection scroll: true finché siamo a inizio pagina (progress 0).
+let wasAtTop = true
+let stopScrollWatch = null
+
+// collisionActive: ogni frame con contatti attivi marca gli item che toccano
+// un body lettera E sono sotto soglia di velocità. item._restingOnLogo è il
+// flag live letto al momento del primo scroll.
+function onCollisionActive(evt) {
+  for (const pair of evt.pairs) {
+    const itemA = bodyToItem.get(pair.bodyA)
+    const itemB = bodyToItem.get(pair.bodyB)
+    const aIsLetter = letterBodySet.has(pair.bodyA)
+    const bIsLetter = letterBodySet.has(pair.bodyB)
+
+    // Base case: contatto diretto gelato↔letterBody.
+    if (aIsLetter && itemB) {
+      if (itemB.body.speed < RESTING_SPEED) itemB._restingOnLogo = true
+      continue
+    }
+    if (bIsLetter && itemA) {
+      if (itemA.body.speed < RESTING_SPEED) itemA._restingOnLogo = true
+      continue
+    }
+
+    // Adiacenza gelato↔gelato: registra la coppia solo se entrambi a riposo.
+    // Sarà usata dal flood-fill per propagare lo stato lungo le pile.
+    if (itemA && itemB && itemA.body.speed < RESTING_SPEED && itemB.body.speed < RESTING_SPEED) {
+      addAdjacency(itemA, itemB)
+      addAdjacency(itemB, itemA)
+    }
+  }
+}
+
+function addAdjacency(a, b) {
+  let list = restingAdjacency.get(a)
+  if (!list) {
+    list = []
+    restingAdjacency.set(a, list)
+  }
+  list.push(b)
+}
+
+// Flood-fill/BFS: parte dagli item già marcati _restingOnLogo (base case +
+// box virtuale) e propaga il flag a tutti gli item adiacenti a riposo,
+// transitivamente. Copre pile di altezza arbitraria sopra il logo.
+function propagateRestingOnLogo() {
+  const queue = items.filter((it) => it._restingOnLogo)
+  while (queue.length) {
+    const it = queue.pop()
+    const neighbors = restingAdjacency.get(it)
+    if (!neighbors) continue
+    for (const n of neighbors) {
+      if (!n._restingOnLogo) {
+        n._restingOnLogo = true
+        queue.push(n)
+      }
+    }
+  }
+}
+
+// Sweep geometrico per-frame: marca come "a riposo sul logo" anche i gelati
+// che NON toccano fisicamente un letterBody ma stanno dentro la sua bbox
+// estesa verso l'alto di RESTING_DETECTION_EXTRA_HEIGHT (gelati impilati).
+// Box virtuale: usa body.bounds reali dei letterBodies (già sincronizzati col
+// floating), allargati solo verso l'alto. Non modifica nulla di fisico.
+function markRestingByVirtualBox() {
+  if (!letterBodies.length) return
+  for (const it of items) {
+    if (it.body.speed >= RESTING_SPEED) continue
+    const p = it.body.position
+    for (const e of letterBodies) {
+      const b = e.body.bounds
+      if (
+        p.x >= b.min.x &&
+        p.x <= b.max.x &&
+        p.y >= b.min.y - RESTING_DETECTION_EXTRA_HEIGHT &&
+        p.y <= b.max.y
+      ) {
+        it._restingOnLogo = true
+        break
+      }
+    }
+  }
+}
 // Init differita: il container può montare nascosto (v-show in App.vue
 // false durante l'intro) → clientWidth 0 → spawn collassa a sinistra.
 // Aspettiamo width reale prima di inizializzare.
@@ -197,7 +301,9 @@ function spawnAll() {
     el.innerHTML = shape.svg
     layerEl.value.appendChild(el)
 
-    items.push({ body, el, radius: effectiveSize / 2, halfWidth: width / 2 })
+    const item = { body, el, radius: effectiveSize / 2, halfWidth: width / 2, _restingOnLogo: false }
+    items.push(item)
+    bodyToItem.set(body, item)
   }
 }
 
@@ -250,11 +356,41 @@ function syncLetterBodies() {
   }
 }
 
+// Fade veloce (centinaia di ms) tocca SOLO lo stile di item.el: il Matter.Body
+// resta in vita e continua fisica + forza mouse anche con opacity 0.
+const FADE = 'opacity 150ms ease-out'
+
+function fadeOutRestingItems() {
+  // Snapshot degli item appoggiati sul logo al momento del primo scroll.
+  frozenOnLogoItems = items.filter((it) => it._restingOnLogo)
+  for (const it of frozenOnLogoItems) {
+    it.el.style.transition = FADE
+    it.el.style.opacity = '0'
+  }
+}
+
+function fadeInRestingItems() {
+  for (const it of frozenOnLogoItems) {
+    it.el.style.transition = FADE
+    it.el.style.opacity = '1'
+  }
+  frozenOnLogoItems = []
+}
+
 // ---------- LOOP ----------
 function render() {
   applyMouseForce()
   syncLetterBodies()
+  // Reset flag + grafo adiacenza prima dello step: onCollisionActive
+  // (dispatchato dentro Engine.update) li ricostruisce dai contatti correnti →
+  // stato "appoggiato sul logo" sempre fresco, mai stale dopo un rimbalzo.
+  for (const it of items) it._restingOnLogo = false
+  restingAdjacency.clear()
   Engine.update(engine, 1000 / 60)
+  // Dopo lo step: bounds dei letterBodies aggiornati → sweep box virtuale alto.
+  markRestingByVirtualBox()
+  // Propaga lo stato lungo le pile (gelato su gelato su logo).
+  propagateRestingOnLogo()
 
   for (const { body, el, radius, halfWidth } of items) {
     const x = body.position.x - halfWidth
@@ -283,6 +419,7 @@ function onResize() {
     letterBodies = []
   }
   addButtons()
+  letterBodySet = new Set(letterBodies.map((e) => e.body))
 }
 
 // Init valido solo quando il container ha dimensioni reali (> 0).
@@ -296,6 +433,7 @@ function init() {
 
   addWalls()
   addButtons()
+  letterBodySet = new Set(letterBodies.map((e) => e.body))
   spawnAll() // una sola volta, niente interval
 
   window.addEventListener('resize', onResize)
@@ -312,6 +450,21 @@ onMounted(() => {
   world = engine.world
 
   window.addEventListener('mousemove', onMouseMove)
+
+  // Tracking real-time dei gelati a riposo sul muro per-lettera del logo.
+  Events.on(engine, 'collisionActive', onCollisionActive)
+
+  // Edge-detection scroll: 0→>0 = primo scroll (fade out), ritorno a 0 = fade in.
+  // wasAtTop evita di ritriggerare ad ogni micro-variazione durante lo scroll.
+  stopScrollWatch = watch(scrollProgress, (p) => {
+    if (wasAtTop && p > 0) {
+      wasAtTop = false
+      fadeOutRestingItems()
+    } else if (!wasAtTop && p === 0) {
+      wasAtTop = true
+      fadeInRestingItems()
+    }
+  })
 
   // Se il container è già visibile, init subito; altrimenti aspetta che
   // ResizeObserver veda dimensioni > 0 (fine intro), poi disconnette.
@@ -332,10 +485,19 @@ onUnmounted(() => {
     resizeObserver = null
   }
   if (rafId) cancelAnimationFrame(rafId)
+  if (stopScrollWatch) {
+    stopScrollWatch()
+    stopScrollWatch = null
+  }
+  if (engine) Events.off(engine, 'collisionActive', onCollisionActive)
   window.removeEventListener('mousemove', onMouseMove)
   window.removeEventListener('resize', onResize)
   for (const { el } of items) el.remove()
   items.length = 0
+  bodyToItem.clear()
+  letterBodySet = new Set()
+  restingAdjacency.clear()
+  frozenOnLogoItems = []
   // World.clear rimuove tutti i body; azzero anche i riferimenti locali.
   buttonBodies = []
   letterBodies = []
