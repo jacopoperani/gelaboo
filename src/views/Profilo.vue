@@ -4,6 +4,7 @@ import { RouterLink } from 'vue-router'
 import { useUserStore } from '../stores/user.js'
 import { useRicetteStore } from '../stores/ricette.js'
 import CardRicetta from '../components/CardRicetta.vue'
+import PageShell from '../components/PageShell.vue'
 
 const userStore = useUserStore()
 const ricetteStore = useRicetteStore()
@@ -15,8 +16,7 @@ const ricetteLiked = computed(() =>
 </script>
 
 <template>
-  <section class="min-h-screen bg-perla px-6 pt-24 pb-16">
-    <div class="max-w-4xl mx-auto">
+  <PageShell width="page" class="min-h-screen bg-perla pb-16">
 
       <!-- Non loggato -->
       <div
@@ -105,6 +105,5 @@ const ricetteLiked = computed(() =>
         </div>
       </template>
 
-    </div>
-  </section>
+  </PageShell>
 </template>

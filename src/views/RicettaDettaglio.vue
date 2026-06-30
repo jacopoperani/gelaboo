@@ -10,6 +10,7 @@ import BadgeCategoria from '../components/BadgeCategoria.vue'
 import LikeButton from '../components/LikeButton.vue'
 import InputNumerico from '../components/InputNumerico.vue'
 import SliderIngrediente from '../components/SliderIngrediente.vue'
+import PageShell from '../components/PageShell.vue'
 import PannelloBilanciamento from '../components/PannelloBilanciamento.vue'
 import Procedimento from '../components/Procedimento.vue'
 
@@ -95,9 +96,9 @@ const metricheRiga = computed(() => [
 </script>
 
 <template>
-  <section class="min-h-screen bg-perla px-6 pt-24 pb-16">
+  <PageShell width="page" class="min-h-screen bg-perla pb-16">
 
-    <div v-if="ricetta" class="max-w-4xl mx-auto">
+    <div v-if="ricetta">
 
       <!-- Back -->
       <button
@@ -197,5 +198,5 @@ const metricheRiga = computed(() => [
     <div v-else class="flex items-center justify-center min-h-[60vh]">
       <p class="text-body text-notte/50">Gusto non trovato.</p>
     </div>
-  </section>
+  </PageShell>
 </template>

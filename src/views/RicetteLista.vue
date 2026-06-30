@@ -1,14 +1,14 @@
 <script setup>
 import { useRicetteStore } from '../stores/ricette.js'
 import CardRicetta from '../components/CardRicetta.vue'
+import PageShell from '../components/PageShell.vue'
 
 const ricetteStore = useRicetteStore()
 const categorie = ['crema', 'frutta', 'sorbetto', 'vegano']
 </script>
 
 <template>
-  <section class="min-h-screen bg-perla px-6 pt-[104px] pb-16">
-    <div class="max-w-5xl mx-auto">
+  <PageShell width="page" class="min-h-screen bg-perla pb-16">
       <h1 class="text-h1 text-notte mb-8">Gusti</h1>
 
       <div
@@ -37,7 +37,7 @@ const categorie = ['crema', 'frutta', 'sorbetto', 'vegano']
         >{{ cat }}</button>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         <CardRicetta
           v-for="ricetta in ricetteStore.ricetteFiltrate"
           :key="ricetta.id"
@@ -49,6 +49,5 @@ const categorie = ['crema', 'frutta', 'sorbetto', 'vegano']
         v-if="ricetteStore.ricetteFiltrate.length === 0"
         class="text-body text-notte/50 py-16 text-center"
       >Nessun gusto in questa categoria.</p>
-    </div>
-  </section>
+  </PageShell>
 </template>

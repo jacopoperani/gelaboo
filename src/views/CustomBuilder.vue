@@ -8,6 +8,7 @@ import InputNumerico from '../components/InputNumerico.vue'
 import SliderIngrediente from '../components/SliderIngrediente.vue'
 import PannelloBilanciamento from '../components/PannelloBilanciamento.vue'
 import Procedimento from '../components/Procedimento.vue'
+import PageShell from '../components/PageShell.vue'
 
 const userStore = useUserStore()
 
@@ -136,8 +137,7 @@ async function generaConAI() {
 </script>
 
 <template>
-  <section class="min-h-screen bg-perla px-6 pt-[104px] pb-16">
-    <div class="max-w-5xl mx-auto">
+  <PageShell width="page" class="min-h-screen bg-perla pb-16">
 
       <!-- Header + form -->
       <h1 class="text-h1 text-notte mb-2">Crea il tuo gusto</h1>
@@ -249,6 +249,5 @@ async function generaConAI() {
         </div>
 
       </div>
-    </div>
-  </section>
+  </PageShell>
 </template>
