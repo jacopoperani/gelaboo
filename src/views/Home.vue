@@ -64,28 +64,28 @@ onUnmounted(() => {
 
   <section class="bg-perla py-24">
     <div class="max-w-2xl mx-auto px-6 text-left">
-      <h2 class="text-h1">uno strumento per creare il gelato perfetto</h2>
+      <h2 class="text-h1">Uno strumento per creare il gelato perfetto</h2>
       <p class="text-body text-notte/70 mt-4">
-        bilancia ogni ricetta in pochi secondi, senza calcoli a mano.
+        Bilancia ogni ricetta in pochi secondi, senza calcoli a mano.
       </p>
     </div>
   </section>
 
   <section class="bg-perla py-24">
     <div class="max-w-2xl mx-auto px-6 text-left">
-      <h2 class="text-h1">tante ricette di base, sempre in aggiornamento</h2>
+      <h2 class="text-h1">Tante ricette di base, sempre in aggiornamento</h2>
       <p class="text-body text-notte/70 mt-4">
-        parti da una ricetta verificata o modificala come vuoi.
+        Parti da una ricetta verificata o modificala come vuoi.
       </p>
     </div>
   </section>
 
   <section class="bg-perla py-24">
     <div class="max-w-2xl mx-auto px-6 text-left">
-      <h2 class="text-h1">hai pensato a qualche gusto particolare? crealo con gelaboo</h2>
+      <h2 class="text-h1">Hai pensato a qualche gusto particolare? Crealo con<br>Gelaboo</h2>
       <p class="text-body text-notte/70 mt-4">
-        descrivi il sapore che hai in mente: l'intelligenza artificiale
-        suggerisce gli ingredienti, gelaboo bilancia tutto il resto.
+        Descrivi il sapore che hai in mente: l'intelligenza artificiale
+        suggerisce gli ingredienti, Gelaboo bilancia tutto il resto.
       </p>
     </div>
   </section>

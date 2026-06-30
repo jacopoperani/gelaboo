@@ -1,17 +1,85 @@
 <script setup>
 import { ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
+import { gsap } from 'gsap'
 import { useUserStore } from '../stores/user.js'
 
 const userStore = useUserStore()
 const router = useRouter()
 const menuOpen = ref(false)
 
+const panelRef = ref(null)
+const scrimRef = ref(null)
+
+const prefersReducedMotion = window.matchMedia(
+  '(prefers-reduced-motion: reduce)'
+).matches
+
 function closeMenu() { menuOpen.value = false }
 
 function nav(path) {
   router.push(path)
   closeMenu()
+}
+
+// Panel slides in from the right edge; the scrim fades in alongside it;
+// menu items stagger in once the panel has nearly finished entering.
+function onEnter(el, done) {
+  const items = el.querySelectorAll('[data-menu-item]')
+
+  if (prefersReducedMotion) {
+    gsap.set([scrimRef.value, panelRef.value, ...items], {
+      clearProps: 'all',
+    })
+    done()
+    return
+  }
+
+  const tl = gsap.timeline({ onComplete: done })
+  tl.set(scrimRef.value, { opacity: 0 })
+    .set(panelRef.value, { xPercent: 100 })
+    .set(items, { opacity: 0, x: 18 })
+    .to(scrimRef.value, { opacity: 1, duration: 0.45, ease: 'sine.inOut' }, 0)
+    .to(
+      panelRef.value,
+      { xPercent: 0, duration: 0.45, ease: 'power3.out' },
+      0
+    )
+    .to(
+      items,
+      { opacity: 1, x: 0, duration: 0.38, ease: 'power2.out', stagger: 0.07 },
+      '-=0.2'
+    )
+}
+
+// Symmetric reverse: items leave first, then the panel slides back out
+// to the right while the scrim fades away.
+function onLeave(el, done) {
+  const items = el.querySelectorAll('[data-menu-item]')
+
+  if (prefersReducedMotion) {
+    done()
+    return
+  }
+
+  const tl = gsap.timeline({ onComplete: done })
+  tl.to(items, {
+    opacity: 0,
+    x: 18,
+    duration: 0.25,
+    ease: 'power2.in',
+    stagger: 0.05,
+  })
+    .to(
+      panelRef.value,
+      { xPercent: 100, duration: 0.4, ease: 'power3.in' },
+      '-=0.1'
+    )
+    .to(
+      scrimRef.value,
+      { opacity: 0, duration: 0.4, ease: 'sine.inOut' },
+      '<'
+    )
 }
 </script>
 
@@ -52,46 +120,32 @@ function nav(path) {
     </button>
   </header>
 
-  <Transition name="menu">
-    <nav
-      v-if="menuOpen"
-      class="fixed top-16 inset-x-0 z-40 bg-perla border-b border-notte/10 px-6 py-2"
-      aria-label="Navigazione principale"
-    >
-      <button
-        @click="nav('/ricette')"
-        class="w-full text-left py-4 border-b border-notte/8 hover:opacity-60 transition-opacity focus-visible:outline-none"
-        style="font-family: 'Instrument Serif', serif; font-size: 20px; font-weight: 600; line-height: 1.25; color: #161b33;"
-      >Sfoglia i gusti</button>
-      <button
-        @click="nav('/ricette')"
-        class="w-full text-left py-4 border-b border-notte/8 hover:opacity-60 transition-opacity focus-visible:outline-none"
-        style="font-family: 'Instrument Serif', serif; font-size: 20px; font-weight: 600; line-height: 1.25; color: #161b33;"
-      >Calcola una ricetta</button>
-      <button
-        @click="nav('/crea')"
-        class="w-full text-left py-4 hover:opacity-60 transition-opacity focus-visible:outline-none"
-        style="font-family: 'Instrument Serif', serif; font-size: 20px; font-weight: 600; line-height: 1.25; color: #161b33;"
-      >Crea il tuo gusto</button>
-    </nav>
+  <Transition :css="false" @enter="onEnter" @leave="onLeave">
+    <div v-if="menuOpen" class="fixed inset-0 top-16 z-40">
+      <div
+        ref="scrimRef"
+        class="absolute inset-0 bg-notte/20"
+        @click="closeMenu"
+        aria-hidden="true"
+      />
+      <nav
+        ref="panelRef"
+        class="absolute top-0 right-0 h-full w-[min(20rem,100%)] bg-perla border-l border-notte/10 px-6 py-2 overflow-y-auto"
+        aria-label="Navigazione principale"
+      >
+        <button
+          data-menu-item
+          @click="nav('/ricette')"
+          class="w-full text-right py-4 border-b border-notte/8 hover:opacity-60 transition-opacity focus-visible:outline-none"
+          style="font-family: 'Instrument Serif', serif; font-size: 20px; font-weight: 600; line-height: 1.25; color: #161b33;"
+        >Sfoglia i gusti</button>
+        <button
+          data-menu-item
+          @click="nav('/crea')"
+          class="w-full text-right py-4 hover:opacity-60 transition-opacity focus-visible:outline-none"
+          style="font-family: 'Instrument Serif', serif; font-size: 20px; font-weight: 600; line-height: 1.25; color: #161b33;"
+        >Crea il tuo gusto</button>
+      </nav>
+    </div>
   </Transition>
-
-  <div
-    v-if="menuOpen"
-    class="fixed inset-0 z-30"
-    @click="closeMenu"
-    aria-hidden="true"
-  />
 </template>
-
-<style scoped>
-.menu-enter-active,
-.menu-leave-active {
-  transition: opacity 0.15s ease, transform 0.15s ease;
-}
-.menu-enter-from,
-.menu-leave-to {
-  opacity: 0;
-  transform: translateY(-6px);
-}
-</style>
