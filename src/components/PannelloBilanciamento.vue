@@ -1,4 +1,5 @@
 <script setup>
+import { RouterLink } from 'vue-router'
 import BoxMetrica from './BoxMetrica.vue'
 
 defineProps({
@@ -55,5 +56,10 @@ defineProps({
         :stato="m.stato"
       />
     </div>
+
+    <RouterLink
+      to="/guida"
+      class="inline-block mt-5 text-body-small font-medium text-indaco no-underline hover:opacity-70 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte"
+    >Come leggere questi parametri →</RouterLink>
   </div>
 </template>

@@ -1,12 +1,24 @@
 <script setup>
-import { ref } from 'vue'
-import { RouterLink, useRouter } from 'vue-router'
+import { ref, computed } from 'vue'
+import { RouterLink, useRouter, useRoute } from 'vue-router'
 import { gsap } from 'gsap'
+import { X } from 'lucide-vue-next'
 import { useUserStore } from '../stores/user.js'
+import { useLogoAnchors } from '../composables/useLogoAnchors.js'
 
 const userStore = useUserStore()
+const { logoTarget, scrollProgress } = useLogoAnchors()
 const router = useRouter()
+const route = useRoute()
 const menuOpen = ref(false)
+
+// In Home i controlli compaiono solo a scroll iniziato (progress oltre la
+// soglia, logo già in movimento). Su ogni altra route sono sempre visibili,
+// perché lì il logo è docked fin dal mount. Soglia 0.05 per evitare flicker
+// dovuto al "respiro" (floating) del logo da fermo.
+const controlsVisible = computed(
+  () => route.path !== '/' || scrollProgress.value >= 0.05
+)
 
 const panelRef = ref(null)
 const scrimRef = ref(null)
@@ -85,7 +97,7 @@ function onLeave(el, done) {
 
 <template>
   <header
-    class="fixed top-0 left-0 right-0 z-50 bg-perla border-b border-notte/10 h-16 flex items-center px-6 gap-4"
+    class="fixed top-0 left-0 right-0 z-50 bg-perla h-16 flex items-center px-6 gap-4"
   >
     <RouterLink
       to="/"
@@ -93,46 +105,63 @@ function onLeave(el, done) {
       class="text-notte no-underline"
       aria-label="gelaboo — torna alla home"
     >
-      <span style="font-family: 'Instrument Serif', serif; font-weight: 600; font-size: 20px; letter-spacing: -0.02em;">gelaboo</span>
+      <!-- Bersaglio di layout per il logo fixed (montato in App.vue).
+           Nessun contenuto visivo: solo coordinate/dimensione. -->
+      <div
+        ref="logoTarget"
+        class="w-[140px] h-[32px]"
+        aria-hidden="true"
+      />
     </RouterLink>
 
     <div class="flex-1" />
 
-    <button
-      v-if="!userStore.isLoggedIn"
-      @click="userStore.openAuthModal()"
-      class="text-body-small font-medium border border-notte/20 text-notte rounded-xl px-4 py-2 hover:border-notte transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte"
-    >Accedi</button>
-    <RouterLink
-      v-else
-      to="/profilo"
-      @click="closeMenu"
-      class="w-8 h-8 rounded-full bg-notte text-perla flex items-center justify-center text-h3 font-semibold no-underline select-none shrink-0"
-      :aria-label="`Profilo di ${userStore.user.displayName}`"
-    >{{ userStore.user.displayName?.charAt(0)?.toUpperCase() ?? 'U' }}</RouterLink>
-
-    <button
-      @click="menuOpen = !menuOpen"
-      :aria-expanded="String(menuOpen)"
-      class="px-4 py-2 rounded font-data text-body-small font-medium text-notte focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte shrink-0"
+    <!-- Controlli: in Home restano nascosti finché lo scroll non avvia il
+         morph del logo; su altre pagine sempre visibili. -->
+    <div
+      class="flex items-center gap-4 transition-opacity duration-300 ease-out"
+      :style="{
+        opacity: controlsVisible ? 1 : 0,
+        pointerEvents: controlsVisible ? 'auto' : 'none',
+      }"
     >
-      {{ menuOpen ? 'Chiudi' : 'Menu' }}
-    </button>
+      <button
+        v-if="!userStore.isLoggedIn"
+        @click="userStore.openAuthModal()"
+        class="text-body-small font-medium border border-notte/20 text-notte rounded-xl px-4 py-2 hover:border-notte transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte"
+      >Accedi</button>
+      <RouterLink
+        v-else
+        to="/profilo"
+        @click="closeMenu"
+        class="w-8 h-8 rounded-full bg-notte text-perla flex items-center justify-center text-h3 font-semibold no-underline select-none shrink-0"
+        :aria-label="`Profilo di ${userStore.user.displayName}`"
+      >{{ userStore.user.displayName?.charAt(0)?.toUpperCase() ?? 'U' }}</RouterLink>
+
+      <button
+        @click="menuOpen = !menuOpen"
+        :aria-expanded="String(menuOpen)"
+        class="px-4 py-2 rounded font-data text-body-small font-medium text-notte focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte shrink-0"
+      >
+        {{ menuOpen ? 'Chiudi' : 'Menu' }}
+      </button>
+    </div>
   </header>
 
-  <Transition :css="false" @enter="onEnter" @leave="onLeave">
-    <div v-if="menuOpen" class="fixed inset-0 top-16 z-40">
-      <div
-        ref="scrimRef"
-        class="absolute inset-0 bg-notte/20"
-        @click="closeMenu"
-        aria-hidden="true"
-      />
-      <nav
-        ref="panelRef"
-        class="absolute top-0 right-0 h-full w-[min(20rem,100%)] bg-perla border-l border-notte/10 px-6 py-2 overflow-y-auto"
-        aria-label="Navigazione principale"
-      >
+  <Teleport to="body">
+    <Transition :css="false" @enter="onEnter" @leave="onLeave">
+      <div v-if="menuOpen" class="fixed inset-0 z-[200]">
+        <div
+          ref="scrimRef"
+          class="absolute inset-0 bg-notte/40 backdrop-blur-sm"
+          @click="closeMenu"
+          aria-hidden="true"
+        />
+        <nav
+          ref="panelRef"
+          class="absolute top-0 right-0 h-full w-[min(20rem,100%)] bg-perla border-l border-notte/10 px-6 pt-16 pb-2 overflow-y-auto"
+          aria-label="Navigazione principale"
+        >
         <button
           data-menu-item
           @click="nav('/ricette')"
@@ -142,10 +171,17 @@ function onLeave(el, done) {
         <button
           data-menu-item
           @click="nav('/crea')"
-          class="w-full text-right py-4 hover:opacity-60 transition-opacity focus-visible:outline-none"
+          class="w-full text-right py-4 border-b border-notte/8 hover:opacity-60 transition-opacity focus-visible:outline-none"
           style="font-family: 'Instrument Serif', serif; font-size: 20px; font-weight: 600; line-height: 1.25; color: #161b33;"
         >Crea il tuo gusto</button>
+        <button
+          data-menu-item
+          @click="nav('/guida')"
+          class="w-full text-right py-4 hover:opacity-60 transition-opacity focus-visible:outline-none"
+          style="font-family: 'Instrument Serif', serif; font-size: 20px; font-weight: 600; line-height: 1.25; color: #161b33;"
+        >Guida</button>
       </nav>
-    </div>
-  </Transition>
+      </div>
+    </Transition>
+  </Teleport>
 </template>

@@ -1,8 +1,12 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import router from './router/index.js'
 import './assets/style.css'
 import App from './App.vue'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const app = createApp(App)
 app.use(createPinia())

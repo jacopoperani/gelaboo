@@ -19,6 +19,11 @@ const routes = [
     component: () => import('../views/CustomBuilder.vue'),
   },
   {
+    path: '/guida',
+    name: 'guida',
+    component: () => import('../views/GuidaParametri.vue'),
+  },
+  {
     path: '/profilo',
     name: 'Profilo',
     component: () => import('../views/Profilo.vue'),
