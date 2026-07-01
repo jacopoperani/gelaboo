@@ -1,5 +1,5 @@
 <script setup>
-import { inject, nextTick, watch, onUnmounted } from 'vue'
+import { inject, nextTick, ref, watch, onMounted, onUnmounted } from 'vue'
 import { RouterLink } from 'vue-router'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -24,6 +24,13 @@ const timelines = []
 
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 let hasBuilt = false
+
+// Ref sui due bottoni CTA, per lo shake periodico d'attenzione.
+const ctaEls = [ref(null), ref(null)]
+let shakeTl = null
+
+// Ref sulla section dei bottoni CTA, trigger del reveal bounce scrub.
+let ctaSectionEl = null
 
 function buildReveals() {
   titleEls.forEach((titleEl, i) => {
@@ -68,12 +75,32 @@ watch(
   { immediate: true },
 )
 
+// Shake periodico dei due bottoni CTA: solo transform rotation via GSAP, così
+// il box fisico Matter.js (calcolato una volta da getBoundingClientRect al
+// mount) non viene disturbato. repeat:-1 + repeatDelay:4 → si ripete ogni
+// 4s. Rispetta prefers-reduced-motion come le altre anim del progetto.
+onMounted(() => {
+  if (prefersReduced) return
+  const targets = ctaEls.map((r) => r.value).filter(Boolean)
+  if (!targets.length) return
+
+  gsap.set(targets, { transformOrigin: 'center center' })
+  shakeTl = gsap.timeline({ repeat: -1, repeatDelay: 4 })
+  shakeTl
+    .to(targets, { rotation: -4, duration: 0.08, ease: 'power1.inOut' })
+    .to(targets, { rotation: 4, duration: 0.08, ease: 'power1.inOut' })
+    .to(targets, { rotation: -3, duration: 0.08, ease: 'power1.inOut' })
+    .to(targets, { rotation: 3, duration: 0.08, ease: 'power1.inOut' })
+    .to(targets, { rotation: 0, duration: 0.08, ease: 'power1.inOut' })
+})
+
 onUnmounted(() => {
   timelines.forEach((tl) => {
     tl.scrollTrigger?.kill()
     tl.kill()
   })
   splits.forEach((s) => s.revert())
+  shakeTl?.kill()
 })
 </script>
 
@@ -128,14 +155,16 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <section class="pt-20 pb-64 text-center">
-      <div class="relative z-10 flex flex-col sm:flex-row gap-5 justify-center items-center px-6 lg:px-10 xl:px-16">
+    <section :ref="(el) => (ctaSectionEl = el)" class="pt-20 pb-64 text-center">
+      <div class="relative z-10 flex flex-col sm:flex-row gap-16 justify-center items-center px-6 lg:px-10 xl:px-16">
         <RouterLink
+          :ref="(el) => (ctaEls[0].value = el?.$el ?? el)"
           to="/ricette"
           data-gelato-obstacle
           class="inline-flex items-center justify-center bg-notte text-perla rounded-xl px-7 py-3.5 text-body font-medium no-underline hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte"
         >Sfoglia i gusti</RouterLink>
         <RouterLink
+          :ref="(el) => (ctaEls[1].value = el?.$el ?? el)"
           to="/crea"
           data-gelato-obstacle
           class="inline-flex items-center justify-center border border-notte/20 text-notte rounded-xl px-7 py-3.5 text-body font-medium no-underline hover:border-notte/60 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte"
