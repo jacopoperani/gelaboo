@@ -28,7 +28,7 @@ const VB_H = 280.28
 const { Engine, World, Bodies, Body, Common, Events } = Matter
 
 // ---------- CONFIG ----------
-const NUM_OBJECTS = 45
+const NUM_OBJECTS = 55
 const MOUSE_RADIUS = 140
 const MOUSE_FORCE = 0.06
 const GRAVITY = 0.3
