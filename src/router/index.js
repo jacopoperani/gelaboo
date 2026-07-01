@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import { lenis } from '../lib/lenis.js'
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
@@ -34,9 +33,8 @@ const routes = [
 export default createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
-  // Lenis controlla lo scroll: lo scrollBehavior nativo non avrebbe effetto.
-  // scrollTo(0, immediate) porta in cima senza animazione a ogni cambio route.
-  scrollBehavior: () => {
-    lenis.scrollTo(0, { immediate: true })
-  },
+  // Lo scroll a inizio pagina è gestito dentro la transition di route in
+  // App.vue (onEnter, prima del fade-in) per sincronizzarlo col ciclo Lenis
+  // ed evitare scatti a metà transizione. Qui disattivato.
+  scrollBehavior: false,
 })

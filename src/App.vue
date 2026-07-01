@@ -171,6 +171,33 @@ onMounted(() => {
   })
 })
 
+// --- Transizione di route (GSAP, hook JS, no classi CSS) --------------------
+// mode="out-in": il leave della vecchia pagina finisce prima dell'enter della
+// nuova. LogoMorph e header sono fuori dal RouterView → non toccati.
+const prefersReducedMotion = window.matchMedia(
+  '(prefers-reduced-motion: reduce)'
+).matches
+
+function onPageLeave(el, done) {
+  if (prefersReducedMotion) return done()
+  gsap.to(el, { opacity: 0, y: -8, duration: 0.25, ease: 'power1.in', onComplete: done })
+}
+
+function onPageEnter(el, done) {
+  // Scroll in cima mentre la nuova pagina è ancora invisibile (opacity 0):
+  // con out-in la vecchia è già smontata, quindi nessuno scatto visibile.
+  lenis.scrollTo(0, { immediate: true })
+  if (prefersReducedMotion) {
+    gsap.set(el, { opacity: 1, y: 0 })
+    return done()
+  }
+  gsap.fromTo(
+    el,
+    { opacity: 0, y: 8 },
+    { opacity: 1, y: 0, duration: 0.3, ease: 'power1.out', onComplete: done }
+  )
+}
+
 async function handleLogin() {
   try {
     await signInWithPopup(auth, googleProvider)
@@ -188,7 +215,11 @@ async function handleLogin() {
   <div v-show="introCompleted && authReady">
     <TheHeader />
     <main>
-      <RouterView />
+      <RouterView v-slot="{ Component }">
+        <Transition :css="false" mode="out-in" @enter="onPageEnter" @leave="onPageLeave">
+          <component :is="Component" />
+        </Transition>
+      </RouterView>
     </main>
     <!-- Dissolvenza del contenuto che scorre sotto l'header (h-16 = 64px).
          z-40: sopra il contenuto, sotto header (z-50) e logo (z-60).
