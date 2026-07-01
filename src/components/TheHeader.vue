@@ -150,7 +150,7 @@ function onLeave(el, done) {
       <button
         @click="menuOpen = !menuOpen"
         :aria-expanded="String(menuOpen)"
-        class="px-4 py-2 rounded font-data text-body-small font-medium text-notte focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte shrink-0"
+        class="px-4 py-2 rounded font-data text-body font-medium text-notte hover:text-indaco transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte shrink-0"
       >
         {{ menuOpen ? 'Chiudi' : 'Menu' }}
       </button>
@@ -182,19 +182,19 @@ function onLeave(el, done) {
         <button
           data-menu-item
           @click="nav('/ricette')"
-          class="w-full text-right py-4 sm:py-6 lg:py-8 xl:py-6 whitespace-nowrapborder-b border-notte/8 font-body text-notte hover:text-indaco transition-colors duration-200 focus-visible:outline-none"
+          class="w-full text-right py-3 sm:py-5 lg:py-6 xl:py-5 whitespace-nowrap border-b border-notte/8 font-body text-notte hover:text-indaco transition-colors duration-200 focus-visible:outline-none"
           style="font-weight: 400; line-height: 1.25; font-size: clamp(1.5rem, 1.19rem + 1.33vw, 2.25rem);"
         >Sfoglia i gusti</button>
         <button
           data-menu-item
           @click="nav('/crea')"
-          class="w-full text-right py-4 sm:py-6 lg:py-8 xl:py-6 whitespace-nowrapborder-b border-notte/8 font-body text-notte hover:text-indaco transition-colors duration-200 focus-visible:outline-none"
+          class="w-full text-right py-3 sm:py-5 lg:py-6 xl:py-5 whitespace-nowrap border-b border-notte/8 font-body text-notte hover:text-indaco transition-colors duration-200 focus-visible:outline-none"
           style="font-weight: 400; line-height: 1.25; font-size: clamp(1.5rem, 1.19rem + 1.33vw, 2.25rem);"
         >Crea il tuo gusto</button>
         <button
           data-menu-item
           @click="nav('/guida')"
-          class="w-full text-right py-4 sm:py-6 lg:py-8 xl:py-6 whitespace-nowrapfont-body text-notte hover:text-indaco transition-colors duration-200 focus-visible:outline-none"
+          class="w-full text-right py-3 sm:py-5 lg:py-6 xl:py-5 whitespace-nowrap font-body text-notte hover:text-indaco transition-colors duration-200 focus-visible:outline-none"
           style="font-weight: 400; line-height: 1.25; font-size: clamp(1.5rem, 1.19rem + 1.33vw, 2.25rem);"
         >Guida ai parametri</button>
       </nav>
