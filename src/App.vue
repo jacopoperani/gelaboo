@@ -12,6 +12,7 @@ import LogoMorph from './components/LogoMorph.vue'
 import ScrollHint from './components/ScrollHint.vue'
 import { useUserStore } from './stores/user.js'
 import { useLogoAnchors } from './composables/useLogoAnchors.js'
+import { lenis } from './lib/lenis.js'
 
 const userStore = useUserStore()
 const introCompleted = ref(false)
@@ -140,6 +141,9 @@ function onResize() {
   resizeTimer = setTimeout(() => {
     refreshLogo()
     ScrollTrigger.refresh()
+    // Ricalcola le dimensioni dello scroller Lenis dopo il refresh dei
+    // trigger, così l'altezza scrollabile resta coerente in responsive.
+    lenis.resize()
   }, 150)
 }
 
