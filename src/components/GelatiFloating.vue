@@ -225,12 +225,31 @@ function addButtons() {
     const cy = r.top - boundsRect.top + r.height / 2
                  - (r.height * (factor - 1)) / 2
     const body = Bodies.rectangle(cx, cy, w, h, wallOpts)
-    buttonBodies.push(body)
+    // Salvo anche el: serve a syncButtonBodies() per leggere l'angolo CSS
+    // (shake GSAP in Home.vue) e riportarlo sul Body static ogni frame.
+    buttonBodies.push({ body, el })
   }
 
   addLetterBodies(boundsRect)
 
-  if (buttonBodies.length) World.add(world, buttonBodies)
+  if (buttonBodies.length) World.add(world, buttonBodies.map((b) => b.body))
+}
+
+// Sincronizza l'angolo dei box bottone col rotation CSS applicato via GSAP
+// (shake). Estrae l'angolo dalla matrice 2D di getComputedStyle().transform
+// con atan2(b, a) e lo applica al Body static. Solo angolo: lo shake anima
+// rotation, non posizione (estendibile con Body.setPosition se servisse).
+function syncButtonBodies() {
+  if (!buttonBodies.length) return
+  for (const { body, el } of buttonBodies) {
+    const t = getComputedStyle(el).transform
+    if (!t || t === 'none') {
+      Body.setAngle(body, 0)
+      continue
+    }
+    const m = new DOMMatrixReadOnly(t)
+    Body.setAngle(body, Math.atan2(m.b, m.a))
+  }
 }
 
 // 7 box di collisione, uno per lettera di "gelaboo", così i gelati si
@@ -381,6 +400,7 @@ function fadeInRestingItems() {
 function render() {
   applyMouseForce()
   syncLetterBodies()
+  syncButtonBodies()
   // Reset flag + grafo adiacenza prima dello step: onCollisionActive
   // (dispatchato dentro Engine.update) li ricostruisce dai contatti correnti →
   // stato "appoggiato sul logo" sempre fresco, mai stale dopo un rimbalzo.
@@ -410,7 +430,7 @@ function onResize() {
   addWalls()
   // Ricalcola gli ostacoli bottone: posizione/dimensione cambiano in responsive.
   if (buttonBodies.length) {
-    World.remove(world, buttonBodies)
+    World.remove(world, buttonBodies.map((b) => b.body))
     buttonBodies = []
   }
   // Stesso rebuild per i box lettera (posizione/scala cambiano in responsive).
