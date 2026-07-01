@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useUserStore } from '../stores/user.js'
 import { useRicetteStore } from '../stores/ricette.js'
@@ -9,6 +9,10 @@ import PageShell from '../components/PageShell.vue'
 const userStore = useUserStore()
 const ricetteStore = useRicetteStore()
 const tabAttiva = ref('preferiti')
+
+watch(tabAttiva, (tab) => {
+  if (tab === 'salvate') userStore.caricaRicetteSalvate()
+})
 
 const ricetteLiked = computed(() =>
   userStore.likes.map(id => ricetteStore.getRicettaById(id)).filter(Boolean)
@@ -69,7 +73,7 @@ const ricetteLiked = computed(() =>
             :class="tabAttiva === 'salvate'
               ? 'border-notte text-notte'
               : 'border-transparent text-notte/40 hover:text-notte/70'"
-          >Ricette salvate</button>
+          >Ricette salvate ({{ userStore.ricetteSalvate.length }})</button>
         </div>
 
         <!-- Tab: Preferiti -->
@@ -95,13 +99,29 @@ const ricetteLiked = computed(() =>
 
         <!-- Tab: Salvate -->
         <div v-else role="tabpanel">
-          <p class="text-body text-notte/50 py-8 text-center">
+          <p
+            v-if="userStore.ricetteSalvate.length === 0"
+            class="text-body text-notte/50 py-8 text-center"
+          >
             Nessuna ricetta salvata.<br>
             <RouterLink
               to="/crea"
               class="text-notte underline hover:opacity-70 transition-opacity"
             >Crea il tuo gusto</RouterLink> e salvalo qui.
           </p>
+          <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <RouterLink
+              v-for="r in userStore.ricetteSalvate"
+              :key="r.id"
+              :to="`/ricette-custom/${r.id}`"
+              class="block bg-perla border border-notte/15 rounded-2xl p-5 hover:border-notte/40 transition-colors no-underline"
+              style="text-decoration: none;"
+            >
+              <p class="text-ui-label text-notte/40 mb-2">{{ r.categoria?.toUpperCase() }}</p>
+              <h3 class="text-h3 text-notte mb-1">{{ r.nome }}</h3>
+              <p class="text-body-small text-notte/50">{{ r.quantitaKg }} kg</p>
+            </RouterLink>
+          </div>
         </div>
       </template>
 

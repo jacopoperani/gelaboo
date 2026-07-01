@@ -19,8 +19,9 @@ const ingredienti   = ref([])
 const categoria     = ref('crema')
 const procedimento  = ref([])
 const notaTecnica   = ref(null)
-const nomeGenerato  = ref('')   // descrizione snapshot al momento della generazione
-const generando     = ref(false)
+const nomeGenerato      = ref('')   // descrizione snapshot al momento della generazione
+const generando         = ref(false)
+const salvataggioInCorso = ref(false)
 
 function isModificabile(ing) {
   return ing.modificabile === true  // default false se campo assente (retrocompatibilità)
@@ -100,6 +101,32 @@ const metricheRiga = computed(() => [
   { label: 'POD',           value: bilancio.value.pod,          unita: '',  stato: stati.value.pod },
   { label: 'PAC',           value: bilancio.value.pac,          unita: '',  stato: stati.value.pac },
 ])
+
+// ── Salvataggio ricetta custom ───────────────────────────────────────────────
+
+async function handleSalvaRicetta() {
+  if (!userStore.isLoggedIn) {
+    userStore.openAuthModal()
+    return
+  }
+  salvataggioInCorso.value = true
+  const ricetta = {
+    nome:        nomeGenerato.value,
+    categoria:   categoria.value,
+    ingredienti: ingredienti.value,
+    procedimento: procedimento.value,
+    notaTecnica: notaTecnica.value,
+    bilancio:    bilancio.value,
+    quantitaKg:  quantitaKg.value,
+  }
+  const risultato = await userStore.salvaRicettaCustom(ricetta)
+  salvataggioInCorso.value = false
+  if (risultato) {
+    toast.success('Ricetta salvata nel tuo profilo', { autoClose: 3000 })
+  } else {
+    toast.error('Errore nel salvataggio. Riprova.', { autoClose: 4000 })
+  }
+}
 
 // ── Generazione AI ───────────────────────────────────────────────────────────
 
@@ -236,10 +263,11 @@ async function generaConAI() {
         <!-- Salva -->
         <div class="flex items-center gap-4 mt-6">
           <button
-            @click="userStore.isLoggedIn ? undefined : userStore.openAuthModal()"
-            class="bg-notte text-perla rounded-xl px-6 py-3 text-body font-medium hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte"
+            @click="handleSalvaRicetta"
+            :disabled="salvataggioInCorso"
+            class="bg-notte text-perla rounded-xl px-6 py-3 text-body font-medium hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte disabled:opacity-50"
             :aria-label="userStore.isLoggedIn ? 'Salva ricetta' : 'Accedi per salvare la ricetta'"
-          >Salva ricetta</button>
+          >{{ salvataggioInCorso ? 'Salvataggio…' : 'Salva ricetta' }}</button>
           <span v-if="!userStore.isLoggedIn" class="text-body-small text-notte/40">
             Richiede accesso
           </span>

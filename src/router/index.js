@@ -28,6 +28,11 @@ const routes = [
     name: 'Profilo',
     component: () => import('../views/Profilo.vue'),
   },
+  {
+    path: '/ricette-custom/:id',
+    name: 'RicettaCustomDettaglio',
+    component: () => import('../views/RicettaCustomDettaglio.vue'),
+  },
 ]
 
 export default createRouter({
