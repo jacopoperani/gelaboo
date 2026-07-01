@@ -168,7 +168,7 @@ function onLeave(el, done) {
         />
         <nav
           ref="panelRef"
-          class="absolute top-0 right-0 h-full w-[min(20rem,100%)] bg-perla border-l border-notte/10 px-6 pt-16 pb-2 overflow-y-auto"
+          class="absolute top-0 right-0 h-full w-[min(20rem,100%)] sm:w-[400px] lg:w-[500px] xl:w-[560px] bg-perla border-l border-notte/10 px-6 pt-16 pb-2 overflow-y-auto"
           aria-label="Navigazione principale"
         >
         <!-- Chiusura: stessa posizione dell'hamburger (header h-16, px-6). -->
@@ -182,20 +182,20 @@ function onLeave(el, done) {
         <button
           data-menu-item
           @click="nav('/ricette')"
-          class="w-full text-right py-4 border-b border-notte/8 hover:opacity-60 transition-opacity focus-visible:outline-none"
-          style="font-family: 'Instrument Serif', serif; font-size: 20px; font-weight: 600; line-height: 1.25; color: #161b33;"
+          class="w-full text-right py-4 sm:py-6 lg:py-8 xl:py-6 whitespace-nowrap text-2xl sm:text-3xl lg:text-4xl xl:text-3xl border-b border-notte/8 text-notte hover:text-indaco transition-colors duration-200 focus-visible:outline-none"
+          style="font-family: 'Unbounded', sans-serif; font-weight: 400; line-height: 1.25;"
         >Sfoglia i gusti</button>
         <button
           data-menu-item
           @click="nav('/crea')"
-          class="w-full text-right py-4 border-b border-notte/8 hover:opacity-60 transition-opacity focus-visible:outline-none"
-          style="font-family: 'Instrument Serif', serif; font-size: 20px; font-weight: 600; line-height: 1.25; color: #161b33;"
+          class="w-full text-right py-4 sm:py-6 lg:py-8 xl:py-6 whitespace-nowrap text-2xl sm:text-3xl lg:text-4xl xl:text-3xl border-b border-notte/8 text-notte hover:text-indaco transition-colors duration-200 focus-visible:outline-none"
+          style="font-family: 'Unbounded', sans-serif; font-weight: 400; line-height: 1.25;"
         >Crea il tuo gusto</button>
         <button
           data-menu-item
           @click="nav('/guida')"
-          class="w-full text-right py-4 hover:opacity-60 transition-opacity focus-visible:outline-none"
-          style="font-family: 'Instrument Serif', serif; font-size: 20px; font-weight: 600; line-height: 1.25; color: #161b33;"
+          class="w-full text-right py-4 sm:py-6 lg:py-8 xl:py-6 whitespace-nowrap text-2xl sm:text-3xl lg:text-4xl xl:text-3xl text-notte hover:text-indaco transition-colors duration-200 focus-visible:outline-none"
+          style="font-family: 'Unbounded', sans-serif; font-weight: 400; line-height: 1.25;"
         >Guida ai parametri</button>
       </nav>
       </div>
