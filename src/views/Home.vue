@@ -27,38 +27,38 @@ const { heroLogoAnchor } = useLogoAnchors()
 
     <!-- Spacer: dà respiro durante il morph del logo, così il contenuto
          non arriva sotto l'header mentre il logo sta ancora animando. -->
-    <div class="h-[22vh]" aria-hidden="true" />
+    <div class="h-[12vh]" aria-hidden="true" />
 
     <section class="py-16">
-      <div class="relative z-10 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 lg:px-10 xl:px-16 text-left">
-        <h2 class="text-h1">Uno strumento per creare il gelato perfetto</h2>
-        <p class="text-body text-notte/70 mt-4">
+      <div class="relative z-10 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 lg:px-10 xl:px-16">
+        <h2 class="text-h1 text-center">Uno strumento per creare il gelato perfetto</h2>
+        <p class="text-body text-notte/70 mt-4 text-center">
           Bilancia ogni ricetta in pochi secondi, senza calcoli a mano.
         </p>
       </div>
     </section>
 
     <section class="py-16">
-      <div class="relative z-10 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 lg:px-10 xl:px-16 text-left">
-        <h2 class="text-h1">Tante ricette di base, sempre in aggiornamento</h2>
-        <p class="text-body text-notte/70 mt-4">
+      <div class="relative z-10 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 lg:px-10 xl:px-16">
+        <h2 class="text-h1 text-center">Tante ricette di base, sempre in aggiornamento</h2>
+        <p class="text-body text-notte/70 mt-4 text-center">
           Parti da una ricetta verificata o modificala come vuoi.
         </p>
       </div>
     </section>
 
     <section class="pt-16 pb-12">
-      <div class="relative z-10 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 lg:px-10 xl:px-16 text-left">
-        <h2 class="text-h1">Hai pensato a qualche gusto particolare? Crealo con Gelaboo</h2>
-        <p class="text-body text-notte/70 mt-4">
+      <div class="relative z-10 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 lg:px-10 xl:px-16">
+        <h2 class="text-h1 text-center">Hai pensato a qualche gusto particolare? Crealo con Gelaboo</h2>
+        <p class="text-body text-notte/70 mt-4 text-center">
           Descrivi il sapore che hai in mente: l'intelligenza artificiale
           suggerisce gli ingredienti, Gelaboo bilancia tutto il resto.
         </p>
       </div>
     </section>
 
-    <section class="pt-20 pb-32 text-center">
-      <div class="relative z-10 flex flex-col sm:flex-row gap-3 justify-center items-center px-6 lg:px-10 xl:px-16">
+    <section class="pt-20 pb-64 text-center">
+      <div class="relative z-10 flex flex-col sm:flex-row gap-5 justify-center items-center px-6 lg:px-10 xl:px-16">
         <RouterLink
           to="/ricette"
           data-gelato-obstacle
