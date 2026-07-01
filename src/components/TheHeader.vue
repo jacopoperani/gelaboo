@@ -20,6 +20,14 @@ const controlsVisible = computed(
   () => route.path !== '/' || scrollProgress.value >= 0.05
 )
 
+// Sfondo dell'header: stessa logica (identica formula) di controlsVisible ma
+// separato di proposito. In Home a inizio pagina l'header resta montato ma
+// trasparente, così i gelati che cadono restano visibili dietro; il fondo
+// pieno rientra appena lo scroll supera la soglia.
+const headerBgVisible = computed(
+  () => route.path !== '/' || scrollProgress.value >= 0.05
+)
+
 const panelRef = ref(null)
 const scrimRef = ref(null)
 
@@ -97,7 +105,8 @@ function onLeave(el, done) {
 
 <template>
   <header
-    class="fixed top-0 left-0 right-0 z-50 bg-perla h-16 flex items-center px-6 gap-4"
+    class="fixed top-0 left-0 right-0 z-50 h-16 flex items-center px-6 gap-4 transition-colors duration-300"
+    :class="headerBgVisible ? 'bg-perla' : 'bg-transparent'"
   >
     <RouterLink
       to="/"
