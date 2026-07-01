@@ -11,6 +11,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 // display:none in attesa di Firebase auth), ma solo quando diventa true.
 const props = defineProps({
   visible: { type: Boolean, default: false },
+  floatSpeed: { type: Number, default: 1 },
+  skipBounceIn: { type: Boolean, default: false },
+  colorClass: { type: String, default: 'text-notte' },
 })
 
 const logoRef = ref(null)
@@ -63,7 +66,7 @@ function startFloating(letterGroups) {
   floatTweens = letterGroups.map((el, i) =>
     gsap.to(el, {
       y: -15,
-      duration: 1.7,
+      duration: 1.7 / props.floatSpeed,
       ease: 'sine.inOut',
       repeat: -1,
       yoyo: true,
@@ -110,7 +113,11 @@ onMounted(() => {
   // Solo setup dello stato iniziale (non visibile finché display:none):
   // il bounce vero parte dal watch su props.visible.
   gsap.set(logoRef.value, { opacity: 1 })
-  gsap.set(letterGroups, { opacity: 0, y: 20 })
+  if (props.skipBounceIn) {
+    gsap.set(letterGroups, { opacity: 1, y: 0 })
+  } else {
+    gsap.set(letterGroups, { opacity: 0, y: 20 })
+  }
 
   // Se già visibile al mount, parte subito; altrimenti attende il watch.
   if (props.visible) playBounceIn()
@@ -120,7 +127,18 @@ onMounted(() => {
 watch(
   () => props.visible,
   (v) => {
-    if (v) playBounceIn()
+    if (!v) return
+    if (props.skipBounceIn) {
+      // Istanza già "entrata" altrove (es. loader): niente bounce, salta
+      // direttamente allo stato finale e avvia solo il floating. Guardie
+      // identiche a playBounceIn (una volta sola, rispetta reduced motion).
+      if (hasAnimated || prefersReducedMotion) return
+      hasAnimated = true
+      gsap.set(letterGroups, { opacity: 1, y: 0 })
+      startFloating(letterGroups)
+      return
+    }
+    playBounceIn()
   }
 )
 
@@ -137,7 +155,7 @@ onUnmounted(() => {
     viewBox="0 0 667.85 280.28"
     fill="currentColor"
     style="overflow: visible"
-    class="opacity-0 mb-3 w-[95%] sm:w-[92%] md:w-[88%] lg:w-[85%] max-w-7xl h-auto mx-auto text-notte"
+    :class="['opacity-0 mb-3 w-[95%] sm:w-[92%] md:w-[88%] lg:w-[85%] max-w-7xl h-auto mx-auto', colorClass]"
     aria-label="gelaboo"
     role="img"
   >

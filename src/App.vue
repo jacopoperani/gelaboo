@@ -30,6 +30,7 @@ const appVisible = computed(() => introCompleted.value && authReady.value)
 provide('appVisible', appVisible)
 
 let logoST = null
+let logoFadeIn = false
 
 // Stato "piccolo": logo agganciato al placeholder dell'header, fermo.
 // Usato su tutte le pagine diverse da Home. width = larghezza target,
@@ -138,6 +139,13 @@ watch([appVisible, () => route.path, heroLogoAnchor], () => {
   refreshLogo()
 }, { immediate: true })
 
+// Fade-in del logo fixed al primo reveal (dal loader). Una sola volta.
+watch(appVisible, (v) => {
+  if (!v || logoFadeIn) return
+  logoFadeIn = true
+  gsap.fromTo(logoFixed.value, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power1.out' })
+})
+
 // Resize: le coordinate di partenza/arrivo cambiano in responsive, quindi
 // ricostruisco il trigger daccapo (i valori px nel tween sono hardcoded).
 let resizeTimer = null
@@ -216,7 +224,7 @@ async function handleLogin() {
 </script>
 
 <template>
-  <IntroLoader v-if="!introCompleted" @done="introCompleted = true" />
+  <IntroLoader v-if="!introCompleted" :auth-ready="authReady" @done="introCompleted = true" />
   <div v-show="introCompleted && authReady">
     <TheHeader />
     <main>
@@ -240,7 +248,7 @@ async function handleLogin() {
       aria-hidden="true"
     />
     <div ref="logoFixed" class="fixed top-0 left-0 z-[60] pointer-events-none">
-      <LogoMorph ref="logoMorphRef" :visible="appVisible" />
+      <LogoMorph ref="logoMorphRef" :visible="appVisible" :skip-bounce-in="true" />
     </div>
     <ScrollHint />
   </div>
