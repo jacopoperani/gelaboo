@@ -122,6 +122,11 @@ async function refreshLogo() {
   }
   await nextTick()
   if (route.path === '/') {
+    // Home ma anchor non ancora montata (navigazione altra-route→Home con
+    // Transition out-in: la vecchia pagina si smonta prima che Home monti).
+    // Non fare docking: esci e aspetta. Il watch su heroLogoAnchor
+    // ri-triggererà refreshLogo() appena l'anchor viene settata.
+    if (!heroLogoAnchor.value) return
     buildHomeMorph()
   } else {
     setSmall()
@@ -129,7 +134,7 @@ async function refreshLogo() {
 }
 
 // Reagisce a: prima comparsa app (v-show), e ogni cambio di route.
-watch([appVisible, () => route.path], () => {
+watch([appVisible, () => route.path, heroLogoAnchor], () => {
   refreshLogo()
 }, { immediate: true })
 
