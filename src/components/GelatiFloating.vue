@@ -275,15 +275,41 @@ function addLetterBodies(boundsRect) {
   letterScaleH = sH
 
   const bodies = []
+  // Registra un body lettera: lo aggiunge alla lista di sync e all'array world.
+  const pushBody = (body, baseX, baseY) => {
+    letterBodies.push({ body, baseX, baseY })
+    bodies.push(body)
+  }
   for (const bb of bboxes) {
     const w = (bb.width / VB_W) * sW
     const h = (bb.height / VB_H) * sH
     const cx = (sLeft - boundsRect.left) + (bb.x / VB_W) * sW + w / 2
     const cy = (sTop - boundsRect.top) + (bb.y / VB_H) * sH + h / 2
-    const body = Bodies.rectangle(cx, cy, w, h, wallOpts)
-    // baseX/baseY: posizione di riposo. render() ci somma l'offset floating.
-    letterBodies.push({ body, baseX: cx, baseY: cy })
-    bodies.push(body)
+    // Angolo alto-sinistra del rettangolo bbox in pixel: base per i body
+    // sub-lettera (frazioni di w/h). Scala uniforme (aspect anchor = aspect
+    // viewBox) → w e h condividono lo stesso fattore, raggi coerenti.
+    const left = cx - w / 2
+    const top = cy - h / 2
+
+    if (bb.id === 'lettera_o1' || bb.id === 'lettera_o2') {
+      // Lettere tonde: cerchio col raggio = metà lato minore, centrato sulla
+      // bbox. Aderisce alla forma invece di lasciare gli angoli del rettangolo.
+      const r = Math.min(w, h) / 2
+      pushBody(Bodies.circle(cx, cy, r, wallOpts), cx, cy)
+    } else if (bb.id === 'lettera_g') {
+      // La g è bi-lobata (bowl in alto + swash largo in basso, non una coda
+      // sottile): due cerchi sovrapposti al collo, non un rettangolo pieno che
+      // lascerebbe vuoto il bordo obliquo in alto-sinistra.
+      const bowlX = left + 0.50 * w
+      const bowlY = top + 0.30 * h
+      pushBody(Bodies.circle(bowlX, bowlY, 0.41 * w, wallOpts), bowlX, bowlY)
+      const lobeX = left + 0.49 * w
+      const lobeY = top + 0.76 * h
+      pushBody(Bodies.circle(lobeX, lobeY, 0.44 * w, wallOpts), lobeX, lobeY)
+    } else {
+      // e, l, a, b: rettangolo bbox pieno, forma già aderente.
+      pushBody(Bodies.rectangle(cx, cy, w, h, wallOpts), cx, cy)
+    }
   }
   if (bodies.length) World.add(world, bodies)
 }

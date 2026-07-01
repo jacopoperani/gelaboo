@@ -99,7 +99,7 @@ onUnmounted(() => {
 <template>
   <div
     v-if="mounted"
-    class="scroll-hint"
+    class="scroll-hint font-body"
     :class="{ 'is-visible': visible }"
     aria-hidden="true"
   >
@@ -123,7 +123,6 @@ onUnmounted(() => {
   align-items: center;
   gap: 4px;
   color: var(--color-notte);
-  font-family: 'Unbounded', sans-serif;
   opacity: 0;
   transition: opacity 0.45s ease;
 }
