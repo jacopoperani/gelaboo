@@ -9,6 +9,7 @@ import SliderIngrediente from '../components/SliderIngrediente.vue'
 import PannelloBilanciamento from '../components/PannelloBilanciamento.vue'
 import Procedimento from '../components/Procedimento.vue'
 import PageShell from '../components/PageShell.vue'
+import LogoMorph from '../components/LogoMorph.vue'
 
 const userStore = useUserStore()
 
@@ -155,10 +156,6 @@ async function generaConAI() {
             placeholder="es. gelato al Kinder Bueno, oppure: pistacchio e cioccolato bianco"
             class="w-full border border-notte/20 rounded-xl px-4 py-3 text-body text-notte bg-perla resize-none focus:outline-none focus:border-notte transition-colors placeholder:text-notte/30"
           />
-          <span
-            class="absolute top-3 right-3 text-ui-label px-2 py-0.5 rounded-full select-none"
-            style="background: rgba(127,182,158,0.12); color: #7FB69E;"
-          >AI</span>
         </div>
 
         <div class="mb-6 w-44">
@@ -249,5 +246,29 @@ async function generaConAI() {
         </div>
 
       </div>
+
+    <Transition name="ai-loader">
+      <div
+        v-if="generando"
+        class="fixed inset-0 z-[250] flex items-center justify-center"
+      >
+        <div class="absolute inset-0 bg-perla/70 backdrop-blur-sm" />
+        <div class="relative z-10 max-w-2xl w-full px-6">
+          <LogoMorph :visible="true" :float-speed="2" />
+        </div>
+      </div>
+    </Transition>
+
   </PageShell>
 </template>
+
+<style scoped>
+.ai-loader-enter-active,
+.ai-loader-leave-active {
+  transition: opacity 0.2s ease;
+}
+.ai-loader-enter-from,
+.ai-loader-leave-to {
+  opacity: 0;
+}
+</style>
