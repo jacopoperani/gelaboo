@@ -1,4 +1,6 @@
 <script setup>
+import PageShell from '../components/PageShell.vue'
+
 // Vista statica di documentazione: spiega i parametri del bilanciamento.
 // Contenuto guidato dai dati per tenere il template pulito; nessun calcolo,
 // nessuna fonte esterna — solo testo di riferimento.
@@ -105,8 +107,7 @@ const statoColore = {
 </script>
 
 <template>
-  <main class="bg-perla text-notte min-h-screen pt-[40px]">
-    <div class="max-w-[800px] mx-auto px-6 py-16">
+  <PageShell width="page" class="bg-perla text-notte min-h-screen pb-16">
       <!-- 1. Header -->
       <header class="mb-12">
         <h1 class="text-h1 text-notte">Guida ai parametri</h1>
@@ -212,6 +213,5 @@ const statoColore = {
           </p>
         </div>
       </section>
-    </div>
-  </main>
+  </PageShell>
 </template>
