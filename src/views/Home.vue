@@ -130,7 +130,7 @@ onUnmounted(() => {
     <section :ref="(el) => (sectionEls[0] = el)" class="py-16">
       <div class="relative z-10 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 lg:px-10 xl:px-16">
         <h2 :ref="(el) => (titleEls[0] = el)" class="text-h1 text-center">Uno strumento per creare il gelato perfetto</h2>
-        <p :ref="(el) => (paraEls[0] = el)" class="text-body text-notte/70 mt-4 text-center">
+        <p :ref="(el) => (paraEls[0] = el)" class="text-lead text-notte/70 mt-4 text-center">
           Bilancia ogni ricetta in pochi secondi, senza calcoli a mano.
         </p>
       </div>
@@ -139,7 +139,7 @@ onUnmounted(() => {
     <section :ref="(el) => (sectionEls[1] = el)" class="py-16">
       <div class="relative z-10 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 lg:px-10 xl:px-16">
         <h2 :ref="(el) => (titleEls[1] = el)" class="text-h1 text-center">Tante ricette di base, sempre in aggiornamento</h2>
-        <p :ref="(el) => (paraEls[1] = el)" class="text-body text-notte/70 mt-4 text-center">
+        <p :ref="(el) => (paraEls[1] = el)" class="text-lead text-notte/70 mt-4 text-center">
           Parti da una ricetta verificata o modificala come vuoi.
         </p>
       </div>
@@ -148,7 +148,7 @@ onUnmounted(() => {
     <section :ref="(el) => (sectionEls[2] = el)" class="pt-16 pb-12">
       <div class="relative z-10 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 lg:px-10 xl:px-16">
         <h2 :ref="(el) => (titleEls[2] = el)" class="text-h1 text-center">Hai pensato a qualche gusto particolare? Crealo con Gelaboo</h2>
-        <p :ref="(el) => (paraEls[2] = el)" class="text-body text-notte/70 mt-4 text-center">
+        <p :ref="(el) => (paraEls[2] = el)" class="text-lead text-notte/70 mt-4 text-center">
           Descrivi il sapore che hai in mente: l'intelligenza artificiale
           suggerisce gli ingredienti, Gelaboo bilancia tutto il resto.
         </p>
