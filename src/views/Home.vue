@@ -161,13 +161,13 @@ onUnmounted(() => {
           :ref="(el) => (ctaEls[0].value = el?.$el ?? el)"
           to="/ricette"
           data-gelato-obstacle
-          class="inline-flex items-center justify-center bg-notte text-perla rounded-xl px-7 py-3.5 text-body font-medium no-underline hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte"
+          class="inline-flex items-center justify-center bg-notte text-perla rounded-xl btn-cta text-cta font-medium no-underline hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte"
         >Sfoglia i gusti</RouterLink>
         <RouterLink
           :ref="(el) => (ctaEls[1].value = el?.$el ?? el)"
           to="/crea"
           data-gelato-obstacle
-          class="inline-flex items-center justify-center border border-notte/20 text-notte rounded-xl px-7 py-3.5 text-body font-medium no-underline hover:border-notte/60 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte"
+          class="inline-flex items-center justify-center border border-notte/20 text-notte rounded-xl btn-cta text-cta font-medium no-underline hover:border-notte/60 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-notte"
         >Crea il tuo gusto</RouterLink>
       </div>
     </section>
