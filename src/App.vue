@@ -26,6 +26,7 @@ const logoMorphRef = ref(null)
 // non in Home, quindi provide/inject invece di un prop diretto.
 provide('logoMorph', logoMorphRef)
 const appVisible = computed(() => introCompleted.value && authReady.value)
+provide('appVisible', appVisible)
 
 let logoST = null
 

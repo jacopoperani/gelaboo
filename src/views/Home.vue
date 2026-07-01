@@ -1,9 +1,80 @@
 <script setup>
+import { inject, nextTick, watch, onUnmounted } from 'vue'
 import { RouterLink } from 'vue-router'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { SplitText } from 'gsap/SplitText'
 import GelatiFloating from '../components/GelatiFloating.vue'
 import { useLogoAnchors } from '../composables/useLogoAnchors.js'
 
 const { heroLogoAnchor } = useLogoAnchors()
+
+// Segnale di visibilità dell'app (intro + auth pronti), fornito da App.vue.
+// Fallback a true se il componente venisse testato isolato.
+const appVisible = inject('appVisible', { value: true })
+
+// Ref sulle 3 section, 3 titoli e 3 paragrafi, uno per blocco.
+const sectionEls = []
+const titleEls = []
+const paraEls = []
+
+// Istanze da ripulire allo smontaggio.
+const splits = []
+const timelines = []
+
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+let hasBuilt = false
+
+function buildReveals() {
+  titleEls.forEach((titleEl, i) => {
+    const paraEl = paraEls[i]
+    const sectionEl = sectionEls[i]
+    if (!titleEl || !paraEl || !sectionEl) return
+
+    // type:'words' + mask:'words' → ogni parola avvolta in un contenitore
+    // overflow:hidden, così yPercent:100 dà un reveal "a tendina" dal basso.
+    const titleSplit = new SplitText(titleEl, { type: 'words', mask: 'words' })
+    splits.push(titleSplit)
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionEl,
+        start: 'top 85%',
+        end: 'top 45%',
+        scrub: 1.2,
+      },
+    })
+    tl.from(titleSplit.words, {
+      yPercent: 100,
+      opacity: 0,
+      stagger: 0.04,
+      ease: 'none',
+    })
+    // '>' → il paragrafo attacca subito dopo la fine dell'anim del titolo.
+    tl.from(paraEl, { opacity: 0, ease: 'none' }, '>')
+    timelines.push(tl)
+  })
+}
+
+watch(
+  () => appVisible.value,
+  async (visible) => {
+    if (!visible || hasBuilt || prefersReduced) return
+    hasBuilt = true
+    await nextTick()
+    buildReveals()
+    ScrollTrigger.refresh()
+  },
+  { immediate: true },
+)
+
+onUnmounted(() => {
+  timelines.forEach((tl) => {
+    tl.scrollTrigger?.kill()
+    tl.kill()
+  })
+  splits.forEach((s) => s.revert())
+})
 </script>
 
 <template>
@@ -27,30 +98,30 @@ const { heroLogoAnchor } = useLogoAnchors()
 
     <!-- Spacer: dà respiro durante il morph del logo, così il contenuto
          non arriva sotto l'header mentre il logo sta ancora animando. -->
-    <div class="h-[12vh]" aria-hidden="true" />
+    <div class="h-[8vh]" aria-hidden="true" />
 
-    <section class="py-16">
+    <section :ref="(el) => (sectionEls[0] = el)" class="py-16">
       <div class="relative z-10 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 lg:px-10 xl:px-16">
-        <h2 class="text-h1 text-center">Uno strumento per creare il gelato perfetto</h2>
-        <p class="text-body text-notte/70 mt-4 text-center">
+        <h2 :ref="(el) => (titleEls[0] = el)" class="text-h1 text-center">Uno strumento per creare il gelato perfetto</h2>
+        <p :ref="(el) => (paraEls[0] = el)" class="text-body text-notte/70 mt-4 text-center">
           Bilancia ogni ricetta in pochi secondi, senza calcoli a mano.
         </p>
       </div>
     </section>
 
-    <section class="py-16">
+    <section :ref="(el) => (sectionEls[1] = el)" class="py-16">
       <div class="relative z-10 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 lg:px-10 xl:px-16">
-        <h2 class="text-h1 text-center">Tante ricette di base, sempre in aggiornamento</h2>
-        <p class="text-body text-notte/70 mt-4 text-center">
+        <h2 :ref="(el) => (titleEls[1] = el)" class="text-h1 text-center">Tante ricette di base, sempre in aggiornamento</h2>
+        <p :ref="(el) => (paraEls[1] = el)" class="text-body text-notte/70 mt-4 text-center">
           Parti da una ricetta verificata o modificala come vuoi.
         </p>
       </div>
     </section>
 
-    <section class="pt-16 pb-12">
+    <section :ref="(el) => (sectionEls[2] = el)" class="pt-16 pb-12">
       <div class="relative z-10 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 lg:px-10 xl:px-16">
-        <h2 class="text-h1 text-center">Hai pensato a qualche gusto particolare? Crealo con Gelaboo</h2>
-        <p class="text-body text-notte/70 mt-4 text-center">
+        <h2 :ref="(el) => (titleEls[2] = el)" class="text-h1 text-center">Hai pensato a qualche gusto particolare? Crealo con Gelaboo</h2>
+        <p :ref="(el) => (paraEls[2] = el)" class="text-body text-notte/70 mt-4 text-center">
           Descrivi il sapore che hai in mente: l'intelligenza artificiale
           suggerisce gli ingredienti, Gelaboo bilancia tutto il resto.
         </p>
